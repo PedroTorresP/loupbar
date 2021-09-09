@@ -1,0 +1,32 @@
+
+<h1>Participants</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>User</th>
+      <th>Event</th>
+      <th>Is paid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @participants.each do |participant| %>
+      <tr>
+        <td><%= participant.id %></td>
+        <td><%= participant.user_id %></td>
+        <td><%= participant.event_id %></td>
+        <td><%= participant.is_paid %></td>
+        <td><%= link_to 'Show', participant %></td>
+        <td><%= link_to 'Edit', edit_participant_path(participant) %></td>
+        <td><%= link_to 'Destroy', participant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Participant', new_participant_path %>

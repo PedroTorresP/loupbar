@@ -1,0 +1,17 @@
+
+<div class="card">
+<img src="https://static.cardmarket.com/img/7475ee1acaf4593fba148de43e623ac6/items/1060/562144.jpg" class="card-img-top">
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong>Id:</strong> <%= @event.id %></li>
+  <li class="list-group-item"><strong>Name:</strong> <%= @event.name %></li>
+  <li class="list-group-item"><strong>Description:</strong> <%= @event.description %></li>
+  <li class="list-group-item"><strong>Image:</strong> <%= @event.image %></li>
+  <li class="list-group-item"><strong>Price:</strong> <%= @event.price %></li>
+  <li class="list-group-item"><strong>Places:</strong> <%= @event.places %></li>
+  <li class="list-group-item"><strong>Result:</strong> <%= @event.result %></li>
+  </ul>
+  <div class="card-body">
+  <%= link_to 'Modifier', edit_event_path(@event), class:"btn btn-dark" %>  
+  <%= link_to 'Retour', events_path, class:"btn btn-light" %>
+  </div>
+</div>

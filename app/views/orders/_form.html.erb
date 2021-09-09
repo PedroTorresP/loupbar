@@ -1,0 +1,28 @@
+<%= form_with(model: order) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card">
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong>Id:</strong> <%= form.text_field :id, class:"form-control" %></li>
+  <li class="list-group-item"><strong>User ID:</strong> <%= form.text_field :user_id, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Discount:</strong> <%= form.number_field :discount, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Etat paiement:</strong> <%= form.check_box :is_paid, class:"form-check-input" %></li>
+  <li class="list-group-item"><strong>Etat commande:</strong> <%= form.check_box :is_ready, class:"form-check-input" %></li>
+  </ul>
+  <div class="card-body">
+  <div class="actions">
+  <%= form.submit class:"btn btn-dark"  %>
+  </div>
+  </div>
+</div>
+<% end %>

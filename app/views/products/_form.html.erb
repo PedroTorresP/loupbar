@@ -1,0 +1,34 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card">
+  <img src="https://static.cardmarket.com/img/7475ee1acaf4593fba148de43e623ac6/items/1060/562144.jpg" class="card-img-top">
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong>Id:</strong> <%= form.text_field :id, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Name:</strong> <%= form.text_field :name, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Category:</strong> <%= form.number_field :category, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Description:</strong> <%= form.text_field :description, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Price:</strong> <%= form.text_field :price, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Image path:</strong> <%= form.text_field :image_path, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Quantity:</strong> <%= form.number_field :quantity, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Min stock:</strong> <%= form.number_field :min_stock, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Available:</strong> <%= form.check_box :available, class:"form-check-input" %></li>
+  </ul>
+  <div class="card-body">
+  <div class="actions">
+  <%= form.submit class:"btn btn-dark"  %>
+  </div>
+  </div>
+</div>
+
+<% end %>

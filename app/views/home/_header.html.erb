@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFFFF;">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <li class="navbar-nav">
+        <%= link_to 'Boutique', root_path, class:"nav-link" %>
+        </li>
+        <li class="navbar-nav">
+        <%= link_to 'Évènements', root_path, class:"nav-link" %>
+        </li>
+        <li class="navbar-nav">
+        <%= link_to 'Contact', root_path, class:"nav-link" %>
+        </li>
+        <li class="navbar-nav">
+        <%= link_to 'Le Loupbar', root_path, class:"nav-link" %>
+        </li>
+        
+
+        <% if user_signed_in? %>
+        <li class="navbar-nav">
+        <%= link_to 'Compte', edit_user_registration_path, class:"nav-link" %>
+        </li>
+        <li class="navbar-nav">
+        <%= link_to 'Déconnection', destroy_user_session_path, method: :delete, class:"nav-link" %>
+        </li>
+        <% else %>
+        <li class="navbar-nav">
+        <%= link_to 'Inscription', new_user_registration_path, class:"nav-link" %>
+        </li>
+        <li class="navbar-nav">
+        <%= link_to 'Connection', new_user_session_path, class:"nav-link" %>
+        </li>
+        <% end %>
+        
+        <li class="navbar-nav">
+        <%= link_to 'Discord', root_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to 'Produits', products_path, class:"dropdown-item" %>
+            <%= link_to 'Categories', categories_path, class:"dropdown-item" %>
+            <%= link_to 'Commandes', orders_path, class:"dropdown-item" %>
+            <%= link_to 'Utilisateurs', users_path, class:"dropdown-item" %>
+            <%= link_to 'Évènements', events_path, class:"dropdown-item" %>
+          </ul>
+        </li>
+        </div>
+        
+    </div>
+
+  </div>
+</nav>

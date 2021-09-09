@@ -1,0 +1,33 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="card">
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong>Id:</strong> <%= form.text_field :id, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Username:</strong> <%= form.text_field :username, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Password:</strong> <%= form.text_field :password, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Email:</strong> <%= form.text_field :email, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Nom:</strong> <%= form.text_field :first_name, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Prénom:</strong> <%= form.text_field :last_name, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Code postal:</strong> <%= form.text_field :postal_code, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Adresse:</strong> <%= form.text_field :address, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Administrateur:</strong> <%= form.check_box :is_admin, class:"form-check-input" %></li>
+  </ul>
+  <div class="card-body">
+  <div class="actions">
+  <%= form.submit class:"btn btn-dark"  %>
+  </div>
+  </div>
+</div>
+<% end %>
