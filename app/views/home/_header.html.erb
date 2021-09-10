@@ -13,7 +13,6 @@
         <li class="navbar-nav">
         <%= link_to 'Le Loupbar', root_path, class:"nav-link" %>
         </li>
-        
 
         <% if user_signed_in? %>
         <li class="navbar-nav">
@@ -34,16 +33,16 @@
         <li class="navbar-nav">
         <%= link_to 'Discord', root_path, class:"nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Admin
+        <li class="navbar-nav dropdown">
+          <a class="btn btn-secondary dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Admin
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <%= link_to 'Produits', products_path, class:"dropdown-item" %>
-            <%= link_to 'Categories', categories_path, class:"dropdown-item" %>
-            <%= link_to 'Commandes', orders_path, class:"dropdown-item" %>
-            <%= link_to 'Utilisateurs', users_path, class:"dropdown-item" %>
-            <%= link_to 'Évènements', events_path, class:"dropdown-item" %>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><%= link_to 'Produits', products_path, class:"dropdown-item" %></li>
+          <li><%= link_to 'Categories', categories_path, class:"dropdown-item" %></li>
+          <li><%= link_to 'Commandes', orders_path, class:"dropdown-item" %></li>
+          <li><%= link_to 'Utilisateurs', users_path, class:"dropdown-item" %></li>
+          <li><%= link_to 'Évènements', events_path, class:"dropdown-item" %></li>
           </ul>
         </li>
         </div>
