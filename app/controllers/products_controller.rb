@@ -8,15 +8,19 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
+    @category = Category.find_by(id: @product.category_id)
   end
 
   # GET /products/new
   def new
     @product = Product.new
+    @categories = Category.all
   end
 
   # GET /products/1/edit
   def edit
+    @product = Product.new
+    @categories = Category.all
   end
 
   # POST /products or /products.json

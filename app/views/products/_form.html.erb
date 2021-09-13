@@ -16,7 +16,11 @@
   <ul class="list-group list-group-flush">
   <li class="list-group-item"><strong>Id:</strong> <%= form.text_field :id, class:"form-control" %></li>
   <li class="list-group-item"><strong>Name:</strong> <%= form.text_field :name, class:"form-control" %></li>
+
+  <li class="list-group-item"><strong>Category:</strong> <%= form.select :category_id, @categories, {}, class:"form-select" %></li>
   <li class="list-group-item"><strong>Category:</strong> <%= form.number_field :category_id, class:"form-control" %></li>
+  
+
   <li class="list-group-item"><strong>Description:</strong> <%= form.text_field :description, class:"form-control" %></li>
   <li class="list-group-item"><strong>Price:</strong> <%= form.text_field :price, class:"form-control" %></li>
   <li class="list-group-item"><strong>Image path:</strong> <%= form.text_field :image_path, class:"form-control" %></li>
