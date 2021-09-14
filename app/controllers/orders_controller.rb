@@ -8,11 +8,18 @@ class OrdersController < ApplicationController
 
   # GET /orders/1 or /orders/1.json
   def show
+    total = 0
+    @order.buys.each do |b|
+      total += b.quantity * b.product.price
+    end
+    @totalOrder = total
+    @totalOrderDiscount = total.to_s.to_d - @order.discount.to_s.to_d
   end
 
   # GET /orders/new
   def new
     @order = Order.new
+    @products = Product.all
   end
 
   # GET /orders/1/edit
