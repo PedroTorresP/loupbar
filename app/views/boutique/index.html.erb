@@ -3,15 +3,17 @@
 
         
     <div class="col">
-        <div class="card">
+        <div class="card card-boutique">
             <h5 class="card-title"><%= p.name %></h5>
             <div class="card-body">
+            <div class="boutique-img">
             <% if p.image.attached? %>
             <%= image_tag p.image %>
           <% end %>
+            </div>
             <p class="card-text"><%= p.category.name %> CHF</p>        
             <p class="card-text">PRIX : <%= p.price %> CHF</p>
-                    <a href="#" class="btn btn-primary">Ajouter au panier</a>
+            <input class="input-boutique" type="number" value=1 ></input><a href="#" class="btn btn-primary">Ajouter au panier</a>
                 </div>
         </div>
     </div>
