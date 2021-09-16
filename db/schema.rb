@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_15_122408) do
+ActiveRecord::Schema.define(version: 2021_09_16_133247) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,17 +57,8 @@ ActiveRecord::Schema.define(version: 2021_09_15_122408) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "events", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.string "image"
-    t.decimal "price"
-    t.integer "places"
-    t.string "result"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.date "date"
-  end
+# Could not dump table "events" because of following StandardError
+#   Unknown type 'attached' for column 'image'
 
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
