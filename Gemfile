@@ -60,5 +60,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #Authentification
 gem 'devise', '~> 4.8'
 
-#For active storage
-gem "image_processing", ">= 1.2"
