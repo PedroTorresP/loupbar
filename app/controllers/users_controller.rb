@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :authorize_admin
 
   # GET /users or /users.json
   def index
@@ -66,4 +67,9 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:id, :username, :password, :email, :first_name, :last_name, :postal_code, :address, :is_admin)
     end
+
+    def authorize_admin
+      redirect_to(root_path) unless current_user && current_user.is_admin?
+    end
+  
 end

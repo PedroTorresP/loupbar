@@ -1,5 +1,6 @@
 class BuysController < ApplicationController
   before_action :set_buy, only: %i[ show edit update destroy ]
+  before_action :authorize_admin
 
   # GET /buys or /buys.json
   def index
@@ -65,5 +66,9 @@ class BuysController < ApplicationController
     # Only allow a list of trusted parameters through.
     def buy_params
       params.require(:buy).permit(:id, :order_id, :product_id, :quantity)
+    end
+
+    def authorize_admin
+      redirect_to(root_path) unless current_user && current_user.is_admin?
     end
 end

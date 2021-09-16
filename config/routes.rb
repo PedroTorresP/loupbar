@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'contact/index'
+  get 'evenements/index'
   get 'boutique/index'
   devise_for :users
   resources :events

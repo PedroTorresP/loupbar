@@ -1,5 +1,6 @@
 class ParticipantsController < ApplicationController
   before_action :set_participant, only: %i[ show edit update destroy ]
+  before_action :authorize_admin
 
   # GET /participants or /participants.json
   def index
@@ -65,5 +66,9 @@ class ParticipantsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def participant_params
       params.require(:participant).permit(:id, :user_id, :event_id, :is_paid)
+    end
+
+    def authorize_admin
+      redirect_to(root_path) unless current_user && current_user.is_admin?
     end
 end

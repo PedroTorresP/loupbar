@@ -1,0 +1,20 @@
+<h1>Evenements</h1>
+<div class="row row-cols-4">
+    <% @events.each do |e| %>
+
+        
+    <div class="col">
+        <div class="card">
+            <h5 class="card-title"><%= e.name %></h5>
+            <div class="card-body">
+            <% if e.image.attached? %>
+            <%= image_tag e.image %>
+          <% end %>      
+            <p class="card-text">PRIX : <%= e.price %> CHF</p>
+                    <a href="#" class="btn btn-primary">Participer</a>
+                </div>
+        </div>
+    </div>
+    <% end %>
+</div>
+

@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :authorize_admin
 
   # GET /events or /events.json
   def index
@@ -65,5 +66,9 @@ class EventsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def event_params
       params.require(:event).permit(:id, :name, :description, :image, :price, :places, :result, :date)
+    end
+
+    def authorize_admin
+      redirect_to(root_path) unless current_user && current_user.is_admin?
     end
 end

@@ -1,0 +1,17 @@
+<h1>Contact</h1>
+<form>
+<div class="mb-3">
+<label for="exampleInputEmail1" class="form-label">Email</label>
+<input type="email" class="form-control" id="exampleInputEmail1" <% if user_signed_in? %>value=<%=User.all.find(current_user.id).email%><% end %> aria-describedby="emailHelp">
+</div>
+<div class="mb-3">
+<label for="exampleSujet" class="form-label">Sujet</label>
+<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+</div>
+<div class="mb-3">
+<label for="message" class="form-label">Message</label>
+<textarea class="form-control" id="message" aria-label="With textarea"></textarea>
+</div>
+<br>
+<button type="submit" class="btn btn-primary">Envoyer</button>
+</form>
