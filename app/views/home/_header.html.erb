@@ -5,10 +5,10 @@
         <%= link_to 'Boutique', boutique_index_path, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
-        <%= link_to 'Évènements', root_path, class:"nav-link" %>
+        <%= link_to 'Évènements', evenements_index_path, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
-        <%= link_to 'Contact', root_path, class:"nav-link" %>
+        <%= link_to 'Contact', contact_index_path, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
         <%= link_to image_tag("loupbar.png", class:"imgnavbar"), root_path, class:"nav-link" %>
@@ -31,7 +31,7 @@
         <% end %>
         
         <li class="navbar-nav">
-        <%= link_to image_tag("discord.png", class:"imgnavbar"), root_path, class:"nav-link" %>
+        <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", class:"nav-link" %>
         </li>
         <% if user_signed_in? %>
         <% if User.all.find(current_user.id).is_admin %>
