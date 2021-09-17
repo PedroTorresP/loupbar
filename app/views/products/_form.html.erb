@@ -16,13 +16,12 @@
     <%= image_tag product.image %>
   <% end %>
   <ul class="list-group list-group-flush">
-  <li class="list-group-item"><strong>Id:</strong> <%= form.text_field :id, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Nom:</strong> <%= form.text_field :name, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Nom:</strong> <%= form.text_field :name, class:"form-control", :required => true %></li>
   <li class="list-group-item"><strong>Catégorie:</strong> <%= form.select :category_id, @categories, {}, class:"form-select" %></li>
   <li class="list-group-item"><strong>Image:</strong><%= form.file_field :image, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Description:</strong> <%= form.text_field :description, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Prix:</strong> <%= form.text_field :price, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Quantité:</strong> <%= form.number_field :quantity, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Description:</strong> <%= form.text_area :description, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Prix:</strong> <%= form.number_field :price, class:"form-control" , :required => true %></li>
+  <li class="list-group-item"><strong>Quantité:</strong> <%= form.number_field :quantity, class:"form-control" , :required => true %></li>
   <li class="list-group-item"><strong>Stock minimum:</strong> <%= form.number_field :min_stock, class:"form-control" %></li>
   <li class="list-group-item"><strong>Disponible:</strong> <%= form.check_box :available, class:"form-check-input" %></li>
   </ul>

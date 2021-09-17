@@ -16,19 +16,19 @@
     <%= image_tag event.image %>
   <% end %>
   <ul class="list-group list-group-flush">
-  <li class="list-group-item"><strong>Id:</strong> <%= form.text_field :id, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Name:</strong> <%= form.text_field :name, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Date:</strong> <%= form.date_field :date, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Nom:</strong> <%= form.text_field :name, class:"form-control" , :required => true %></li>
+  <li class="list-group-item"><strong>Date:</strong> <%= form.date_field :date, class:"form-control" , :required => true %></li>
   <li class="list-group-item"><strong>Description:</strong> <%= form.text_field :description, class:"form-control" %></li>
   <li class="list-group-item"><strong>Image:</strong><%= form.file_field :image, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Price:</strong> <%= form.text_field :price, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Places:</strong> <%= form.number_field :places, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Result:</strong> <%= form.number_field :min_stock, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Prix:</strong> <%= form.number_field :price, class:"form-control" , :required => true %></li>
+  <li class="list-group-item"><strong>Places:</strong> <%= form.number_field :places, class:"form-control" , :required => true %></li>
+  <li class="list-group-item"><strong>Résultat:</strong> <%= form.file_field :min_stock, class:"form-control" %></li>
   </ul>
   <div class="card-body">
   <div class="actions">
   <%= form.submit class:"btn btn-dark"  %>
   </div>
+</div>
 </div>
 
 <% end %>

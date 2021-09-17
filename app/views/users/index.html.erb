@@ -6,8 +6,6 @@
   <thead class="table-dark">
     <tr>
       <th>Id</th>
-      <th>Pseudo</th>
-      <th>Mot de passe</th>
       <th>Email</th>
       <th>Nom</th>
       <th>Prénom</th>
@@ -22,14 +20,18 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
-        <td><%= user.username %></td>
-        <td><%= user.password %></td>
         <td><%= user.email %></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= user.postal_code %></td>
         <td><%= user.address %></td>
-        <td><%= user.is_admin %></td>
+        <td>
+        <% if user.is_admin %>
+        Oui
+        <% else %>
+        Non
+        <% end %>
+        </td>
         <td><%= link_to 'Afficher', user %></td>
         <td><%= link_to 'Modifier', edit_user_path(user) %></td>
         <td><%= link_to 'Supprimer', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

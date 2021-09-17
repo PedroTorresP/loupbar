@@ -13,13 +13,12 @@
 
   <div class="card">
   <ul class="list-group list-group-flush">
-  <li class="list-group-item"><strong>Id:</strong> <%= form.text_field :id, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Name:</strong> <%= form.text_field :name, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Available:</strong> <%= form.check_box :available, class:"form-check-input" %></li>
+  <li class="list-group-item"><strong>Nom:</strong> <%= form.text_field :name, class:"form-control" , :required => true %></li>
+  <li class="list-group-item"><strong>Affiché? : </strong> <%= form.check_box :available, class:"form-check-input" %></li>
   </ul>
   <div class="card-body">
   <div class="actions">
-  <%= form.submit class:"btn btn-dark"  %>
+  <%= form.submit class:"btn btn-dark" %>
   </div>
   </div>
 </div>

@@ -7,9 +7,7 @@
       <th>Id</th>
       <th>Nom</th>
       <th>Catégorie</th>
-      <th>Description</th>
       <th>Prix</th>
-      <th>Image path</th>
       <th>Quantité</th>
       <th>Stock Minimun</th>
       <th>Commandable</th>
@@ -22,13 +20,15 @@
       <tr>
         <td><%= product.id %></td>
         <td><%= product.name %></td>
-        <td><%= product.category_id %></td>
-        <td><%= product.description %></td>
+        <td><%= product.category.name %></td>
         <td><%= product.price %></td>
-        <td><%= product.image_path %></td>
         <td><%= product.quantity %></td>
         <td><%= product.min_stock %></td>
-        <td><%= product.available %></td>
+        <td><% if product.available %>
+        Disponible
+        <% else %>
+        Pas disponible
+        <% end %></td>
         <td><%= link_to 'Afficher', product %></td>
         <td><%= link_to 'Modifier', edit_product_path(product) %></td>
         <td><%= link_to 'Supprimer', product, method: :delete, data: { confirm: 'Êtes vous certain de vouloir le supprimer ?' } %></td>

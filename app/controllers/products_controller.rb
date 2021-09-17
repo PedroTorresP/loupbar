@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    @products = Product.all.reverse()
   end
 
   # GET /products/1 or /products/1.json
@@ -14,9 +14,12 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @product.available = true
     categoriesName = {}
     Category.all.each do |c|
-      categoriesName[c.name] = c.id
+      if c.available
+        categoriesName[c.name] = c.id
+      end
     end
     @categories = categoriesName
   end
@@ -25,7 +28,9 @@ class ProductsController < ApplicationController
   def edit
     categoriesName = {}
     Category.all.each do |c|
-      categoriesName[c.name] = c.id
+      if c.available
+        categoriesName[c.name] = c.id
+      end
     end
     @categories = categoriesName
   end
@@ -36,7 +41,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: "Product was successfully created." }
+        format.html { redirect_to products_path, notice: "Le produit a été crée." }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -49,7 +54,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: "Product was successfully updated." }
+        format.html { redirect_to products_path, notice: "Le produit a été modifié." }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -62,7 +67,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
+      format.html { redirect_to products_url, notice: "Le produit a été supprimé." }
       format.json { head :no_content }
     end
   end
