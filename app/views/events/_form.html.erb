@@ -18,7 +18,7 @@
   <ul class="list-group list-group-flush">
   <li class="list-group-item"><strong>Nom:</strong> <%= form.text_field :name, class:"form-control" , :required => true %></li>
   <li class="list-group-item"><strong>Date:</strong> <%= form.date_field :date, class:"form-control" , :required => true %></li>
-  <li class="list-group-item"><strong>Description:</strong> <%= form.text_field :description, class:"form-control" %></li>
+  <li class="list-group-item"><strong>Description:</strong> <%= form.text_area :description, class:"form-control" %></li>
   <li class="list-group-item"><strong>Image:</strong><%= form.file_field :image, class:"form-control" %></li>
   <li class="list-group-item"><strong>Prix:</strong> <%= form.number_field :price, class:"form-control" , :required => true %></li>
   <li class="list-group-item"><strong>Places:</strong> <%= form.number_field :places, class:"form-control" , :required => true %></li>

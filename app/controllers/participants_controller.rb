@@ -24,9 +24,10 @@ class ParticipantsController < ApplicationController
   def create
     @participant = Participant.new(participant_params)
 
+    redirect_link = events_path + "/" + @participant.event_id.to_s
     respond_to do |format|
       if @participant.save
-        format.html { redirect_to @participant, notice: "Participant was successfully created." }
+        format.html { redirect_to redirect_link, notice: "Participant was successfully created." }
         format.json { render :show, status: :created, location: @participant }
       else
         format.html { render :new, status: :unprocessable_entity }
