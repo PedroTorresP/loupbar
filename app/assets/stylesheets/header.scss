@@ -1,11 +1,14 @@
-body {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-right: 150px;
-    margin-left: 80px;
+.header {
+  text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 20px;
+    margin-left: 20px;
+    min-width: 900px;
   }
 
   .navbar-nav {
+    font-family: 'Courier New', Courier, monospace !important;
     float:none;
     margin:0 auto;
     display: block;
@@ -15,4 +18,30 @@ body {
 .navbar-nav > li {
     display: inline-block;
     float:none;
+    
 }
+
+.offcanvas {
+  max-width: 270px;
+  z-index: 10001;
+}
+
+@media only screen and (max-width : 1024px) {
+  .desktop {display: none;}
+}
+
+@media only screen and (min-width : 1025px) {
+  .mobile {display: none;}
+}
+
+.mobileButton {
+  position:fixed;
+  z-index: 10000;
+  width: 120px;
+  height: 32px;
+  background: url(asset-path('loupbar.png'));
+  background-repeat: no-repeat;
+  background-size:cover;
+
+}
+

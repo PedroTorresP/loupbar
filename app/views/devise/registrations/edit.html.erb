@@ -34,6 +34,15 @@
   <div class="actions">
   <br>
     <%= f.submit "Update", class:"btn btn-dark" %>
+    <br><br>
+    <div class="member-card">
+    <p class="member-title">Leloupbar Team TCG</p> 
+    <p class="member-name"><%= User.all.find(current_user.id).first_name + " " + User.all.find(current_user.id).last_name %></p>
+    <p class="member-number">0000000<%= current_user.id %></p>
+    <img class="member-logo" src="https://media.discordapp.net/attachments/830455008154877952/883732047858901032/leloupbar_vectorized.png?width=470&height=676"></img>
+    <img class="member-qr" src="https://www.pngitem.com/pimgs/m/120-1202125_qr-code-png-transparent-background-qr-code-png.png"></img>
+
+    </div>
   </div>
   </div>
   </div>
