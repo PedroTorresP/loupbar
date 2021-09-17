@@ -35,6 +35,7 @@
 }
 
 .mobileButton {
+  
   position:fixed;
   z-index: 10000;
   width: 120px;
@@ -42,6 +43,8 @@
   background: url(asset-path('loupbar.png'));
   background-repeat: no-repeat;
   background-size:cover;
+  top: 0px;
+  left: 0px;
 
 }
 
