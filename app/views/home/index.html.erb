@@ -4,14 +4,61 @@
 <%= link_to image_tag("CHAR4.png", class:"characters"), "/products" %>
 <div class="row">
 <div class="column">
-<h1>Page accueil Loupbar</h1>
-<p>En construction...</p>
-<p>Actuellement fonctionne uniquement sur PC !!!</p>
+<h1>Bienvenue chez Le Loupbar</h1><h3> <br>
+La superbe boutique pour les fan de figurines et jeux de cartes<br>
+Vous trouverez divers articles dans notre boutique.<br>
+Rejoignez le club Loupbar Team Game!<br><br>
+Message du jour : C'est l'heure du DUEL!!!</h3>
+<h1> Dernières sorties </h1>
+<div class="row row-cols-2">
+    <% @products.each do |p| %>
+ 
+    <div class="col">
+        <div class="card card-boutique">
+            <h5 class="card-title"><%= p.name %></h5>
+            <div class="card-body">
+            <div class="boutique-img">
+            <% if p.image.attached? %>
+            <%= image_tag p.image, class:"boutique-img" %>
+          <% end %>
+            </div>
+            <p class="card-text"><%= p.category.name %></p>        
+            <p class="card-text">PRIX : <%= p.price %> CHF</p>
+            <input class="input-boutique" type="number" value=1 ></input><a href="#" class="btn btn-primary">Ajouter au panier</a>
+                </div>
+        </div>
+    </div>
+    <% end %>
+</div>
+<h1> Liste d'envies </h1>
+<div class="row row-cols-2">
+    <% @wishlist.each do |p| %>
+ 
+    <div class="col">
+        <div class="card card-boutique">
+            <h5 class="card-title"><%= p.name %></h5>
+            <div class="card-body">
+            <div class="boutique-img">
+            <% if p.image.attached? %>
+            <%= image_tag p.image, class:"boutique-img" %>
+          <% end %>
+            </div>
+            <p class="card-text"><%= p.category.name %></p>        
+            <p class="card-text">PRIX : <%= p.price %> CHF</p>
+            <input class="input-boutique" type="number" value=1 ></input><a href="#" class="btn btn-primary">Ajouter au panier</a>
+                </div>
+        </div>
+    </div>
+    <% end %>
+</div>
 <h1> FACEBOOK </h1>
-<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLeloupbarRey%2F&tabs=timeline&width=500&height=700&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="700" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>
+<p class="iframe-mobile" ><iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLeloupbarRey%2F&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="300" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></p>
+</div>
 <div class="column">
-<h1>JUSTE UNE IMAGE POUR REMPLIR</h1>
-<img src="https://michelzbinden.com/images/2020/vi/fr/calendrier-septembre-2020-geneve.jpg" class="img-fluid">
+<h1>Évènements</h1>
+<img class="img-fluid" src="https://michelzbinden.com/images/2020/vi/fr/calendrier-septembre-2020-geneve.jpg">
+<h1>MAP</h1>
+<img class="img-fluid" src="https://cdn.discordapp.com/attachments/381844670961025048/888809775683477514/unknown.png">
 </div>
 </div>
 

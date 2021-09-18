@@ -2,9 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .column {
+  text-align: center !important;
     float: left;
-    width: 50%;
+    
   }
+
+  @media only screen and (max-width : 1115px) {
+    .column {width: 100%;}
+  }
+  
+  @media only screen and (min-width : 1116px) {
+    .column {width: 50%;}
+  }
+
   
   /* Clear floats after the columns */
   .row:after {
@@ -16,6 +26,7 @@
   .characters {
     width: 24%;
   }
+
 
   .row {
       background-color: rgb(245, 170, 86);
