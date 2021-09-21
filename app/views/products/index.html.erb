@@ -29,9 +29,9 @@
         <% else %>
         Pas disponible
         <% end %></td>
-        <td><%= link_to 'Afficher', product %></td>
-        <td><%= link_to 'Modifier', edit_product_path(product) %></td>
-        <td><%= link_to 'Supprimer', product, method: :delete, data: { confirm: 'Êtes vous certain de vouloir le supprimer ?' } %></td>
+        <td><%= link_to '🔎', product %></td>
+        <td><%= link_to '✏️', edit_product_path(product) %></td>
+        <td><%= link_to '🗑️', product, method: :delete, data: { confirm: 'Êtes vous certain de vouloir le supprimer ?' } %></td>
       </tr>
     <% end %>
   </tbody>
