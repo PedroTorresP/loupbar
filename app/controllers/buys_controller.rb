@@ -14,6 +14,8 @@ class BuysController < ApplicationController
   # GET /buys/new
   def new
     @buy = Buy.new
+    @buy.order_id = request.query_parameters[:order]
+    @products = Product.all.collect { |p| [p.name , p.id] }
   end
 
   # GET /buys/1/edit
@@ -24,9 +26,10 @@ class BuysController < ApplicationController
   def create
     @buy = Buy.new(buy_params)
 
+    redirect_link = orders_path + "/" + @buy.order_id.to_s
     respond_to do |format|
       if @buy.save
-        format.html { redirect_to @buy, notice: "Buy was successfully created." }
+        format.html { redirect_to redirect_link, notice: "Buy was successfully created." }
         format.json { render :show, status: :created, location: @buy }
       else
         format.html { render :new, status: :unprocessable_entity }

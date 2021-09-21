@@ -29,6 +29,7 @@
     <td><%= link_to 'Supprimer', @order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
+  <%= link_to 'Ajouter produit à la commande', new_buy_path + "?order=" + @order.id.to_s, class:"btn btn-dark" %> 
 
   <div class="card-body">
   <%= link_to 'Modifier', edit_order_path(@order), class:"btn btn-dark" %>  
