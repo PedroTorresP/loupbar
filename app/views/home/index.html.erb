@@ -13,33 +13,33 @@ Message du jour : C'est l'heure du DUEL!!!</h3>
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-    <div class="card card-boutique">
+    <div class="card card-boutique bg-light">
     <h5 class="card-title"><%= @products[0].name %></h5>
     <div class="card-body">
     <div class="boutique-img">
     <% if @products[0].image.attached? %>
-    <%= image_tag @products[0].image, class:"boutique-img" %>
-  <% end %>
-    </div>
-    <p class="card-text"><%= @products[0].category.name %></p>        
+    <%= link_to image_tag(@products[0].image, class:"boutique-img"), boutique_produit_path + "?id=" + @products[0].id.to_s %>
+  <% else %>
+  <%= link_to image_tag("noimage", class:"boutique-img"), boutique_produit_path + "?id=" + @products[0].id.to_s %>
+    <% end %>
+</div>
     <p class="card-text">PRIX : <%= @products[0].price %> CHF</p>
-    <input class="input-boutique" type="number" value=1 ></input><a href="#" class="btn btn-primary">Ajouter au panier</a>
         </div>
 </div>
     </div>
     <% @products.drop(1).each do |p| %>
     <div class="carousel-item ">
-    <div class="card card-boutique">
+    <div class="card card-boutique bg-light">
     <h5 class="card-title"><%= p.name %></h5>
     <div class="card-body">
     <div class="boutique-img">
     <% if p.image.attached? %>
-    <%= image_tag p.image, class:"boutique-img" %>
-  <% end %>
-    </div>
-    <p class="card-text"><%= p.category.name %></p>        
+    <%= link_to image_tag(p.image, class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
+  <% else %>
+  <%= link_to image_tag("noimage", class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
+    <% end %>
+</div>
     <p class="card-text">PRIX : <%= p.price %> CHF</p>
-    <input class="input-boutique" type="number" value=1 ></input><a href="#" class="btn btn-primary">Ajouter au panier</a>
         </div>
 </div>
     </div>
@@ -59,7 +59,7 @@ Message du jour : C'est l'heure du DUEL!!!</h3>
 </div>
 <div class="column">
 <h1>Évènements</h1>
-<img class="img-fluid" src="https://michelzbinden.com/images/2020/vi/fr/calendrier-septembre-2020-geneve.jpg">
+<%= image_tag "calendrier", class:"img-fluid" %>
 <h1>MAP</h1>
 <img class="img-fluid" src="https://cdn.discordapp.com/attachments/381844670961025048/888809775683477514/unknown.png">
 </div>
