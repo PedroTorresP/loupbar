@@ -1,5 +1,7 @@
 <h1>Contact</h1>
 <form>
+<div class="card">
+<div class="card-body">
 <div class="mb-3">
 <label for="exampleInputEmail1" class="form-label">Email</label>
 <input type="email" class="form-control" id="exampleInputEmail1" <% if user_signed_in? %>value=<%=User.all.find(current_user.id).email%><% end %> aria-describedby="emailHelp">
@@ -14,4 +16,6 @@
 </div>
 <br>
 <button type="submit" class="btn btn-primary">Envoyer</button>
+</div>
+</div>
 </form>
