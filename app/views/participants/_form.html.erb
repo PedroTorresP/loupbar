@@ -11,23 +11,15 @@
     </div>
   <% end %>
 
+<div class="card>
+<ul class="list-group list-group-flush">
+<li class="list-group-item"><strong>Utilisateur:</strong> <%= form.select :user_id, @users, {}, class:"form-select" %></li>
+<li class="list-group-item"><strong>Payé?:</strong> <%= form.check_box :is_paid, class:"form-check-input" %></li>
+<li class="list-group-item"> <%= form.hidden_field :event_id, class:"form-control" %></li>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.select :user_id, @users %>
-  </div>
+</ul>
+<br>
+<%= form.submit "Valider", class:"btn btn-dark"  %>
 
-  <div class="field">
-    <%= form.label :event_id %>
-    <%= form.hidden_field :event_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_paid %>
-    <%= form.check_box :is_paid %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
   </div>
 <% end %>

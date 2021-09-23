@@ -5,9 +5,14 @@
   <li class="list-group-item"><strong>Prix total:</strong> <%= @totalOrder %></li>
   <li class="list-group-item"><strong>Réduction:</strong> <%= @order.discount %></li>
   <li class="list-group-item"><strong>Prix total après réduction:</strong> <%=  @totalOrderDiscount %></li>
-  <li class="list-group-item"><strong>Etat paiement:</strong> <%= @order.is_paid %></li>
-  <li class="list-group-item"><strong>Etat commande:</strong> <%= @order.is_ready %></li>
+  <li class="list-group-item"><strong>Etat paiement:</strong> <% if @order.is_paid %> Payée <% else %> En attente <% end %></li>
+  <li class="list-group-item"><strong>Etat commande:</strong> <% if @order.is_ready %> Terminée <% else %> En attente <% end %></li>
+  <li class="list-group-item">   <%= button_to 'Commande payée', order_path(@order), method: :patch, params: { :is_paid => !@order.is_paid  }  %>
+  </li>
+  <li class="list-group-item">
+  <%= button_to 'Commande terminée', order_path(@order), method: :patch, params: { :is_ready => !@order.is_ready  }  %></li>
   </ul>
+
   <h3>Détail de la commande</h3>
   <table class="table table-bordered table-striped">
   <thead class="table-dark">
@@ -29,10 +34,12 @@
     <td><%= link_to 'Supprimer', @order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
-  <%= link_to 'Ajouter produit à la commande', new_buy_path + "?order=" + @order.id.to_s, class:"btn btn-dark" %> 
 
   <div class="card-body">
-  <%= link_to 'Modifier', edit_order_path(@order), class:"btn btn-dark" %>  
-  <%= link_to 'Retour', orders_path, class:"btn btn-light" %>
+  <%= link_to 'Ajouter produit à la commande ➕', new_buy_path + "?order=" + @order.id.to_s, class:"btn btn-success" %> 
+  <%= link_to 'Modifier la commande ✏️', edit_order_path(@order), class:"btn btn-dark" %>  
+  <%= link_to 'Retour ⬅️', orders_path, class:"btn btn-dark" %>
+
+
   </div>
 </div>

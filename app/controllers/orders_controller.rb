@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: "Order was successfully created." }
+        format.html { redirect_to @order, notice: "La commande a été créée." }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,8 +45,8 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
     respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: "Order was successfully updated." }
+      if @order.update(order_params_update)
+        format.html { redirect_to @order, notice: "La commande a été modifiée." }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,7 +59,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
+      format.html { redirect_to orders_url, notice: "La commande a été supprimée." }
       format.json { head :no_content }
     end
   end
@@ -73,6 +73,10 @@ class OrdersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def order_params
       params.require(:order).permit(:id, :user_id, :discount, :is_paid, :is_ready)
+    end
+
+    def order_params_update
+      params.permit(:id, :user_id, :discount, :is_paid, :is_ready)
     end
 
     def authorize_admin
