@@ -1,0 +1,40 @@
+<div class="card">
+<header class="card-header"><%= @product.name %></header>
+<div class="card-body">
+<div class="columns">
+<div class="column">
+<div class="boutique-img">
+<% if @product.image.attached? %>
+<%= image_tag @product.image, alt:"noimage", class:"boutique-img" %>
+<% else %>
+<%= image_tag "noimage", class:"boutique-img" %>
+<% end %>
+</div>
+
+</div>
+<div class="column">
+<div class="field">
+<label class="label">Catégorie</label><br>
+<%= @product.category.name %><br>
+</div>
+<div class="field">
+<label class="label">Prix</label><br>
+<%= @product.price %> CHF<br>
+</div>
+<div class="field">
+<label class="label">Quantité disponible</label><br>
+<%= @product.quantity %> CHF<br>
+</div>
+<input class="input-boutique" type="number" value=1 ></input><a href="#" class="btn btn-primary">Ajouter au panier</a>
+
+</div>
+</div>
+</div>
+<div class="card-body">
+<h3 class"card-title> DESCRIPTION </h3>
+<%= @product.description %>
+</div>
+</div>
+
+
+
