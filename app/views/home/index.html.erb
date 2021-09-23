@@ -36,7 +36,7 @@ Message du jour : C'est l'heure du DUEL!!!</h3>
     <% if p.image.attached? %>
     <%= link_to image_tag(p.image, class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
   <% else %>
-  <%= link_to image_tag("noimage", class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
+  <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
     <% end %>
 </div>
     <p class="card-text">PRIX : <%= p.price %> CHF</p>
@@ -59,7 +59,7 @@ Message du jour : C'est l'heure du DUEL!!!</h3>
 </div>
 <div class="column">
 <h1>Évènements</h1>
-<%= image_tag "calendrier", class:"img-fluid" %>
+<%= image_tag("calendrier.png", class:"img-fluid") %>
 <h1>MAP</h1>
 <img class="img-fluid" src="https://cdn.discordapp.com/attachments/381844670961025048/888809775683477514/unknown.png">
 </div>
