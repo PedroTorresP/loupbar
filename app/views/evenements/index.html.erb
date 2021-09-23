@@ -1,20 +1,17 @@
 <h1>Evenements</h1>
-<div class="row row-cols-4">
+<ul class="list-group">
     <% @events.each do |e| %>
 
-        
-    <div class="col">
-        <div class="card">
+        <li class="list-group-item">
             <h5 class="card-title"><%= e.name %></h5>
-            <div class="card-body">
             <% if e.image.attached? %>
-            <%= image_tag e.image %>
-          <% end %>      
+            <%= image_tag e.image, class:"boutique-img" %>
+          <% else %>
+          <%= image_tag "noimage", class:"boutique-img" %>
+            <% end %>
             <p class="card-text">PRIX : <%= e.price %> CHF</p>
-                    <a href="#" class="btn btn-primary">Participer</a>
-                </div>
-        </div>
-    </div>
+                    <%= link_to 'Détails', evenements_evenement_path + "?id=" + e.id.to_s, class:"btn btn-primary" %>
+    </li>
     <% end %>
-</div>
+</ul>
 

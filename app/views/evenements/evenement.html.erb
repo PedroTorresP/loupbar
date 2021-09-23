@@ -1,0 +1,33 @@
+<div class="card">
+<header class="card-header"><%= @event.name %></header>
+<div class="card-body">
+<div class="columns">
+<div class="column">
+<div class="boutique-img">
+<% if @event.image.attached? %>
+<%= image_tag @event.image, alt:"noimage", class:"boutique-img" %>
+<% else %>
+<%= image_tag "noimage", class:"boutique-img" %>
+<% end %>
+</div>
+
+</div>
+<div class="column">
+<div class="field">
+<label class="label">Prix</label><br>
+<%= @event.price %> CHF<br>
+</div>
+<div class="field">
+<label class="label">Places</label><br>
+<%= @event.places %><br>
+</div>
+<a href="#" class="btn btn-primary">S'inscrire</a>
+
+</div>
+</div>
+</div>
+<div class="card-body">
+<h3 class"card-title> DESCRIPTION </h3>
+<%= @event.description %>
+</div>
+</div>

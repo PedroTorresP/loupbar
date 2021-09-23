@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'evenements/evenement'
   get 'boutique/produit'
   get 'contact/index'
   get 'evenements/index'
