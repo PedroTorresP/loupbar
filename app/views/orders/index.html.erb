@@ -20,11 +20,19 @@
         <td><%= order.id %></td>
         <td><%= order.user.first_name + " " + order.user.last_name %></td>
         <td><%= order.discount %></td>
-        <td><%= order.is_paid %></td>
-        <td><%= order.is_ready %></td>
-        <td><%= link_to 'Afficher', order %></td>
-        <td><%= link_to 'Modifier', edit_order_path(order) %></td>
-        <td><%= link_to 'Supprimer', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><% if order.is_paid %>
+        Payé
+        <% else %>
+        Non payé
+        <% end %></td>
+        <td><% if order.is_ready %>
+        Terminé
+        <% else %>
+        En cours
+        <% end %></td>
+        <td><%= link_to '🔎', order %></td>
+        <td><%= link_to '✏️', edit_order_path(order) %></td>
+        <td><%= link_to '🗑️', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -5,7 +5,6 @@
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>
-      <th>Id</th>
       <th>Nom</th>
       <th>Affiché?</th>
       <th colspan="2"></th>
@@ -15,7 +14,6 @@
   <tbody>
     <% @categories.each do |category| %>
       <tr>
-        <td><%= category.id %></td>
         <td><%= category.name %></td>
         <td>
         <% if category.available %>
@@ -24,8 +22,8 @@
     Caché
     <% end %>
     </td>
-        <td><%= link_to 'Modifier', edit_category_path(category) %></td>
-        <td><%= link_to 'Supprimer', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '✏️', edit_category_path(category) %></td>
+        <td><%= link_to '🗑️', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

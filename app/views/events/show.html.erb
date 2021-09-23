@@ -13,8 +13,15 @@
   <li class="list-group-item"><strong>PARTICIPANTS ( <%= @event.participants.length %> )</strong>
   <% @event.participants.each do |b| %>
     <br>
-    <input type="checkbox""></input> <%= b.user.first_name + " " + b.user.last_name  %>
+    <div style="display: flex; flex-direction: row;">
+    <%= check_box("tag", b.is_paid, {checked: b.is_paid, disabled: true}) %>
+    <%= b.user.first_name + " " + b.user.last_name   %> 
+    <%= button_to '💳', participant_path(b.id), method: :patch, params: { :is_paid => !b.is_paid  }  %>
+    <%= button_to '🗑', participant_path(b.id), method: :delete  %>
+
+    </div>
   <% end %>
+
   </li>
   </ul>
 

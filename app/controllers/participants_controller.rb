@@ -1,6 +1,7 @@
 class ParticipantsController < ApplicationController
   before_action :set_participant, only: %i[ show edit update destroy ]
   before_action :authorize_admin
+  helper :all
 
   # GET /participants or /participants.json
   def index
@@ -29,7 +30,7 @@ class ParticipantsController < ApplicationController
     redirect_link = events_path + "/" + @participant.event_id.to_s
     respond_to do |format|
       if @participant.save
-        format.html { redirect_to redirect_link, notice: "Participant was successfully created." }
+        format.html { redirect_to redirect_link, notice: "Le participant a été crée." }
         format.json { render :show, status: :created, location: @participant }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,9 +41,11 @@ class ParticipantsController < ApplicationController
 
   # PATCH/PUT /participants/1 or /participants/1.json
   def update
+
+    redirect_link = events_path + "/" + @participant.event_id.to_s
     respond_to do |format|
-      if @participant.update(participant_params)
-        format.html { redirect_to @participant, notice: "Participant was successfully updated." }
+      if @participant.update(participant_params_update)
+        format.html { redirect_to redirect_link, notice: "Le participant a été modifié." }
         format.json { render :show, status: :ok, location: @participant }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,9 +56,10 @@ class ParticipantsController < ApplicationController
 
   # DELETE /participants/1 or /participants/1.json
   def destroy
+    redirect_link = events_path + "/" + @participant.event_id.to_s
     @participant.destroy
     respond_to do |format|
-      format.html { redirect_to participants_url, notice: "Participant was successfully destroyed." }
+      format.html { redirect_to redirect_link, notice: "Le participant a été supprimé." }
       format.json { head :no_content }
     end
   end
@@ -69,6 +73,10 @@ class ParticipantsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def participant_params
       params.require(:participant).permit(:id, :user_id, :event_id, :is_paid)
+    end
+
+    def participant_params_update
+      params.permit(:id, :user_id, :event_id, :is_paid)
     end
 
     def authorize_admin
