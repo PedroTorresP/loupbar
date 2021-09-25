@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'compte/commandes'
+  get 'compte/evenements'
   get 'evenements/evenement'
   get 'boutique/produit'
   get 'contact/index'

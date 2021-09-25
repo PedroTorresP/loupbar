@@ -21,7 +21,7 @@
 <label class="label">Places</label><br>
 <%= @event.places %><br>
 </div>
-<a href="#" class="btn btn-primary">S'inscrire</a>
+<%= link_to "S'inscrire", participants_path, method: :post, params: {:user_id => "1" , :event_id => @event.id  },data: { confirm: 'Voulez-vous vous inscrire ?' }, class:"btn btn-primary" %>
 
 </div>
 </div>

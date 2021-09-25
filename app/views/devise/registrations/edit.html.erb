@@ -6,6 +6,20 @@
   <div class="card-header">
   <h2>Compte utilisateur</h2>
   </div>
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href=<%= edit_user_registration_path %> >Éditer le compte</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href=<%= compte_commandes_path %> >Commandes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href=<%= compte_evenements_path %> >Évènements</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Liste d'envies</a>
+  </li>
+</ul>
   <div class="card-body">
   <div class="field form-group">
   <%= f.label "Nom" %><br />
