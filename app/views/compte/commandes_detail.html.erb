@@ -7,32 +7,34 @@
   <a class="nav-link" href=<%= edit_user_registration_path %> >Éditer le compte</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href=<%= compte_commandes_path %> >Commandes</a>
+  <a class="nav-link active" aria-current="page"  href=<%= compte_commandes_path %> >Commandes</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link active" aria-current="page" href=<%= compte_evenements_path %> >Évènements</a>
+  <a class="nav-link" href=<%= compte_evenements_path %> >Évènements</a>
 </li>
 <li class="nav-item">
   <a class="nav-link" href="#">Liste d'envies</a>
 </li>
 </ul>
 <div class="card-body">
-<p>LISTE DES EVENTS...</p>
+<p><%= "Détails commande numéro " + @commande.id.to_s %></p>
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>
-      <th>Nom</th>
-      <th>Date</th>
-      <th>Détails</th>
+      <th>Produit</th>
+      <th>Prix unitaire</th>
+      <th>Quantité</th>
+      <th>Prix total</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @participations.each do |participation| %>
+    <% @produits.each do |buy| %>
       <tr>
-        <td><%= participation.event.name %></td>
-        <td><%= participation.event.date %></td>
-        <td><%= link_to 'Voir', evenements_evenement_path + "?id=" + participation.event.id.to_s, class:"btn btn-dark" %> </td>
+        <td><%= buy.product.name %></td>
+        <td><%= buy.product.price %></td>
+        <td><%= buy.quantity %></td>
+        <td><%= buy.product.price * buy.quantity  %></td>
       </tr>
     <% end %>
   </tbody>

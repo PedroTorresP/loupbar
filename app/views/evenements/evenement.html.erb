@@ -18,11 +18,25 @@
 <%= @event.price %> CHF<br>
 </div>
 <div class="field">
+<label class="label">Date</label><br>
+<%= @event.date %> <br>
+</div>
+<div class="field">
 <label class="label">Places</label><br>
 <%= @event.places %><br>
 </div>
-<%= link_to "S'inscrire", participants_path, method: :post, params: {:user_id => "1" , :event_id => @event.id  },data: { confirm: 'Voulez-vous vous inscrire ?' }, class:"btn btn-primary" %>
-
+<label class="label">Places restantes</label><br>
+<%= @placeRestantes %><br>
+</div>
+<% if @participe %>
+INSCRIT
+<% else %>
+<%= form_with(model: @participant, :as => :post, :url => participants_path) do |form| %>
+    <%= form.hidden_field :user_id %>
+    <%= form.hidden_field :event_id %>
+    <%= form.submit "S'inscrire", class:"btn btn-primary" %>
+<% end %>
+<% end %>
 </div>
 </div>
 </div>

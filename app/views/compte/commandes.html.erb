@@ -32,7 +32,7 @@
       <tr>
         <td><%= commande.id %></td>
         <td>TODO CHF</td>
-        <td><button>Voir</button></td>
+        <td><%= link_to 'Voir', compte_commandes_detail_path + "?id=" + commande.id.to_s, class:"btn btn-dark" %></td>
       </tr>
     <% end %>
   </tbody>
