@@ -26,7 +26,7 @@
   </ul>
 
   <div class="card-body">
-  <%= link_to 'Ajouter participant', new_participant_path + "?event=5", class:"btn btn-dark" %> 
+  <%= link_to 'Ajouter participant', new_participant_path + "?event=" + @event.id.to_s, class:"btn btn-dark" %> 
   <%= link_to 'Modifier', edit_event_path(@event), class:"btn btn-dark" %>  
   <%= link_to 'Retour', events_path, class:"btn btn-dark" %>
   </div>

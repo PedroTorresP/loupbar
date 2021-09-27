@@ -18,5 +18,26 @@
 </ul>
 <div class="card-body">
 <p>LISTE DES EVENTS...</p>
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>Nom</th>
+      <th>Date</th>
+      <th>Résultat</th>
+      <th>Détails</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @participations.each do |participation| %>
+      <tr>
+        <td><%= participation.event.name %></td>
+        <td><%= participation.event.date %></td>
+        <td><button>Télécharger</button></td>
+        <td><button>Voir</button></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 </div>
 </div>

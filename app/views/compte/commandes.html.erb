@@ -18,5 +18,24 @@
 </ul>
 <div class="card-body">
 <p>LISTE DES COMMANDES...</p>
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>No</th>
+      <th>Montant</th>
+      <th>Détails</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @commandes.each do |commande| %>
+      <tr>
+        <td><%= commande.id %></td>
+        <td>TODO CHF</td>
+        <td><button>Voir</button></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 </div>
 </div>
