@@ -1,43 +1,42 @@
 <div class="card text-dark bg-light mb-3">
-<div class="card-header">
-<h2>Compte utilisateur</h2>
-</div>
-<ul class="nav nav-tabs">
-<li class="nav-item">
-  <a class="nav-link" href=<%= edit_user_registration_path %> >Éditer le compte</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link active" aria-current="page"  href=<%= compte_commandes_path %> >Commandes</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href=<%= compte_evenements_path %> >Évènements</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="#">Liste d'envies</a>
-</li>
-</ul>
-<div class="card-body">
-<p><%= "Détails commande numéro " + @commande.id.to_s %></p>
-<table class="table table-bordered table-striped">
-  <thead class="table-dark">
-    <tr>
-      <th>Produit</th>
-      <th>Prix unitaire</th>
-      <th>Quantité</th>
-      <th>Prix total</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @produits.each do |buy| %>
-      <tr>
-        <td><%= buy.product.name %></td>
-        <td><%= buy.product.price %></td>
-        <td><%= buy.quantity %></td>
-        <td><%= buy.product.price * buy.quantity  %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
+  <div class="card-header">
+    <h2>Compte utilisateur</h2>
+  </div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" href=<%= edit_user_registration_path %> >Éditer le compte</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page"  href=<%= compte_commandes_path %> >Commandes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href=<%= compte_evenements_path %> >Évènements</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Liste d'envies</a>
+    </li>
+  </ul>
+  <div class="card-body">
+    <p><%= "Détails commande numéro " + @commande.id.to_s %></p>
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Produit</th>
+          <th>Prix unitaire</th>
+          <th>Quantité</th>
+          <th>Prix total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @produits.each do |buy| %>
+          <tr>
+            <td><%= buy.product.name %></td>
+            <td><%= buy.product.price %></td>
+            <td><%= buy.quantity %></td>
+            <td><%= buy.product.price * buy.quantity  %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -1,14 +1,12 @@
-
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="card text-dark bg-light mb-3">
-  <div class="card-header">
-  <h2>Compte utilisateur</h2>
-  </div>
-  <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href=<%= edit_user_registration_path %> >Éditer le compte</a>
+    <div class="card-header">
+      <h2>Compte utilisateur</h2>
+    </div>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href=<%= edit_user_registration_path %> >Éditer le compte</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href=<%= compte_commandes_path %> >Commandes</a>
@@ -23,57 +21,55 @@
   <div class="card-body">
   <div class="field form-group">
   <%= f.label "Nom" %><br />
-  <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:"form-control", :required => true %>
-</div>
-<div class="field form-group">
-<%= f.label "Prénom" %><br />
-<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:"form-control", :required => true %>
-</div>
-  <div class="field form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", :required => true %>
-  </div>
-  <div class="field form-group">
-  <%= f.label "Addresse" %><br />
-  <%= f.text_field :address, autofocus: true, autocomplete: "address", class:"form-control", :required => true %>
-</div>
-<div class="field form-group">
-<%= f.label "Code postal" %><br />
-<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class:"form-control", :required => true %>
-</div>
-<br>
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-  <div class="card-body text-white bg-secondary mb-3">
-  <label> Modifier le mot de passe </label>
-  <div class="field form-group">
-    <%= f.label "Mot de passe" %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
-
-  </div>
-
-  <div class="field form-group">
-    <%= f.label "Confirmation de mot de passe" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
-  </div>
-</div>
-  <div class="field form-group">
-    <%= f.label "Mot de passe actuel" %> <i>(nécessaire pour enregistrer les changements)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control", :required => true %>
-  </div>
-
-  <div class="actions">
-  <br>
-    <%= f.submit "Appliquer", class:"btn btn-dark" %>
-    <br><br>
-    <div class="member-card">
-    <p class="member-title">Leloupbar Team TCG</p> 
-    <p class="member-name"><%= User.all.find(current_user.id).first_name + " " + User.all.find(current_user.id).last_name %></p>
-    <p class="member-number">0000000<%= current_user.id %></p>
-    <img class="member-logo" src="https://media.discordapp.net/attachments/830455008154877952/883732047858901032/leloupbar_vectorized.png?width=470&height=676"></img>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:"form-control", :required => true %>
+      </div>
+      <div class="field form-group">
+        <%= f.label "Prénom" %><br />
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:"form-control", :required => true %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", :required => true %>
+      </div>
+      <div class="field form-group">
+        <%= f.label "Addresse" %><br />
+        <%= f.text_field :address, autofocus: true, autocomplete: "address", class:"form-control", :required => true %>
+      </div>
+      <div class="field form-group">
+        <%= f.label "Code postal" %><br />
+        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class:"form-control", :required => true %>
+      </div>
+      <br>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+      <div class="card-body text-white bg-secondary mb-3">
+        <label> Modifier le mot de passe </label>
+        <div class="field form-group">
+          <%= f.label "Mot de passe" %> <i>(leave blank if you don't want to change it)</i><br />
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+        </div>
+        <div class="field form-group">
+          <%= f.label "Confirmation de mot de passe" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+        </div>
+      </div>
+      <div class="field form-group">
+        <%= f.label "Mot de passe actuel" %> <i>(nécessaire pour enregistrer les changements)</i><br />
+        <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control", :required => true %>
+      </div>
+      <div class="actions">
+        <br>
+        <%= f.submit "Appliquer", class:"btn btn-dark" %>
+        <br>
+        <br>
+        <div class="member-card">
+          <p class="member-title">Leloupbar Team TCG</p>
+          <p class="member-name"><%= User.all.find(current_user.id).first_name + " " + User.all.find(current_user.id).last_name %></p>
+          <p class="member-number">0000000<%= current_user.id %></p>
+          <img class="member-logo" src="https://media.discordapp.net/attachments/830455008154877952/883732047858901032/leloupbar_vectorized.png?width=470&height=676"></img>
+      </div>
     </div>
   </div>
-  </div>
-  </div>
+</div>
 <% end %>

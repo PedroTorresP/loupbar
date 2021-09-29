@@ -1,35 +1,29 @@
 <div class="card">
-<header class="card-header text-center fs-2"><%= @product.name %></header>
-<div class="card-body">
-<div class="columns">
-<div class="column">
-<div class="boutique-img">
-<% if @product.image.attached? %>
-<%= image_tag @product.image, alt:"noimage", class:"boutique-img" %>
-<% else %>
-<%= image_tag "noimage", class:"boutique-img" %>
-<% end %>
+  <header class="card-header text-center fs-2"><%= @product.name %></header>
+  <div class="card-body">
+    <div class="columns">
+      <div class="column">
+        <div class="boutique-img">
+          <% if @product.image.attached? %>
+            <%= image_tag @product.image, alt:"noimage", class:"boutique-img" %>
+          <% else %>
+            <%= image_tag "noimage", class:"boutique-img" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="column">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Date de sortie:</strong> <%= @product.date %></li>
+          <li class="list-group-item"><strong>Catégorie:</strong> <%= @product.category.name %></li>
+          <li class="list-group-item"><strong>Quantité disponible:</strong> <%= @product.quantity %></li>
+          <li class="list-group-item"><strong>Prix:</strong> <%= @product.price %> CHF</li>
+          <li class="list-group-item"><input class="input-boutique" type="number" value=1 ></input><a href="#" class="btn btn-primary">Ajouter au panier</a>
+        </li>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-title text-center fs-4 "> DESCRIPTION </div>
+      <div class="card-text"><%= @product.description %></div>
+    </div>
+  </div>
 </div>
-
-</div>
-<div class="column">
-<ul class="list-group list-group-flush">
-<li class="list-group-item"><strong>Date de sortie:</strong> <%= @product.date %></li>
-<li class="list-group-item"><strong>Catégorie:</strong> <%= @product.category.name %></li>
-<li class="list-group-item"><strong>Quantité disponible:</strong> <%= @product.quantity %></li>
-<li class="list-group-item"><strong>Prix:</strong> <%= @product.price %> CHF</li>
-<li class="list-group-item"><input class="input-boutique" type="number" value=1 ></input><a href="#" class="btn btn-primary">Ajouter au panier</a>
-</li>
-
-</div>
-</div>
-
-<div class="card-body">
-<div class="card-title text-center fs-4 "> DESCRIPTION </div>
-<div class="card-text"><%= @product.description %></div>
-</div>
-</div>
-</div>
-
-
-

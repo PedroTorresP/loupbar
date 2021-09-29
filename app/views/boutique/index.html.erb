@@ -1,24 +1,21 @@
 <div class="row row-cols-auto">
-    <% @products.each do |p| %>
-
-        
+  <% @products.each do |p| %>
     <div class="col">
-        <div class="card card-boutique">
-            <h5 class="card-title"><%= p.name %></h5>
-            <div class="card-body">
-            <div class="boutique-img">
+      <div class="card card-boutique">
+        <h5 class="card-title"><%= p.name %></h5>
+        <div class="card-body">
+          <div class="boutique-img">
             <% if p.image.attached? %>
-            <%= link_to image_tag(p.image, class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
-          <% else %>
-          <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
+              <%= link_to image_tag(p.image, class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
+            <% else %>
+              <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
             <% end %>
-            </div>
-            <p class="card-text"><%= p.category.name %> </p>        
-            <p class="card-text">PRIX : <%= p.price %> CHF</p>
-            <input class="input-boutique" type="number" value=1 ></input><a href="#" class="btn btn-primary">Ajouter au panier</a>
-                </div>
-        </div>
+          </div>
+          <p class="card-text"><%= p.category.name %> </p>
+          <p class="card-text">PRIX : <%= p.price %> CHF</p>
+          <input class="input-boutique" type="number" value=1 ></input><a href="#" class="btn btn-primary">Ajouter au panier</a>
+      </div>
     </div>
-    <% end %>
+  </div>
+<% end %>
 </div>
-

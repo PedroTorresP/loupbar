@@ -3,65 +3,66 @@
 <%= link_to image_tag("CHAR3.png", class:"characters"), "/products" %>
 <%= link_to image_tag("CHAR4.png", class:"characters"), "/products" %>
 <div class="row">
-<div class="column">
-<h1>Bienvenue chez Le Loupbar</h1><h3> <br>
-La superbe boutique pour les fan de figurines et jeux de cartes<br>
-Vous trouverez divers articles dans notre boutique.<br>
-Rejoignez le club Loupbar Team Game!<br><br>
-Message du jour : C'est l'heure du DUEL!!!</h3>
-<h1> Dernières sorties </h1>
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-    <div class="card card-boutique bg-light">
-    <h5 class="card-title"><%= @products[0].name %></h5>
-    <div class="card-body">
-    <div class="boutique-img">
-    <% if @products[0].image.attached? %>
-    <%= link_to image_tag(@products[0].image, class:"boutique-img"), boutique_produit_path + "?id=" + @products[0].id.to_s %>
-  <% else %>
-  <%= link_to image_tag("noimage", class:"boutique-img"), boutique_produit_path + "?id=" + @products[0].id.to_s %>
-    <% end %>
-</div>
-    <p class="card-text">PRIX : <%= @products[0].price %> CHF</p>
+  <div class="column">
+    <h1>Bienvenue chez Le Loupbar</h1>
+    <h3> <br>
+      La superbe boutique pour les fan de figurines et jeux de cartes<br>
+      Vous trouverez divers articles dans notre boutique.<br>
+      Rejoignez le club Loupbar Team Game!<br>
+      <br>
+      Message du jour : C'est l'heure du DUEL!!!</h3>
+    <h1> Dernières sorties </h1>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="card card-boutique bg-light">
+            <h5 class="card-title"><%= @products[0].name %></h5>
+            <div class="card-body">
+              <div class="boutique-img">
+                <% if @products[0].image.attached? %>
+                  <%= link_to image_tag(@products[0].image, class:"boutique-img"), boutique_produit_path + "?id=" + @products[0].id.to_s %>
+                <% else %>
+                  <%= link_to image_tag("noimage", class:"boutique-img"), boutique_produit_path + "?id=" + @products[0].id.to_s %>
+                <% end %>
+              </div>
+              <p class="card-text">PRIX : <%= @products[0].price %> CHF</p>
+            </div>
+          </div>
         </div>
-</div>
+        <% @products.drop(1).each do |p| %>
+          <div class="carousel-item ">
+            <div class="card card-boutique bg-light">
+              <h5 class="card-title"><%= p.name %></h5>
+              <div class="card-body">
+                <div class="boutique-img">
+                  <% if p.image.attached? %>
+                    <%= link_to image_tag(p.image, class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
+                  <% else %>
+                    <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
+                  <% end %>
+                </div>
+                <p class="card-text">PRIX : <%= p.price %> CHF</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <% @products.drop(1).each do |p| %>
-    <div class="carousel-item ">
-    <div class="card card-boutique bg-light">
-    <h5 class="card-title"><%= p.name %></h5>
-    <div class="card-body">
-    <div class="boutique-img">
-    <% if p.image.attached? %>
-    <%= link_to image_tag(p.image, class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
-  <% else %>
-  <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
-    <% end %>
-</div>
-    <p class="card-text">PRIX : <%= p.price %> CHF</p>
-        </div>
-</div>
-    </div>
-    <% end %>
+    <h1> FACEBOOK </h1>
+    <p class="iframe-mobile" ><iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLeloupbarRey%2F&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="300" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></p>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+  <div class="column">
+    <h1>Évènements</h1>
+    <%= image_tag("calendrier.png", class:"img-fluid") %>
+    <h1>MAP</h1>
+    <img class="img-fluid" src="https://cdn.discordapp.com/attachments/381844670961025048/888809775683477514/unknown.png">
+  </div>
 </div>
-<h1> FACEBOOK </h1>
-<p class="iframe-mobile" ><iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLeloupbarRey%2F&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="300" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></p>
-</div>
-<div class="column">
-<h1>Évènements</h1>
-<%= image_tag("calendrier.png", class:"img-fluid") %>
-<h1>MAP</h1>
-<img class="img-fluid" src="https://cdn.discordapp.com/attachments/381844670961025048/888809775683477514/unknown.png">
-</div>
-</div>
-

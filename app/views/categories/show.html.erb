@@ -1,19 +1,17 @@
-
-
 <div class="card">
   <ul class="list-group list-group-flush">
-  <li class="list-group-item"><strong>Id:</strong> <%= @category.id %></li>
-  <li class="list-group-item"><strong>Name:</strong> <%= @category.name %></li>
-  <li class="list-group-item"><strong>Available:</strong> 
-  <% if @category.available %>
-  Disponible
-  <% else %>
-  Pas disponible
-  <% end %>
-  </li>
+    <li class="list-group-item"><strong>Id:</strong> <%= @category.id %></li>
+    <li class="list-group-item"><strong>Name:</strong> <%= @category.name %></li>
+    <li class="list-group-item"><strong>Available:</strong>
+      <% if @category.available %>
+        Disponible
+      <% else %>
+        Pas disponible
+      <% end %>
+    </li>
   </ul>
   <div class="card-body">
-  <%= link_to 'Modifier', edit_category_path(@category), class:"btn btn-dark" %>  
-  <%= link_to 'Retour', categories_path, class:"btn btn-light" %>
+    <%= link_to 'Modifier', edit_category_path(@category), class:"btn btn-dark" %>
+    <%= link_to 'Retour', categories_path, class:"btn btn-light" %>
   </div>
 </div>

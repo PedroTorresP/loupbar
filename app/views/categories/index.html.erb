@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Catégories</h1>
-
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>
@@ -10,25 +8,22 @@
       <th colspan="2"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
         <td>
-        <% if category.available %>
-    Affiché
-    <% else %>
-    Caché
-    <% end %>
-    </td>
+          <% if category.available %>
+            Affiché
+          <% else %>
+            Caché
+          <% end %>
+        </td>
         <td><%= link_to '✏️', edit_category_path(category) %></td>
         <td><%= link_to '🗑️', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'Crée catégorie', new_category_path, class:"btn btn-dark" %>

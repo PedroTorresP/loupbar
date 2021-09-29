@@ -1,24 +1,19 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Id:</strong>
   <%= @buy.id %>
 </p>
-
 <p>
   <strong>Order:</strong>
   <%= @buy.order_id %>
 </p>
-
 <p>
   <strong>Product:</strong>
   <%= @buy.product_id %>
 </p>
-
 <p>
   <strong>Quantity:</strong>
   <%= @buy.quantity %>
 </p>
-
 <%= link_to 'Modifier ✏️', edit_buy_path(@buy) %> |
 <%= link_to 'Retour ⬅️', buys_path %>

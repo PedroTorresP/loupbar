@@ -2,7 +2,6 @@
   <% if buy.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(buy.errors.count, "error") %> prohibited this buy from being saved:</h2>
-
       <ul>
         <% buy.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,27 +9,23 @@
       </ul>
     </div>
   <% end %>
-
   <div class="card" ">
-  <div class="card-body">
-  <div class="field">
-    <%= form.label :order_id , class:"form-label" %>
-    <%= form.number_field :order_id, class:"form-field" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :product_id, class:"form-label" %>
-    <%= form.select :product_id, @products, class:"form-select"  %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quantity, class:"form-label" %>
-    <%= form.number_field :quantity, class:"form-field" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Ajouter produit", class:"btn btn-dark" %>
-  </div>
-  </div>
+    <div class="card-body">
+      <div class="field">
+        <%= form.label :order_id , class:"form-label" %>
+        <%= form.number_field :order_id, class:"form-field" %>
+      </div>
+      <div class="field">
+        <%= form.label :product_id, class:"form-label" %>
+        <%= form.select :product_id, @products, class:"form-select"  %>
+      </div>
+      <div class="field">
+        <%= form.label :quantity, class:"form-label" %>
+        <%= form.number_field :quantity, class:"form-field" %>
+      </div>
+      <div class="actions">
+        <%= form.submit "Ajouter produit", class:"btn btn-dark" %>
+      </div>
+    </div>
   </div>
 <% end %>

@@ -2,7 +2,6 @@
   <% if participant.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(participant.errors.count, "error") %> prohibited this participant from being saved:</h2>
-
       <ul>
         <% participant.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,16 +9,13 @@
       </ul>
     </div>
   <% end %>
-
-<div class="card>
-<ul class="list-group list-group-flush">
-<li class="list-group-item"><strong>Utilisateur:</strong> <%= form.select :user_id, @users, {}, class:"form-select" %></li>
-<li class="list-group-item"><strong>Payé?:</strong> <%= form.check_box :is_paid, class:"form-check-input" %></li>
-<li class="list-group-item"> <%= form.hidden_field :event_id, class:"form-control" %></li>
-
-</ul>
-<br>
-<%= form.submit "Valider", class:"btn btn-dark"  %>
-
+  <div class="card>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Utilisateur:</strong> <%= form.select :user_id, @users, {}, class:"form-select" %></li>
+      <li class="list-group-item"><strong>Payé?:</strong> <%= form.check_box :is_paid, class:"form-check-input" %></li>
+      <li class="list-group-item"> <%= form.hidden_field :event_id, class:"form-control" %></li>
+    </ul>
+    <br>
+    <%= form.submit "Valider", class:"btn btn-dark"  %>
   </div>
 <% end %>

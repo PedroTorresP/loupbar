@@ -1,47 +1,46 @@
 <div class="card">
-<header class="card-header text-center fs-2"><%= @event.name %></header>
-<div class="card-body">
-<div class="columns">
-<div class="column">
-<div class="boutique-img">
-<% if @event.image.attached? %>
-<%= image_tag @event.image, alt:"noimage", class:"boutique-img" %>
-<% else %>
-<%= image_tag "noimage.png", class:"boutique-img" %>
-<% end %>
-</div>
-
-</div>
-<div class="column">
-<ul class="list-group list-group-flush">
-  <li class="list-group-item"><strong>Date:</strong> <%= @event.date %></li>
-  <li class="list-group-item"><strong>Places:</strong> <%= @event.places %><br></li>
-  <li class="list-group-item"><strong>Places restantes:</strong> <%= @placeRestantes %><br></li>
-  <li class="list-group-item"><strong>Prix:</strong> <%= @event.price %> CHF</li>
-  <li class="list-group-item"><strong>
-
-
-<div class="d-grid gap-2 col-6 mx-auto">
-<% if current_user == nil %>
-<%= link_to 'Connection', new_user_session_path, class:"btn btn-primary" %>
-<% elsif @participe %>
-<button class="btn btn-success disabled">Inscrit</button>
-<% elsif @placeRestantes < 1 %>
-<button class="btn btn-warning disabled">Aucune place disponible</button>
-<% else %>
-<%= form_with(model: @participant, :as => :post, :url => evenements_path) do |form| %>
-    <%= form.hidden_field :event_id %>
-    <%= form.submit "S'inscrire", class:"btn btn-primary" %>
-<% end %>
-<% end %>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="card-body">
-<h3 class"card-title> DESCRIPTION </h3>
-<%= @event.description %>
-</div>
-</div>
-</div>
+  <header class="card-header text-center fs-2"><%= @event.name %></header>
+  <div class="card-body">
+    <div class="columns">
+      <div class="column">
+        <div class="boutique-img">
+          <% if @event.image.attached? %>
+            <%= image_tag @event.image, alt:"noimage", class:"boutique-img" %>
+          <% else %>
+            <%= image_tag "noimage.png", class:"boutique-img" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="column">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Date:</strong> <%= @event.date %></li>
+          <li class="list-group-item"><strong>Places:</strong> <%= @event.places %><br>
+          </li>
+          <li class="list-group-item"><strong>Places restantes:</strong> <%= @placeRestantes %><br>
+          </li>
+          <li class="list-group-item"><strong>Prix:</strong> <%= @event.price %> CHF</li>
+          <li class="list-group-item"><strong>
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <% if current_user == nil %>
+                  <%= link_to 'Connection', new_user_session_path, class:"btn btn-primary" %>
+                <% elsif @participe %>
+                  <button class="btn btn-success disabled">Inscrit</button>
+                <% elsif @placeRestantes < 1 %>
+                  <button class="btn btn-warning disabled">Aucune place disponible</button>
+                <% else %>
+                  <%= form_with(model: @participant, :as => :post, :url => evenements_path) do |form| %>
+                    <%= form.hidden_field :event_id %>
+                    <%= form.submit "S'inscrire", class:"btn btn-primary" %>
+                  <% end %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class"card-title> DESCRIPTION </h3>
+        <%= @event.description %>
+      </div>
+    </div>
+  </div>

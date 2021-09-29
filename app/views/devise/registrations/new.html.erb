@@ -1,46 +1,41 @@
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-<div class="card text-dark bg-light mb-3">
-<div class="card-header">
-<h2>Inscription</h2>
-</div>
-<div class="card-body">
-
-  <div class="field form-group" >
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"Email", :required => true %>
+  <div class="card text-dark bg-light mb-3">
+    <div class="card-header">
+      <h2>Inscription</h2>
+    </div>
+    <div class="card-body">
+      <div class="field form-group" >
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"Email", :required => true %>
+      </div>
+      <br />
+      <div class="field form-group">
+        <%= f.text_field :first_name, autofocus: true, class:"form-control", placeholder:"Nom", :required => true %>
+      </div>
+      <br />
+      <div class="field form-group">
+        <%= f.text_field :last_name, autofocus: true, class:"form-control", placeholder:"Prénom", :required => true %>
+      </div>
+      <br />
+      <div class="field form-group">
+        <%= f.text_field :address, autofocus: true, class:"form-control", placeholder:"Adresse", :required => true %>
+      </div>
+      <br />
+      <div class="field form-group">
+        <%= f.text_field :postal_code, autofocus: true, class:"form-control", placeholder:"Code postal", :required => true %>
+      </div>
+      <br />
+      <div class="field form-group" >
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"Mot de passe (6 caractères minimum)", :required => true %><br>
+      </div>
+      <div class="field form-group" >
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"Confirmation mot de passe", :required => true %>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit "S'inscrire", class:"btn btn-dark" %>
+      </div>
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-  <br />
-  <div class="field form-group">
-  <%= f.text_field :first_name, autofocus: true, class:"form-control", placeholder:"Nom", :required => true %>
-  </div>
-  <br />
-  <div class="field form-group">
-  <%= f.text_field :last_name, autofocus: true, class:"form-control", placeholder:"Prénom", :required => true %>
-  </div>
-  <br />
-  <div class="field form-group">
-  <%= f.text_field :address, autofocus: true, class:"form-control", placeholder:"Adresse", :required => true %>
-  </div>
-  <br />
-  <div class="field form-group">
-  <%= f.text_field :postal_code, autofocus: true, class:"form-control", placeholder:"Code postal", :required => true %>
-  </div>
-  <br />
-  <div class="field form-group" >
-    <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"Mot de passe (6 caractères minimum)", :required => true %><br>
-  </div>
-
-  <div class="field form-group" >
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"Confirmation mot de passe", :required => true %>
-  </div>
-<br>
-  <div class="actions">
-    <%= f.submit "S'inscrire", class:"btn btn-dark" %>
-  </div>
-  <%= render "devise/shared/links" %>
-  </div>
-</div>
 <% end %>
-
-

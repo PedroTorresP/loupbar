@@ -1,5 +1,4 @@
 <h1>Ajouter un produit à la commande <%= @buy.order_id.to_s %> </h1>
-
 <%= render 'form', buy: @buy %>
 <br>
 <%= link_to 'Retour ⬅️', orders_path + "/" + @buy.order_id.to_s, class:"btn btn-light" %>

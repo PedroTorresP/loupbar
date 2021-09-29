@@ -1,17 +1,15 @@
 <h1>Evenements</h1>
 <ul class="list-group">
-    <% @events.each do |e| %>
-
-        <li class="list-group-item">
-            <h5 class="card-title"><%= e.name %></h5>
-            <% if e.image.attached? %>
-            <%= image_tag e.image, class:"boutique-img" %>
-          <% else %>
-          <%= image_tag "noimage", class:"boutique-img" %>
-            <% end %>
-            <p class="card-text">PRIX : <%= e.price %> CHF</p>
-                    <%= link_to 'Détails', evenements_evenement_path + "?id=" + e.id.to_s, class:"btn btn-primary" %>
+  <% @events.each do |e| %>
+    <li class="list-group-item">
+      <h5 class="card-title"><%= e.name %></h5>
+      <% if e.image.attached? %>
+        <%= image_tag e.image, class:"boutique-img" %>
+      <% else %>
+        <%= image_tag "noimage", class:"boutique-img" %>
+      <% end %>
+      <p class="card-text">PRIX : <%= e.price %> CHF</p>
+      <%= link_to 'Détails', evenements_evenement_path + "?id=" + e.id.to_s, class:"btn btn-primary" %>
     </li>
-    <% end %>
+  <% end %>
 </ul>
-

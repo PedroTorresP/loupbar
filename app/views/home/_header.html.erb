@@ -1,121 +1,113 @@
 <div class="desktop">
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFFFF;">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFFFF;">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <li class="navbar-nav">
-        <%= link_to 'Boutique', boutique_index_path, class:"nav-link" %>
+          <%= link_to 'Boutique', boutique_index_path, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
-        <%= link_to 'Évènements', evenements_index_path, class:"nav-link" %>
+          <%= link_to 'Évènements', evenements_index_path, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
-        <%= link_to 'Contact', contact_index_path, class:"nav-link" %>
+          <%= link_to 'Contact', contact_index_path, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
-        <%= link_to image_tag("loupbar.png", class:"imgnavbar"), root_path, class:"nav-link" %>
+          <%= link_to image_tag("loupbar.png", class:"imgnavbar"), root_path, class:"nav-link" %>
         </li>
-
         <% if user_signed_in? %>
-        <li class="navbar-nav">
-        <%= link_to 'Compte', edit_user_registration_path, class:"nav-link" %>
-        </li>
-        <li class="navbar-nav">
-        <%= link_to 'Déconnection', destroy_user_session_path, method: :delete, class:"nav-link" %>
-        </li>
+          <li class="navbar-nav">
+            <%= link_to 'Compte', edit_user_registration_path, class:"nav-link" %>
+          </li>
+          <li class="navbar-nav">
+            <%= link_to 'Déconnection', destroy_user_session_path, method: :delete, class:"nav-link" %>
+          </li>
         <% else %>
-        <li class="navbar-nav">
-        <%= link_to 'Inscription', new_user_registration_path, class:"nav-link" %>
-        </li>
-        <li class="navbar-nav">
-        <%= link_to 'Connection', new_user_session_path, class:"nav-link" %>
-        </li>
+          <li class="navbar-nav">
+            <%= link_to 'Inscription', new_user_registration_path, class:"nav-link" %>
+          </li>
+          <li class="navbar-nav">
+            <%= link_to 'Connection', new_user_session_path, class:"nav-link" %>
+          </li>
         <% end %>
-        
         <li class="navbar-nav">
-        <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", class:"nav-link" %>
+          <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", class:"nav-link" %>
         </li>
         <% if user_signed_in? %>
-        <% if User.all.find(current_user.id).is_admin %>
-        <li class="navbar-nav dropdown">
-          <a class="btn btn-secondary dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Admin
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><%= link_to 'Produits', products_path, class:"dropdown-item" %></li>
-          <li><%= link_to 'Categories', categories_path, class:"dropdown-item" %></li>
-          <li><%= link_to 'Commandes', orders_path, class:"dropdown-item" %></li>
-          <li><%= link_to 'Utilisateurs', users_path, class:"dropdown-item" %></li>
-          <li><%= link_to 'Évènements', events_path, class:"dropdown-item" %></li>
-          </ul>
-        </li>
+          <% if User.all.find(current_user.id).is_admin %>
+            <li class="navbar-nav dropdown">
+              <a class="btn btn-secondary dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Admin
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><%= link_to 'Produits', products_path, class:"dropdown-item" %></li>
+                <li><%= link_to 'Categories', categories_path, class:"dropdown-item" %></li>
+                <li><%= link_to 'Commandes', orders_path, class:"dropdown-item" %></li>
+                <li><%= link_to 'Utilisateurs', users_path, class:"dropdown-item" %></li>
+                <li><%= link_to 'Évènements', events_path, class:"dropdown-item" %></li>
+              </ul>
+            </li>
+          <% end %>
         <% end %>
-        <% end %>
-        </div>
-        
+      </div>
     </div>
-
   </div>
 </nav>
 </div>
-
 <div class="mobile">
-<button class="mobileButton" type="image" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-</button>
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-  <li class="navbar-nav">
-  <%= link_to 'Boutique', boutique_index_path, class:"nav-link" %>
-  </li>
-  <li class="navbar-nav">
+  <button class="mobileButton" type="image" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  </button>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <li class="navbar-nav">
+        <%= link_to 'Boutique', boutique_index_path, class:"nav-link" %>
+      </li>
+      <li class="navbar-nav">
         <%= link_to 'Évènements', evenements_index_path, class:"nav-link" %>
-        </li>
-        <li class="navbar-nav">
+      </li>
+      <li class="navbar-nav">
         <%= link_to 'Contact', contact_index_path, class:"nav-link" %>
-        </li>
-        <li class="navbar-nav">
+      </li>
+      <li class="navbar-nav">
         <%= link_to image_tag("loupbar.png", class:"imgnavbar"), root_path, class:"nav-link" %>
-        </li>
-
-        <% if user_signed_in? %>
+      </li>
+      <% if user_signed_in? %>
         <li class="navbar-nav">
-        <%= link_to 'Compte', edit_user_registration_path, class:"nav-link" %>
-        </li>
-        <li class="navbar-nav">
-        <%= link_to 'Déconnection', destroy_user_session_path, method: :delete, class:"nav-link" %>
-        </li>
-        <% else %>
-        <li class="navbar-nav">
-        <%= link_to 'Inscription', new_user_registration_path, class:"nav-link" %>
+          <%= link_to 'Compte', edit_user_registration_path, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
-        <%= link_to 'Connection', new_user_session_path, class:"nav-link" %>
+          <%= link_to 'Déconnection', destroy_user_session_path, method: :delete, class:"nav-link" %>
         </li>
-        <% end %>
-        
+      <% else %>
         <li class="navbar-nav">
+          <%= link_to 'Inscription', new_user_registration_path, class:"nav-link" %>
+        </li>
+        <li class="navbar-nav">
+          <%= link_to 'Connection', new_user_session_path, class:"nav-link" %>
+        </li>
+      <% end %>
+      <li class="navbar-nav">
         <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", class:"nav-link" %>
-        </li>
-        <% if user_signed_in? %>
+      </li>
+      <% if user_signed_in? %>
         <% if User.all.find(current_user.id).is_admin %>
-        <li class="navbar-nav dropdown">
-          <a class="btn btn-secondary dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Admin
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><%= link_to 'Produits', products_path, class:"dropdown-item" %></li>
-          <li><%= link_to 'Categories', categories_path, class:"dropdown-item" %></li>
-          <li><%= link_to 'Commandes', orders_path, class:"dropdown-item" %></li>
-          <li><%= link_to 'Utilisateurs', users_path, class:"dropdown-item" %></li>
-          <li><%= link_to 'Évènements', events_path, class:"dropdown-item" %></li>
-          </ul>
-        </li>
+          <li class="navbar-nav dropdown">
+            <a class="btn btn-secondary dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Admin
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><%= link_to 'Produits', products_path, class:"dropdown-item" %></li>
+              <li><%= link_to 'Categories', categories_path, class:"dropdown-item" %></li>
+              <li><%= link_to 'Commandes', orders_path, class:"dropdown-item" %></li>
+              <li><%= link_to 'Utilisateurs', users_path, class:"dropdown-item" %></li>
+              <li><%= link_to 'Évènements', events_path, class:"dropdown-item" %></li>
+            </ul>
+          </li>
         <% end %>
-        <% end %>
-    
+      <% end %>
+    </div>
   </div>
-</div>
 </div>

@@ -1,6 +1,4 @@
-
 <h1>Participants</h1>
-
 <table class="table">
   <thead>
     <tr>
@@ -11,7 +9,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @participants.each do |participant| %>
       <tr>
@@ -26,7 +23,5 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Participant', new_participant_path %>

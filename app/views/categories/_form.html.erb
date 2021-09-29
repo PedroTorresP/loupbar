@@ -2,7 +2,6 @@
   <% if category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
       <ul>
         <% category.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,16 +9,15 @@
       </ul>
     </div>
   <% end %>
-
   <div class="card">
-  <ul class="list-group list-group-flush">
-  <li class="list-group-item"><strong>Nom:</strong> <%= form.text_field :name, class:"form-control" , :required => true %></li>
-  <li class="list-group-item"><strong>Affiché? : </strong> <%= form.check_box :available, class:"form-check-input" %></li>
-  </ul>
-  <div class="card-body">
-  <div class="actions">
-  <%= form.submit class:"btn btn-dark" %>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Nom:</strong> <%= form.text_field :name, class:"form-control" , :required => true %></li>
+      <li class="list-group-item"><strong>Affiché? : </strong> <%= form.check_box :available, class:"form-check-input" %></li>
+    </ul>
+    <div class="card-body">
+      <div class="actions">
+        <%= form.submit class:"btn btn-dark" %>
+      </div>
+    </div>
   </div>
-  </div>
-</div>
 <% end %>

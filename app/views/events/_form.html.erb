@@ -2,7 +2,6 @@
   <% if event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
       <ul>
         <% event.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,25 +9,23 @@
       </ul>
     </div>
   <% end %>
-
   <div class="card">
-  <% if event.image.attached? %>
-    <%= image_tag event.image %>
-  <% end %>
-  <ul class="list-group list-group-flush">
-  <li class="list-group-item"><strong>Nom:</strong> <%= form.text_field :name, class:"form-control" , :required => true %></li>
-  <li class="list-group-item"><strong>Date:</strong> <%= form.date_field :date, class:"form-control" , :required => true %></li>
-  <li class="list-group-item"><strong>Description:</strong> <%= form.text_area :description, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Image:</strong><%= form.file_field :image, class:"form-control" %></li>
-  <li class="list-group-item"><strong>Prix:</strong> <%= form.number_field :price, class:"form-control" , :required => true %></li>
-  <li class="list-group-item"><strong>Places:</strong> <%= form.number_field :places, class:"form-control" , :required => true %></li>
-  <li class="list-group-item"><strong>Résultat:</strong> <%= form.file_field :min_stock, class:"form-control" %></li>
-  </ul>
-  <div class="card-body">
-  <div class="actions">
-  <%= form.submit "Valider", class:"btn btn-dark"  %>
+    <% if event.image.attached? %>
+      <%= image_tag event.image %>
+    <% end %>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Nom:</strong> <%= form.text_field :name, class:"form-control" , :required => true %></li>
+      <li class="list-group-item"><strong>Date:</strong> <%= form.date_field :date, class:"form-control" , :required => true %></li>
+      <li class="list-group-item"><strong>Description:</strong> <%= form.text_area :description, class:"form-control" %></li>
+      <li class="list-group-item"><strong>Image:</strong><%= form.file_field :image, class:"form-control" %></li>
+      <li class="list-group-item"><strong>Prix:</strong> <%= form.number_field :price, class:"form-control" , :required => true %></li>
+      <li class="list-group-item"><strong>Places:</strong> <%= form.number_field :places, class:"form-control" , :required => true %></li>
+      <li class="list-group-item"><strong>Résultat:</strong> <%= form.file_field :min_stock, class:"form-control" %></li>
+    </ul>
+    <div class="card-body">
+      <div class="actions">
+        <%= form.submit "Valider", class:"btn btn-dark"  %>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-
 <% end %>

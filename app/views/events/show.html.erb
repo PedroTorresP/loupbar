@@ -1,33 +1,31 @@
-
 <div class="card">
-<% if @event.image.attached? %>
-<%= image_tag @event.image %>
-<% end %>
-  <ul class="list-group list-group-flush">
-  <li class="list-group-item"><strong>Nom:</strong> <%= @event.name %></li>
-  <li class="list-group-item"><strong>Description:</strong> <textarea class="form-control" disabled><%= @event.description %></textarea></li>
-  <li class="list-group-item"><strong>Prix:</strong> <%= @event.price %></li>
-  <li class="list-group-item"><strong>Places total:</strong> <%= @event.places %></li>
-  <li class="list-group-item"><strong>Places restantes:</strong> <%= @event.places - @event.participants.length %></li>
-  <li class="list-group-item"><strong>Résultat:</strong> <%= @event.result %></li>
-  <li class="list-group-item"><strong>PARTICIPANTS ( <%= @event.participants.length %> )</strong>
-  <% @event.participants.each do |b| %>
-    <br>
-    <div style="display: flex; flex-direction: row;">
-    <%= check_box("tag", b.is_paid, {checked: b.is_paid, disabled: true}) %>
-    <%= b.user.first_name + " " + b.user.last_name   %> 
-    <%= button_to '💳', participant_path(b.id), method: :patch, params: { :is_paid => !b.is_paid  }  %>
-    <%= button_to '🗑', participant_path(b.id), method: :delete  %>
-
-    </div>
+  <% if @event.image.attached? %>
+    <%= image_tag @event.image %>
   <% end %>
-
-  </li>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>Nom:</strong> <%= @event.name %></li>
+    <li class="list-group-item"><strong>Description:</strong> 
+      <textarea class="form-control" disabled><%= @event.description %></textarea>
+    </li>
+    <li class="list-group-item"><strong>Prix:</strong> <%= @event.price %></li>
+    <li class="list-group-item"><strong>Places total:</strong> <%= @event.places %></li>
+    <li class="list-group-item"><strong>Places restantes:</strong> <%= @event.places - @event.participants.length %></li>
+    <li class="list-group-item"><strong>Résultat:</strong> <%= @event.result %></li>
+    <li class="list-group-item"><strong>PARTICIPANTS ( <%= @event.participants.length %> )</strong>
+      <% @event.participants.each do |b| %>
+        <br>
+        <div style="display: flex; flex-direction: row;">
+          <%= check_box("tag", b.is_paid, {checked: b.is_paid, disabled: true}) %>
+          <%= b.user.first_name + " " + b.user.last_name   %>
+          <%= button_to '💳', participant_path(b.id), method: :patch, params: { :is_paid => !b.is_paid  }  %>
+          <%= button_to '🗑', participant_path(b.id), method: :delete  %>
+        </div>
+      <% end %>
+    </li>
   </ul>
-
   <div class="card-body">
-  <%= link_to 'Ajouter participant', new_participant_path + "?event=" + @event.id.to_s, class:"btn btn-dark" %> 
-  <%= link_to 'Modifier', edit_event_path(@event), class:"btn btn-dark" %>  
-  <%= link_to 'Retour', events_path, class:"btn btn-dark" %>
+    <%= link_to 'Ajouter participant', new_participant_path + "?event=" + @event.id.to_s, class:"btn btn-dark" %>
+    <%= link_to 'Modifier', edit_event_path(@event), class:"btn btn-dark" %>
+    <%= link_to 'Retour', events_path, class:"btn btn-dark" %>
   </div>
 </div>

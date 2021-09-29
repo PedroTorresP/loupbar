@@ -1,27 +1,28 @@
-
 <div class="card">
-<% if @product.image.attached? %>
-<%= image_tag @product.image %>
-<% end %>
+  <% if @product.image.attached? %>
+    <%= image_tag @product.image %>
+  <% end %>
   <ul class="list-group list-group-flush">
-  <li class="list-group-item"><strong>Id:</strong> <%= @product.id %></li>
-  <li class="list-group-item"><strong>Nom:</strong> <%= @product.name %></li>
-  <li class="list-group-item"><strong>Date de sortie:</strong> <%= @product.date %></li>
-  <li class="list-group-item"><strong>Cagétorie:</strong> <%= @product.category.name %></li>
-  <li class="list-group-item"><strong>Description:</strong> <textarea class="form-control" disabled><%= @product.description %></textarea></li>
-  <li class="list-group-item"><strong>Prix:</strong> <%= @product.price %> CHF</li>
-  <li class="list-group-item"><strong>Quantité:</strong> <%= @product.quantity %></li>
-  <li class="list-group-item"><strong>Stock minimum:</strong> <%= @product.min_stock %></li>
-  <li class="list-group-item"><strong>Commandable:</strong>
-  <% if @product.available %>
-    Disponible
-    <% else %>
-    Pas disponible
-    <% end %>
-  </li>
+    <li class="list-group-item"><strong>Id:</strong> <%= @product.id %></li>
+    <li class="list-group-item"><strong>Nom:</strong> <%= @product.name %></li>
+    <li class="list-group-item"><strong>Date de sortie:</strong> <%= @product.date %></li>
+    <li class="list-group-item"><strong>Cagétorie:</strong> <%= @product.category.name %></li>
+    <li class="list-group-item"><strong>Description:</strong> 
+      <textarea class="form-control" disabled><%= @product.description %></textarea>
+    </li>
+    <li class="list-group-item"><strong>Prix:</strong> <%= @product.price %> CHF</li>
+    <li class="list-group-item"><strong>Quantité:</strong> <%= @product.quantity %></li>
+    <li class="list-group-item"><strong>Stock minimum:</strong> <%= @product.min_stock %></li>
+    <li class="list-group-item"><strong>Commandable:</strong>
+      <% if @product.available %>
+        Disponible
+      <% else %>
+        Pas disponible
+      <% end %>
+    </li>
   </ul>
   <div class="card-body">
-  <%= link_to 'Modifier', edit_product_path(@product), class:"btn btn-dark" %>  
-  <%= link_to 'Retour', products_path, class:"btn btn-light" %>
+    <%= link_to 'Modifier', edit_product_path(@product), class:"btn btn-dark" %>
+    <%= link_to 'Retour', products_path, class:"btn btn-light" %>
   </div>
 </div>
