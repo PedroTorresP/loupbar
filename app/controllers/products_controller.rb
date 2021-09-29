@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @product.date = Date.today
     @product.available = true
     categoriesName = {}
     Category.all.each do |c|
@@ -80,7 +81,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:id, :name, :category_id, :description, :price, :image_path, :quantity, :min_stock, :available, :image)
+      params.require(:product).permit(:id, :name, :category_id, :description, :price, :image_path, :quantity, :min_stock, :available, :image, :date)
     end
 
     def authorize_admin
