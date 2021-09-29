@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'carts/show'
   get 'compte/commandes_detail'
   get 'compte/commandes'
   get 'compte/evenements'
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   resources :categories
   resources :products
   resources :evenements
+  resources :line_items
+  resources :cart
   #get 'home/index'
   root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

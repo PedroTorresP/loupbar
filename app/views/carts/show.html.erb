@@ -1,0 +1,30 @@
+<div class="card">
+<div class="card-body">
+<h2>Panier</h2>
+<ul>
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>Nom</th>
+      <th>Prix</th>
+      <th>Quantité</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @cart.line_items.each do |line_item| %>
+<tr>
+      <td><%= line_item.product.name %></td>
+      <td><%= line_item.product.price %></td>
+      <td><%= line_item.quantity %></td>
+       <td> <%= link_to "Remove item", line_item_path(line_item), method: :delete %></td>
+    </tr>
+  <% end %>
+</ul>
+<h3>Sub total: TOTAL ICI</h3>
+# See Order section below for explanation of new_order_path
+<%= link_to "Proceed to checkout", new_order_path %><br>
+#
+<%= link_to "Empty cart", cart_path(@cart.id),method: :delete, data: {confirm: "Are you sure?"} %>
+</div>
+</div>

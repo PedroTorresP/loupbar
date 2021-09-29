@@ -32,6 +32,9 @@
         <li class="navbar-nav">
           <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", class:"nav-link" %>
         </li>
+        <li class="navbar-nav">
+          <%= link_to 'Panier ('+'0'+')', "/carts/show", class:"nav-link" %>
+        </li>
         <% if user_signed_in? %>
           <% if User.all.find(current_user.id).is_admin %>
             <li class="navbar-nav dropdown">
