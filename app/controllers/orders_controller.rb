@@ -21,6 +21,8 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @products = Product.all
+    @order.payment = "Au magasin"
+    @order.shipping = false
   end
 
   # GET /orders/1/edit
@@ -45,7 +47,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
     respond_to do |format|
-      if @order.update(order_params_update)
+      if @order.update(order_params)
         format.html { redirect_to @order, notice: "La commande a été modifiée." }
         format.json { render :show, status: :ok, location: @order }
       else
@@ -72,12 +74,9 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:id, :user_id, :discount, :is_paid, :is_ready)
+      params.require(:order).permit(:id, :user_id, :discount, :is_paid, :is_ready, :payment, :shipping)
     end
 
-    def order_params_update
-      params.permit(:id, :user_id, :discount, :is_paid, :is_ready)
-    end
 
     def authorize_admin
       redirect_to(root_path) unless current_user && current_user.is_admin?

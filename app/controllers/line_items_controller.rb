@@ -3,7 +3,6 @@ class LineItemsController < ApplicationController
     def create
         @product = Product.find(params[:product_id])
         @cart = session_cart
-        p "----------------------"
         
         if @cart.products.include?(@product)
             @line_item = @cart.line_items.find_by(:product_id => @product)

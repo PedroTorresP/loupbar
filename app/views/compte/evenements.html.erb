@@ -19,16 +19,16 @@
   <div class="card-body">
     <p>LISTE DES EVENTS...</p>
     <table class="table table-bordered table-striped">
-      <thead class="table-dark">
+      <thead class="table-warning">
         <tr>
           <th>Nom</th>
           <th>Date</th>
           <th>Détails</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table-warning">
         <% @participations.each do |participation| %>
-          <tr>
+          <tr >
             <td><%= participation.event.name %></td>
             <td><%= participation.event.date %></td>
             <td><%= link_to 'Voir', evenements_evenement_path + "?id=" + participation.event.id.to_s, class:"btn btn-dark" %> </td>

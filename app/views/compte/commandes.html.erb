@@ -17,20 +17,22 @@
     </li>
   </ul>
   <div class="card-body">
-    <p>LISTE DES COMMANDES...</p>
+    <h2>Liste des commandes</h2>
     <table class="table table-bordered table-striped">
-      <thead class="table-dark">
+      <thead class="table-warning">
         <tr>
           <th>No</th>
+          <th>Etat</th>
           <th>Montant</th>
           <th>Détails</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table-warning">
         <% @commandes.each do |commande| %>
-          <tr>
+          <tr >
             <td><%= commande.id %></td>
-            <td>TODO CHF</td>
+            <td><% if commande.is_ready %>Terminée<% else %> En cours <% end %> </td>
+            <td><%= order_total(commande) %> CHF</td>
             <td><%= link_to 'Voir', compte_commandes_detail_path + "?id=" + commande.id.to_s, class:"btn btn-dark" %></td>
           </tr>
         <% end %>

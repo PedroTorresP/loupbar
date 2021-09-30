@@ -4,12 +4,13 @@ class CompteController < ApplicationController
   end
 
   def commandes
-    @commandes = Order.all.find_all { |order| order.user_id == current_user.id}
+    @commandes = Order.all.find_all { |order| order.user_id == current_user.id}.reverse
   end
 
   def commandes_detail
     @commande = Order.all.find_by_id(request.query_parameters[:id])
     @produits = Buy.all.find_all { |buy| buy.order_id == @commande.id}
+    @user = User.all.find(current_user.id)
   end
 
 end

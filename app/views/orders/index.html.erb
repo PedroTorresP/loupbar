@@ -6,6 +6,8 @@
       <th>Numéro de commande</th>
       <th>Client</th>
       <th>Réduction</th>
+      <th>Livraison</th>
+      <th>Type de paiement</th>
       <th>État Paiement</th>
       <th>État commande</th>
       <th colspan="3"></th>
@@ -17,6 +19,8 @@
         <td><%= order.id %></td>
         <td><%= order.user.first_name + " " + order.user.last_name %></td>
         <td><%= order.discount %></td>
+        <td><%= order.shipping %></td>
+        <td><%= order.payment %></td>
         <td><% if order.is_paid %>
             Payé
           <% else %>

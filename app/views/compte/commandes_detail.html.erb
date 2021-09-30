@@ -17,9 +17,48 @@
     </li>
   </ul>
   <div class="card-body">
-    <p><%= "Détails commande numéro " + @commande.id.to_s %></p>
+    <h2><%= "Détails commande numéro " + @commande.id.to_s %></h2>
+    <div class="card">
+      <div class="card-header">
+        Addresse de livraison
+      </div>
+      <div class="card-body">
+        <%= @user.first_name + " " + @user.last_name%><br>
+        <%= @user.address%><br>
+        <%= @user.postal_code%><br>
+        Suisse<br>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        Informations
+      </div>
+      <div class="card-body">
+        <strong>Livraison: </strong>
+        <% if @commande.shipping %>
+          Poste
+        <% else %>
+          Retrait au magasin
+        <% end %><br>
+        <strong>Paiement: </strong>Twint<br>
+        <strong>Etat du paiement: </strong>
+        <% if @commande.is_paid %>
+          Payé
+        <% else %>
+          En attente
+        <% end %><br>
+        <strong>Etat de la commande: </strong>
+        <% if @commande.is_ready %>
+          Terminé
+        <% else %>
+          En attente
+        <% end %><br>
+        <strong>Date de la commande: </strong><%= @commande.created_at %><br>
+        <strong>Montant total de la commande: </strong><%= order_total(@commande) %> CHF<br>
+      </div>
+    </div>
     <table class="table table-bordered table-striped">
-      <thead class="table-dark">
+      <thead class="table-warning">
         <tr>
           <th>Produit</th>
           <th>Prix unitaire</th>
@@ -27,9 +66,9 @@
           <th>Prix total</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table-warning">
         <% @produits.each do |buy| %>
-          <tr>
+          <tr >
             <td><%= buy.product.name %></td>
             <td><%= buy.product.price %></td>
             <td><%= buy.quantity %></td>

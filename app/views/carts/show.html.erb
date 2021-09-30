@@ -12,7 +12,7 @@
       </thead>
       <tbody>
         <% @cart.line_items.each do |line_item| %>
-          <tr class="table-warning">>
+          <tr class="table-warning">
             <td><%= line_item.product.name %></td>
             <td><%= line_item.product.price %></td>
             <td><%= line_item.quantity %></td>
@@ -24,7 +24,7 @@
     <h3>Total du panier: <%= sub_total(@cart) %> CHF</h3>
     <br>
     <% if user_signed_in? %>
-      <%= link_to "Confirmer et acheter", new_order_path, class:"btn btn-primary" %>
+      <%= link_to "Confirmer et acheter", carts_commander_path, class:"btn btn-primary" %>
     <% else %>
       <%= link_to "Veuillez vous connecter pour acheter", new_user_session_path, class:"btn btn-primary" %>
     <% end %>
