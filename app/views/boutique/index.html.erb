@@ -13,14 +13,23 @@
           </div>
           <p class="card-text"><%= p.category.name %> </p>
           <p class="card-text">PRIX : <%= p.price %> CHF</p>
-          <input class="input-boutique" type="number" value=1 ></input><a href="#" class="btn btn-primary">Ajouter au panier</a>
-        <%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>
-          <%= form.number_field :quantity %>
-          <%= form.hidden_field :product_id, :value => p.id %>
-          <%= form.submit "Buy", class:"btn btn-primary" %>
-        <% end %>
+          <%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>
+            <% if p.quantity > 0%>
+              <%= form.select :quantity, options_for_select(1..p.quantity), class:"form-select" %>
+            <% else %>
+              <%= form.select :quantity, options_for_select(1..100), class:"form-select" %>
+            <% end %>
+            <%= form.hidden_field :product_id, :value => p.id %>
+            <% if p.date > Date.today %>
+              <%= form.submit "Précommander", class:"btn btn-warning" %>
+            <% elsif p.quantity > 0 %>
+              <%= form.submit "Ajouter au panier", class:"btn btn-primary" %>
+            <% elsif p.available %>
+              <%= form.submit "Sur commande", class:"btn btn-warning" %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 </div>

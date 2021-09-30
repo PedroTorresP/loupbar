@@ -6,4 +6,5 @@ module ApplicationHelper
         session[:cart_id] = cart.id
         cart
     end
+    module_function :session_cart
 end
