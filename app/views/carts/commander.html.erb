@@ -66,12 +66,11 @@
       <div class="card-body">
         Total articles : <%= sub_total(@cart) %> CHF <br>
         Livraison : ... CHF <br>
-        Total de la commande : <%= sub_total(@cart) %> <br>
-        <button class="btn btn-primary">Valider</button>
+        Total de la commande : <%= sub_total(@cart) %> <br><br>
         <%= form_with(model: @order, :as => :post, :url => carts_path) do |form| %>
-          <%= form.check_box :shipping %>
-          <%= form.text_field :payment %>
-          <%= form.submit "valider", class:"btn btn-primary" %>
+          <%= form.hidden_field :shipping %>
+          <%= form.hidden_field :payment %>
+          <%= form.submit "Confirmer", class:"btn btn-primary" %>
         <% end %>
         <%= link_to "Retour", carts_show_path, class:"btn btn-warning" %>
       </div>

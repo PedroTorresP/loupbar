@@ -19,7 +19,7 @@
       <li class="list-group-item"><strong>Image:</strong><%= form.file_field :image, class:"form-control" %></li>
       <li class="list-group-item"><strong>Date de sortie:</strong> <%= form.date_field :date, class:"form-control" , :required => true %></li>
       <li class="list-group-item"><strong>Description:</strong> <%= form.text_area :description, class:"form-control" %></li>
-      <li class="list-group-item"><strong>Prix:</strong> <%= form.number_field :price, class:"form-control" , :required => true %></li>
+      <li class="list-group-item"><strong>Prix:</strong> <%= form.number_field :price, step: 0.05, class:"form-control" , :required => true %></li>
       <li class="list-group-item"><strong>Quantité:</strong> <%= form.number_field :quantity, class:"form-control" , :required => true %></li>
       <li class="list-group-item"><strong>Stock minimum:</strong> <%= form.number_field :min_stock, class:"form-control" %></li>
       <li class="list-group-item"><strong>Disponible:</strong> <%= form.check_box :available, class:"form-check-input" %></li>

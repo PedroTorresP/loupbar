@@ -20,6 +20,11 @@
     margin: 10px;
 }
 
+.card-title {
+    min-height: 300% !important;
+    word-break: break-word;
+}
+
 @media (max-width : 400px) {
     .row-cols-auto {width: 300px;}
     .boutique-img {max-width: 280px;}
