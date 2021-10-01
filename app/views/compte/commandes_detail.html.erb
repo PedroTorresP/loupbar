@@ -36,7 +36,8 @@
       <div class="card-body">
         <strong>Livraison: </strong>
         <% if @commande.shipping %>
-          Poste
+          Poste<br>
+          <strong>Numéro de suivi: </strong> <%= @commande.tracking %>
         <% else %>
           Retrait au magasin
         <% end %><br>
