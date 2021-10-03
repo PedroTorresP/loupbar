@@ -13,6 +13,14 @@
           </div>
           <p class="card-text"><%= p.category.name %> </p>
           <p class="card-text">PRIX : <%= p.price %> CHF</p>
+          <% if is_wished(p.id) != nil %>
+            <%= button_to "delete", wishlist_path(:id => is_wished(p.id).id), :method => :delete %>
+          <% else %>
+            <%= form_with(model: @wishlist, :as => :post, :url => wishlists_path) do |form| %>
+              <%= form.hidden_field :product_id, :value => p.id %>
+              <%= form.submit "WISHLIST", class:"btn btn-primary" %>
+            <% end %>
+          <% end %>
           <%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>
             <% if p.quantity > 0%>
               <%= form.select :quantity, options_for_select(1..p.quantity), class:"form-select" %>

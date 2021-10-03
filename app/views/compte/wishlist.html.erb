@@ -1,0 +1,36 @@
+<div class="card text-dark bg-light mb-3">
+  <div class="card-header">
+    <h2>Compte utilisateur</h2>
+  </div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" href=<%= edit_user_registration_path %> >Éditer le compte</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href=<%= compte_commandes_path %> >Commandes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link "  href=<%= compte_evenements_path %> >Évènements</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="compte_wishlist_path">Liste d'envies</a>
+    </li>
+  </ul>
+  <div class="card-body">
+    <p>LISTE DES EVENTS...</p>
+    <table class="table table-bordered table-striped">
+      <thead class="table-warning">
+        <tr>
+          <th>Nom</th>
+        </tr>
+      </thead>
+      <tbody class="table-warning">
+        <% @wishlist.each do |wish| %>
+          <tr >
+            <td><%= wish.product.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
