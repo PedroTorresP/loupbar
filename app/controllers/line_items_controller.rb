@@ -15,7 +15,12 @@ class LineItemsController < ApplicationController
         end
 
         @line_item.save
-        redirect_to "/carts/show"
+        redirect_back(fallback_location: root_path)
+    end
+
+    def destroy
+        LineItem.all.find(params[:id]).destroy
+        redirect_back(fallback_location: root_path)
     end
 
     private

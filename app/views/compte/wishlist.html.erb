@@ -40,7 +40,7 @@
             <% end %>
           <%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>
             <% if wish.product.quantity > 0%>
-              <%= form.select :quantity, options_for_select(1..wish.product.quantity), class:"form-select" %>
+              <%= form.select :quantity, options_for_select(1..product_quantity_cart(session_cart, wish.product.id)), class:"form-select" %>
             <% else %>
               <%= form.select :quantity, options_for_select(1..100), class:"form-select" %>
             <% end %>
