@@ -1,3 +1,12 @@
+<div class="card">
+<%= form_with url: boutique_index_path, method: :get do |form| %>
+  <%= form.label :query, "Nom:" %>
+  <%= form.select :tri, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
+  <%= form.text_field :query, placeholder:"Chercher par nom" %>
+  <%= form.submit "Search" %>
+<% end %>
+
+</div>
 <div class="row row-cols-auto">
   <% @products.each do |p| %>
     <div class="column">

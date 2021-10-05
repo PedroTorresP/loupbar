@@ -8,6 +8,7 @@ class CartsController < ApplicationController
   def commander
     @cart = session_cart
     @user = User.all.find(current_user.id)
+    @order = Order.new()
   end
 
   def create
