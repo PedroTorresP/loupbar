@@ -5,10 +5,12 @@ class WishlistsController < ApplicationController
         @wishlist.product_id = params[:product_id]
         @wishlist.user_id = current_user.id
         @wishlist.save
+        redirect_back(fallback_location: root_path)
     end
 
     def destroy
         Wishlist.all.find(params[:id]).destroy
+        redirect_back(fallback_location: root_path)
     end
 
     private

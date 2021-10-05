@@ -32,6 +32,18 @@
               <% end %>
             <% end %>
           </li>
+          <li class="list-group-item">
+                    <% if current_user != nil %>
+            <% if is_wished(@product.id) != nil %>
+              <%= button_to "Enlever ❤️", wishlist_path(:id => is_wished(@product.id).id), :method => :delete , class:"btn btn-danger" %>
+            <% else %>
+              <%= form_with(model: @wishlist, :as => :post, :url => wishlists_path) do |form| %>
+                <%= form.hidden_field :product_id, :value => @product.id %>
+                <%= form.submit "Ajouter ❤️", class:"btn btn-success" %>
+              <% end %>
+            <% end %>
+          <% end %>
+          </li>
         </div>
       </div>
       <div class="card-body">
