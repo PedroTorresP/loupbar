@@ -17,20 +17,46 @@
     </li>
   </ul>
   <div class="card-body">
-    <p>LISTE DES EVENTS...</p>
-    <table class="table table-bordered table-striped">
-      <thead class="table-warning">
-        <tr>
-          <th>Nom</th>
-        </tr>
-      </thead>
-      <tbody class="table-warning">
-        <% @wishlist.each do |wish| %>
-          <tr >
-            <td><%= wish.product.name %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <h2>Liste d'envies</h2>
+    <div class="row row-cols-auto">
+  <% @wishlist.each do |wish| %>
+    <div class="column">
+      <div class="card card-boutique">
+        <h5 class="card-title"><%= wish.product.name %></h5>
+        <div class="card-body">
+          <div class="boutique-img">
+            <% if wish.product.image.attached? %>
+              <%= link_to image_tag(wish.product.image, class:"boutique-img"), boutique_produit_path + "?id=" + wish.product.id.to_s %>
+            <% else %>
+              <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + wish.product.id.to_s %>
+            <% end %>
+          </div>
+          <p class="card-text"><%= wish.product.category.name %> </p>
+          <p class="card-text">PRIX : <%= wish.product.price %> CHF</p>
+          <% if current_user != nil %>
+            <% if is_wished(wish.product.id) != nil %>
+              <%= button_to "Enlever ❤️", wishlist_path(:id => is_wished(wish.product.id).id), :method => :delete , class:"btn btn-danger" %>
+              <% end %>
+            <% end %>
+          <%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>
+            <% if wish.product.quantity > 0%>
+              <%= form.select :quantity, options_for_select(1..wish.product.quantity), class:"form-select" %>
+            <% else %>
+              <%= form.select :quantity, options_for_select(1..100), class:"form-select" %>
+            <% end %>
+            <%= form.hidden_field :product_id, :value => wish.product.id %>
+            <% if wish.product.date > Date.today %>
+              <%= form.submit "Précommander", class:"btn btn-warning" %>
+            <% elsif wish.product.quantity > 0 %>
+              <%= form.submit "Ajouter au panier", class:"btn btn-primary" %>
+            <% elsif wish.product.available %>
+              <%= form.submit "Sur commande", class:"btn btn-warning" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
   </div>
 </div>
