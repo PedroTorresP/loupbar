@@ -1,4 +1,10 @@
 <h1>Evenements</h1>
+<%= form_with url: evenements_index_path, method: :get do |form| %>
+  <%= form.select :month, options_for_select(["Janvier", "Fevrier", "Mars", "Avril"]), class:"form-select" %>
+  <%= form.select :year, options_for_select(2020..2022), class:"form-select" %>
+  <%= form.text_field :query, placeholder:"Chercher par nom" %>
+  <%= form.submit "Search" %>
+<% end %>
 <ul class="list-group">
   <% @events.each do |e| %>
     <li class="list-group-item">
