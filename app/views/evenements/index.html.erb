@@ -1,10 +1,15 @@
 <h1>Evenements</h1>
 <%= form_with url: evenements_index_path, method: :get do |form| %>
-  <%= form.select :month, options_for_select(["Janvier", "Fevrier", "Mars", "Avril"]), class:"form-select" %>
-  <%= form.select :year, options_for_select(2020..2022), class:"form-select" %>
-  <%= form.text_field :query, placeholder:"Chercher par nom" %>
+  <%= link_to "<<<", prev_month_year( request.query_parameters[:month].to_i,  request.query_parameters[:year].to_i) %>
+  <%= form.select :month, options_for_select(month_options, selected: request.query_parameters[:month].to_i), class:"form-select" %>
+  <%= form.select :year, options_for_select(2020..Time.now.year, selected: request.query_parameters[:year].to_i), class:"form-select" %>
+    <%= link_to ">>>", next_month_year( request.query_parameters[:month].to_i,  request.query_parameters[:year].to_i) %>
+
+  <%= form.text_field :name, placeholder:"Chercher par nom", value:request.query_parameters[:name] %>
   <%= form.submit "Search" %>
+
 <% end %>
+
 <ul class="list-group">
   <% @events.each do |e| %>
     <li class="list-group-item">

@@ -1,6 +1,21 @@
 class EvenementsController < ApplicationController
   def index
     @events = Event.all.order(date: :desc)
+    if request.query_parameters[:year] == nil
+      request.query_parameters[:year] = Time.now.year
+    end
+    if request.query_parameters[:month] == nil
+      request.query_parameters[:month] = Time.now.month
+    end
+    @events = @events.select do |e|
+      e.date.year == request.query_parameters[:year].to_i
+      e.date.month == request.query_parameters[:month].to_i
+    end
+    if request.query_parameters[:name] != nil && request.query_parameters[:name] != ""
+      @events = Event.all.select { |e| e.name.downcase.include? request.query_parameters[:name].downcase  }
+
+    end
+
   end
 
   def evenement
