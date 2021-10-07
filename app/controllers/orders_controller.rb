@@ -5,6 +5,14 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     @orders = Order.all
+
+    if request.query_parameters[:customer_name] != nil
+      @orders = @orders.select { |o| (o.user.first_name.downcase+" "+o.user.last_name.downcase).include? request.query_parameters[:customer_name].downcase  }
+
+    end
+    if request.query_parameters[:order_number] != nil && request.query_parameters[:order_number] != ""
+      @orders = @orders.select { |o| o.id == request.query_parameters[:order_number].to_i  }
+    end
   end
 
   # GET /orders/1 or /orders/1.json

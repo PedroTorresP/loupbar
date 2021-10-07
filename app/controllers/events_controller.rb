@@ -5,6 +5,9 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     @events = Event.all.reverse()
+    if request.query_parameters[:event_name] != nil
+      @events = @events.select { |e| e.name.downcase.include? request.query_parameters[:event_name].downcase  }
+    end
   end
 
   # GET /events/1 or /events/1.json

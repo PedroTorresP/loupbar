@@ -1,4 +1,10 @@
 <h1>Produits</h1>
+<%= form_with url: products_path, method: :get do |form| %>
+  <%= form.label :tri, "Trier:" %>
+  <%= form.select :tri, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
+  <%= form.text_field :query, placeholder:"Chercher par nom" %>
+  <%= form.submit "Search" %>
+<% end %>
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>

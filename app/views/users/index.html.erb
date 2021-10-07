@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 <h1>Utilisateurs</h1>
+<%= form_with url: users_path, method: :get do |form| %>
+  <%= form.text_field :user_id, placeholder:"Chercher par numéro" %>
+  <%= form.text_field :user_name, placeholder:"Chercher par nom" %>
+  <%= form.text_field :user_mail, placeholder:"Chercher par mail" %>
+  <%= form.submit "Search" %>
+<% end %>
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>

@@ -5,6 +5,21 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     @products = Product.all.reverse()
+
+    if request.query_parameters[:query] != nil
+      @products = @products.select { |p| p.name.include? request.query_parameters[:query]  }
+
+    end
+    case request.query_parameters[:tri]
+    when "Date décroissant"
+      @products = @products.sort_by(&:date).reverse
+    when "Date croissant"
+      @products = @products.sort_by(&:date)
+    when "Prix décroissant"
+      @products = @products.sort_by(&:price).reverse
+    when "Prix croissant"
+      @products = @products.sort_by(&:price)
+    end
   end
 
   # GET /products/1 or /products/1.json

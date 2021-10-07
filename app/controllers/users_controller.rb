@@ -6,6 +6,18 @@ class UsersController < ApplicationController
   # GET /users or /users.json
   def index
     @users = User.all
+
+    if request.query_parameters[:user_name] != nil
+      @users = @users.select { |u| (u.first_name.downcase+" "+u.last_name.downcase).include? request.query_parameters[:user_name].downcase  }
+
+    end
+    if request.query_parameters[:user_mail] != nil
+      @users = @users.select { |u| u.email.downcase.include? request.query_parameters[:user_mail].downcase  }
+
+    end
+    if request.query_parameters[:user_id] != nil && request.query_parameters[:user_id] != ""
+      @users = @users.select { |u| u.id == request.query_parameters[:user_id].to_i  }
+    end
   end
 
   # GET /users/1 or /users/1.json

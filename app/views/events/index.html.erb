@@ -1,4 +1,8 @@
 <h1>Évènements</h1>
+<%= form_with url: events_path, method: :get do |form| %>
+  <%= form.text_field :event_name, placeholder:"Chercher par nom" %>
+  <%= form.submit "Search" %>
+<% end %>
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>
