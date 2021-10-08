@@ -20,6 +20,11 @@ class ProductsController < ApplicationController
     when "Prix croissant"
       @products = @products.sort_by(&:price)
     end
+
+    if request.query_parameters[:low_stock] != nil
+      @products = Product.all.select { |p| p.quantity.to_i < p.min_stock.to_i && p.available  }
+
+    end
   end
 
   # GET /products/1 or /products/1.json

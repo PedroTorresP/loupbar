@@ -1,10 +1,15 @@
 <h1>Produits</h1>
-<%= form_with url: products_path, method: :get do |form| %>
-  <%= form.label :tri, "Trier:" %>
-  <%= form.select :tri, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
-  <%= form.text_field :query, placeholder:"Chercher par nom" %>
-  <%= form.submit "Search" %>
-<% end %>
+<div class="card">
+  <div class="card-body">
+    <%= form_with url: products_path, method: :get do |form| %>
+      <%= form.label :tri, "Trier:", class:"form-label" %>
+      <%= form.select :tri, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
+      <%= form.text_field :query, placeholder:"Chercher par nom" %>
+      <%= form.submit "Filtrer", class:"btn btn-primary" %>
+      <%= link_to "Stock bas("+low_stock_count.to_s+")", products_path + "?low_stock=true",  class:"btn btn-danger" %>
+    <% end %>
+  </div>
+</div>
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>

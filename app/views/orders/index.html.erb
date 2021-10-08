@@ -1,10 +1,14 @@
 <p id="notice"><%= notice %></p>
 <h1>Commandes</h1>
-<%= form_with url: orders_path, method: :get do |form| %>
-  <%= form.text_field :order_number, placeholder:"Chercher par numéro de commande" %>
-  <%= form.text_field :customer_name, placeholder:"Chercher par nom de client" %>
-  <%= form.submit "Search" %>
-<% end %>
+<div class="card">
+  <div class="card-body">
+    <%= form_with url: orders_path, method: :get do |form| %>
+      <%= form.text_field :order_number, placeholder:"Numéro commande" %>
+      <%= form.text_field :customer_name, placeholder:"Nom client" %>
+      <%= form.submit "Filtrer", class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>
