@@ -1,7 +1,7 @@
-<%= link_to image_tag("CHAR1.png", class:"characters"), "/products" %>
-<%= link_to image_tag("CHAR2.png", class:"characters"), "/products" %>
-<%= link_to image_tag("CHAR3.png", class:"characters"), "/products" %>
-<%= link_to image_tag("CHAR4.png", class:"characters"), "/products" %>
+<%= link_to image_tag(get_image('character1'), class:"characters"), get_value('character1') %>
+<%= link_to image_tag(get_image('character2'), class:"characters"), get_value('character2') %>
+<%= link_to image_tag(get_image('character3'), class:"characters"), get_value('character3') %>
+<%= link_to image_tag(get_image('character4'), class:"characters"), get_value('character4') %>
 <div class="row">
   <div class="column">
     <h1>Bienvenue chez Le Loupbar</h1>

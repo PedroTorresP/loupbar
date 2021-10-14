@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customisations
   get 'compte/wishlist'
   get 'carts/commander'
   get 'carts/show'

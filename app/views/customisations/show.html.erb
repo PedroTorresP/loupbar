@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @customisation.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @customisation.image %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @customisation.value %>
+</p>
+
+<%= link_to 'Edit', edit_customisation_path(@customisation) %> |
+<%= link_to 'Back', customisations_path %>
