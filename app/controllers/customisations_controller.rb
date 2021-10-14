@@ -38,7 +38,7 @@ class CustomisationsController < ApplicationController
   def update
     respond_to do |format|
       if @customisation.update(customisation_params)
-        format.html { redirect_to @customisation, notice: "Customisation was successfully updated." }
+        format.html { redirect_to customisations_path, notice: "Customisation was successfully updated." }
         format.json { render :show, status: :ok, location: @customisation }
       else
         format.html { render :edit, status: :unprocessable_entity }
