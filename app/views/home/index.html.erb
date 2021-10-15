@@ -2,15 +2,10 @@
 <%= link_to image_tag(get_image('character2'), class:"characters"), get_value('character2') %>
 <%= link_to image_tag(get_image('character3'), class:"characters"), get_value('character3') %>
 <%= link_to image_tag(get_image('character4'), class:"characters"), get_value('character4') %>
-<div class="row">
+<div class="row" style="background-color: <%= get_value('row_color')%>;">
   <div class="column">
     <h1>Bienvenue chez Le Loupbar</h1>
-    <h3> <br>
-      La superbe boutique pour les fan de figurines et jeux de cartes<br>
-      Vous trouverez divers articles dans notre boutique.<br>
-      Rejoignez le club Loupbar Team Game!<br>
-      <br>
-      Message du jour : C'est l'heure du DUEL!!</h3>
+    <h3><%= simple_format h(get_value('home_welcome')) %></h3>
     <% if @products.length > 0 %>
       <h1> Dernières sorties </h1>
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">

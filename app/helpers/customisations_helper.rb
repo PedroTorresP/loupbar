@@ -2,7 +2,6 @@ module CustomisationsHelper
 
     def get_image(name)
         customisation = Customisation.all.find_by_name(name)
-        p "---------------------------"
         if customisation.image.attached?
             return customisation.image
         end
@@ -12,6 +11,7 @@ module CustomisationsHelper
     def get_value(name)
         return Customisation.all.find_by_name(name).value
     end
+
     module_function :get_image
     module_function :get_value
 end
