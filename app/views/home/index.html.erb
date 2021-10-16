@@ -3,9 +3,12 @@
 <%= link_to image_tag(get_image('character3'), class:"characters"), get_value('character3') %>
 <%= link_to image_tag(get_image('character4'), class:"characters"), get_value('character4') %>
 <div class="row" style="background-color: <%= get_value('row_color')%>;">
-  <div class="column">
+  <div class="text-center">
     <h1>Bienvenue chez Le Loupbar</h1>
     <h3><%= simple_format h(get_value('home_welcome')) %></h3>
+    <br>
+  </div>
+  <div class="column">
     <% if @products.length > 0 %>
       <h1> Dernières sorties </h1>
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -57,8 +60,53 @@
     <p class="iframe-mobile" ><iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLeloupbarRey%2F&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="300" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></p>
   </div>
   <div class="column">
-    <h1>Évènements</h1>
-    <%= image_tag("calendrier.png", class:"img-fluid") %>
+    <h1>Évènements de la semaine</h1>
+    <% if @events.length > 0 %>
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="card card-boutique bg-light">
+              <h5 class="card-title"><%= @events[0].name %></h5>
+              <div class="card-body">
+                <div class="boutique-img">
+                  <% if @events[0].image.attached? %>
+                    <%= link_to image_tag(@events[0].image, class:"boutique-img"), evenements_evenement_path + "?id=" + @events[0].id.to_s %>
+                  <% else %>
+                    <%= link_to image_tag("noimage", class:"boutique-img"), evenements_evenement_path + "?id=" + @events[0].id.to_s %>
+                  <% end %>
+                </div>
+                <p class="card-text">DATE : <%= @events[0].date %></p>
+              </div>
+            </div>
+          </div>
+          <% @events.drop(1).each do |e| %>
+            <div class="carousel-item ">
+              <div class="card card-boutique bg-light">
+                <h5 class="card-title"><%= e.name %></h5>
+                <div class="card-body">
+                  <div class="boutique-img">
+                    <% if e.image.attached? %>
+                      <%= link_to image_tag(e.image, class:"boutique-img"), evenements_evenement_path + "?id=" + e.id.to_s %>
+                    <% else %>
+                      <%= link_to image_tag("noimage.png", class:"boutique-img"), evenements_evenement_path + "?id=" + e.id.to_s %>
+                    <% end %>
+                  </div>
+                  <p class="card-text">PRIX : <%= e.price %> CHF</p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    <% end %>
     <h1>MAP</h1>
     <img class="img-fluid" src="https://cdn.discordapp.com/attachments/381844670961025048/888809775683477514/unknown.png">
   </div>

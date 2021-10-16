@@ -35,7 +35,7 @@
           <p class="card-text">PRIX : <%= wish.product.price %> CHF</p>
           <% if current_user != nil %>
             <% if is_wished(wish.product.id) != nil %>
-              <%= button_to "Enlever ❤️", wishlist_path(:id => is_wished(wish.product.id).id), :method => :delete , class:"btn btn-danger" %>
+              <%= button_to "❤️", wishlist_path(:id => is_wished(wish.product.id).id), :method => :delete , class:"btn btn-danger" %>
               <% end %>
             <% end %>
           <%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>

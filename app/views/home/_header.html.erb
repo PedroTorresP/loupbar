@@ -33,11 +33,14 @@
           <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", class:"nav-link" %>
         </li>
         <li class="navbar-nav">
+          <%= link_to image_tag("cardmarket.png", class:"imgnavbar"), "https://www.cardmarket.com/fr/WeissSchwarz/Users/Leloupbar/Offers", class:"nav-link" %>
+        </li>
+        <li class="navbar-nav">
           <%= link_to 'Panier ('+sub_total(session_cart).to_s+' CHF)', "/carts/show", class:"nav-link" %>
         </li>
         <% if user_signed_in? %>
           <% if User.all.find(current_user.id).is_admin %>
-          <%= link_to 'Admin', products_path, class:"btn btn-secondary" %>
+            <%= link_to 'Admin', products_path, class:"btn btn-secondary" %>
           <% end %>
         <% end %>
       </div>
@@ -83,6 +86,9 @@
       <% end %>
       <li class="navbar-nav">
         <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", class:"nav-link" %>
+      </li>
+      <li class="navbar-nav">
+        <%= link_to image_tag("cardmarket.png", class:"imgnavbar"), "https://www.cardmarket.com/fr/WeissSchwarz/Users/Leloupbar/Offers", class:"nav-link" %>
       </li>
       <li class="navbar-nav">
         <%= link_to 'Panier ('+sub_total(session_cart).to_s+' CHF)', "/carts/show", class:"nav-link" %>
