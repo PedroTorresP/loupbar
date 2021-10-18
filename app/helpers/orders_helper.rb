@@ -7,6 +7,9 @@ module OrdersHelper
         if order.shipping
             sum += 7
         end
+        if order.discount
+            sum -= order.discount
+        end
         return sum
     end
     module_function :order_total

@@ -15,7 +15,11 @@
           <tr class="table-warning">
             <td><%= line_item.product.name %></td>
             <td><%= line_item.product.price %></td>
-            <td><%= line_item.quantity %></td>
+            <td>
+            <%= button_to "-", line_item_path(:id => line_item.id), :method => :delete , class:"btn btn-danger" %>
+            <%= line_item.quantity %>
+            <%= button_to "+", line_item_path(:id => line_item.id), :method => :delete , class:"btn btn-danger" %>
+            </td>
             <td><%= button_to "🗑️", line_item_path(:id => line_item.id), :method => :delete , class:"btn btn-danger" %></td>
           </tr>
         <% end %>

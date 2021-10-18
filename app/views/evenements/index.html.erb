@@ -1,6 +1,6 @@
 <h1>Evenements</h1>
 <div class="card">
-  <div class="card-body">
+  <div class="card-body text-center">
     <%= form_with url: evenements_index_path, method: :get do |form| %>
       <%= link_to "<", prev_month_year( request.query_parameters[:month].to_i,  request.query_parameters[:year].to_i), class:"btn btn-primary" %>
       <%= form.select :month, options_for_select(month_options, selected: request.query_parameters[:month].to_i), class:"form-select" %>
@@ -13,15 +13,20 @@
 </div>
 <ul class="list-group">
   <% @events.each do |e| %>
-    <li class="list-group-item">
-      <h5 class="card-title"><%= e.name %></h5>
-      <% if e.image.attached? %>
-        <%= image_tag e.image, class:"boutique-img" %>
-      <% else %>
-        <%= image_tag "noimage", class:"boutique-img" %>
-      <% end %>
-      <p class="card-text">PRIX : <%= e.price %> CHF</p>
-      <%= link_to 'Détails', evenements_evenement_path + "?id=" + e.id.to_s, class:"btn btn-primary" %>
-    </li>
+    <div class="row ">
+      <h5 class="card-title text-center"><strong><%= e.name %></strong></h5>
+      <div class="col-6 text-end">
+        <% if e.image.attached? %>
+          <%= image_tag e.image, class:"boutique-img" %>
+        <% else %>
+          <%= image_tag "noimage", class:"boutique-img" %>
+        <% end %>
+      </div>
+      <div class="col-6 text-start">
+        <div class="card-text">Date : <%= e.date %> </div>
+        <div class="card-text">PRIX : <%= e.price %> CHF</div>
+        <%= link_to 'Détails', evenements_evenement_path + "?id=" + e.id.to_s, class:"btn btn-primary" %>
+      </div>
+    </div>
   <% end %>
 </ul>

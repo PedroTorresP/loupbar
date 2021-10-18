@@ -3,8 +3,11 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .boutique-img {
-    height: 150px !important;
+    height: auto !important;
     width: auto !important;
+    max-width: 100% !important;
+    max-height: 175px !important;
+    
     
 }
 
@@ -22,10 +25,19 @@
     margin: 10px;
 }
 
+
 .card-title {
     min-height: 300% !important;
     word-break: break-word;
 }
+.prod-row {
+    border-style:none !important;
+}
+.prod-col {
+    margin-bottom: 10px;
+}
+
+
 
 @media (max-width : 400px) {
     .row-cols-auto {width: 300px;}

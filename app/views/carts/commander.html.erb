@@ -3,7 +3,7 @@
   <div class="column">
     <div class="card">
       <div class="card-header">
-        Addresse de livraison
+        <strong>Addresse de livraison</strong>
       </div>
       <div class="card-body">
         <%= @user.first_name + " " + @user.last_name%><br>
@@ -15,7 +15,7 @@
     </div>
     <div class="card">
       <div class="card-header">
-        Choix de livraison
+        <strong>Choix de livraison</strong>
       </div>
       <div class="card-body">
         <div class="form-check">
@@ -36,7 +36,7 @@
   <div class="column">
     <div class="card">
       <div class="card-header">
-        Paiement
+        <strong>Paiement</strong>
       </div>
       <div class="card-body">
         <div class="form-check">
@@ -61,7 +61,7 @@
     </div>
     <div class="card">
       <div class="card-header">
-        Récap
+        <strong>Récap</strong>
       </div>
       <div class="card-body">
         Total articles : <%= sub_total(@cart) %> CHF <br>

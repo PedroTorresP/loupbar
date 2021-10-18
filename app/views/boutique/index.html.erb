@@ -1,19 +1,28 @@
 <div class="card">
-  <div class="card-body">
+  <div class="card-body text-center">
     <%= form_with url: boutique_index_path, method: :get do |form| %>
       <%= form.label :tri, "Trier:", class:"form-label" %>
       <%= form.select :tri, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
+      <br>
+            <%= form.label :category, "Cagétorie:", class:"form-label" %>
+      <%= form.select :category, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
+<br>
+      <%= form.label :subcategory, "Sous-catégorie:", class:"form-label" %>
+      <%= form.select :subcategory, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
+<br>
       <%= form.text_field :query, placeholder:"Chercher par nom" %>
       <%= form.submit "Filtrer" , class:"btn btn-primary" %>
     <% end %>
   </div>
 </div>
-<div class="row row-cols-auto" style="background-color: <%= get_value('row_color')%>;">
+<div class="row" style="background-color: <%= get_value('row_color')%>;">
   <% @products.each do |p| %>
-    <div class="column">
+    <div class="col-12 col-md-4">
       <div class="card card-boutique">
-        <h5 class="card-title"><%= p.name %></h5>
+        <h5 class="card-title"><strong><%= p.name %></h5></strong>
         <div class="card-body">
+        <div class="row prod-row">
+        <div class="column prod-col ">
           <div class="boutique-img">
             <% if p.image.attached? %>
               <%= link_to image_tag(p.image, class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
@@ -21,8 +30,10 @@
               <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
             <% end %>
           </div>
+          </div>
+          <div class="column prod-col">
           <p class="card-text"><%= p.category.name %> </p>
-          <p class="card-text">PRIX : <%= p.price %> CHF</p>
+
           <% if current_user != nil %>
             <% if is_wished(p.id) != nil %>
               <%= button_to "❤️", wishlist_path(:id => is_wished(p.id).id), :method => :delete , class:"btn btn-danger" %>
@@ -33,6 +44,9 @@
               <% end %>
             <% end %>
           <% end %>
+                    <p class="card-text">PRIX : <%= p.price %> CHF</p>
+          </div>
+          </div>
           <%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>
             <% if p.quantity > 0%>
               <%= form.select :quantity, options_for_select(1..product_quantity_cart(session_cart, p.id)), class:"form-select" %>
