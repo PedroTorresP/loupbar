@@ -16,8 +16,16 @@ class CartsController < ApplicationController
     @user = User.all.find(current_user.id)
     @order = Order.new()
     @order.user_id = @user.id
-    @order.payment = params[:payment]
-    @order.shipping = params[:shipping]
+    if params[:payment].to_s != nil
+      @order.payment = params[:payment].to_s
+    else
+      @order.payment = 'magasin'
+    end
+    if params[:shipping] == true
+      @order.shipping = true
+    else
+      @order.shipping = false
+    end
     @order.save
 
     @cart.line_items.each do |item|

@@ -7,6 +7,14 @@ module CartsHelper
             return sum
         end
 
+        def shipping_total(shipping)
+          if shipping == 'true'
+            return 7
+          else
+            return 0
+          end
+        end
+
         def product_quantity_cart(cart, product_id)
           quantity = Product.all.find(product_id).quantity
           if cart == nil
@@ -20,8 +28,18 @@ module CartsHelper
             return quantity
           end
         end
+
+        def check_order_selected(shipping, compare)
+          if shipping == compare
+            return 'selected'
+          else
+            return ''
+          end
+        end
         
 
         module_function :sub_total
         module_function :product_quantity_cart
+        module_function :check_order_selected
+        module_function :shipping_total
 end

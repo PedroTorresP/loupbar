@@ -1,17 +1,24 @@
 <div class="card">
   <div class="card-body text-center">
     <%= form_with url: boutique_index_path, method: :get do |form| %>
+    <div class="row boutique-filter-row">
+    <div class="col-12 col-md-3">
       <%= form.label :tri, "Trier:", class:"form-label" %>
       <%= form.select :tri, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
-      <br>
+      </div>
+    <div class="col-12 col-md-3">
             <%= form.label :category, "Cagétorie:", class:"form-label" %>
       <%= form.select :category, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
-<br>
+</div>
+    <div class="col-12 col-md-3">
       <%= form.label :subcategory, "Sous-catégorie:", class:"form-label" %>
       <%= form.select :subcategory, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
-<br>
+    </div>
+    <div class="col-12 col-md-3">
       <%= form.text_field :query, placeholder:"Chercher par nom" %>
       <%= form.submit "Filtrer" , class:"btn btn-primary" %>
+      </div>
+      </div>
     <% end %>
   </div>
 </div>

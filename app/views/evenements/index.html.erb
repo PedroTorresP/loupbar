@@ -17,9 +17,9 @@
       <h5 class="card-title text-center"><strong><%= e.name %></strong></h5>
       <div class="col-6 text-end">
         <% if e.image.attached? %>
-          <%= image_tag e.image, class:"boutique-img" %>
+          <%= image_tag e.image, class:"event-img" %>
         <% else %>
-          <%= image_tag "noimage", class:"boutique-img" %>
+          <%= image_tag "noimage", class:"event-img" %>
         <% end %>
       </div>
       <div class="col-6 text-start">
