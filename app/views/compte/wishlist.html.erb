@@ -18,12 +18,14 @@
   </ul>
   <div class="card-body">
     <h2>Liste d'envies</h2>
-    <div class="row row-cols-auto">
+    <div class="row">
   <% @wishlist.each do |wish| %>
-    <div class="column">
+    <div class="col-12 col-md-4">
       <div class="card card-boutique">
         <h5 class="card-title"><%= wish.product.name %></h5>
         <div class="card-body">
+                <div class="row prod-row">
+        <div class="column prod-col ">
           <div class="boutique-img">
             <% if wish.product.image.attached? %>
               <%= link_to image_tag(wish.product.image, class:"boutique-img"), boutique_produit_path + "?id=" + wish.product.id.to_s %>
@@ -31,13 +33,17 @@
               <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + wish.product.id.to_s %>
             <% end %>
           </div>
+                    </div>
+          <div class="column prod-col">
           <p class="card-text"><%= wish.product.category.name %> </p>
-          <p class="card-text">PRIX : <%= wish.product.price %> CHF</p>
-          <% if current_user != nil %>
+                    <% if current_user != nil %>
             <% if is_wished(wish.product.id) != nil %>
               <%= button_to "❤️", wishlist_path(:id => is_wished(wish.product.id).id), :method => :delete , class:"btn btn-danger" %>
               <% end %>
             <% end %>
+          <p class="card-text">PRIX : <%= wish.product.price %> CHF</p>
+          </div>
+          </div>
           <%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>
             <% if wish.product.quantity > 0%>
               <%= form.select :quantity, options_for_select(1..product_quantity_cart(session_cart, wish.product.id)), class:"form-select" %>

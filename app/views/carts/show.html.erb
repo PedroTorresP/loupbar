@@ -16,11 +16,11 @@
             <td><%= line_item.product.name %></td>
             <td><%= line_item.product.price %></td>
             <td>
-            <%= button_to "-", line_item_path(:id => line_item.id), :method => :delete , class:"btn btn-danger" %>
+            <%= button_to "-", line_item_path(:id => line_item.id, :quantity => -1), :method => :put , class:"btn btn-danger" %>
             <%= line_item.quantity %>
-            <%= button_to "+", line_item_path(:id => line_item.id), :method => :delete , class:"btn btn-danger" %>
+            <%= button_to "+", line_item_path(:id => line_item.id, :quantity => +1), :method => :put , class:"btn btn-success" %>
             </td>
-            <td><%= button_to "🗑️", line_item_path(:id => line_item.id), :method => :delete , class:"btn btn-danger" %></td>
+            <td><%= button_to "🗑️", line_item_path(:id => line_item.id), :method => :delete , class:"btn btn-warning" %></td>
           </tr>
         <% end %>
       </tbody>

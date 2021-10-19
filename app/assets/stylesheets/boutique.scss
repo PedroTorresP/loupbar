@@ -3,13 +3,14 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .boutique-img {
-    height: auto !important;
-    width: auto !important;
-    max-width: 100% !important;
-    max-height: 175px !important;
+
+    width: 100% !important;
+    height: 175px !important;;
+    object-fit: scale-down !important;
     
     
 }
+
 
 .card-boutique {
     text-align: center;
