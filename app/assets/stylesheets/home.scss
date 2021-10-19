@@ -1,19 +1,6 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.column {
-  text-align: center !important;
-    float: left;
-    
-  }
-
-  @media only screen and (max-width : 1115px) {
-    .column {width: 100%;}
-  }
-  
-  @media only screen and (min-width : 1116px) {
-    .column {width: 50%;}
-  }
 
   
   /* Clear floats after the columns */
@@ -45,5 +32,8 @@
      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
    }
 
+   .map{
+     margin-bottom: 100px;
+   }
 
 

@@ -95,18 +95,9 @@
       </li>
       <% if user_signed_in? %>
         <% if User.all.find(current_user.id).is_admin %>
-          <li class="navbar-nav dropdown">
-            <a class="btn btn-secondary dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Admin
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><%= link_to 'Produits', products_path, class:"dropdown-item" %></li>
-              <li><%= link_to 'Categories', categories_path, class:"dropdown-item" %></li>
-              <li><%= link_to 'Commandes', orders_path, class:"dropdown-item" %></li>
-              <li><%= link_to 'Utilisateurs', users_path, class:"dropdown-item" %></li>
-              <li><%= link_to 'Évènements', events_path, class:"dropdown-item" %></li>
-            </ul>
-          </li>
+          <div class="text-center">
+            <%= link_to 'Admin', products_path, class:"btn btn-secondary" %>
+          </div>
         <% end %>
       <% end %>
     </div>
