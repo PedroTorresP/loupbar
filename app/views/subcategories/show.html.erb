@@ -1,0 +1,18 @@
+<%= render 'navtab' %>
+<div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>Id:</strong> <%= @subcategory.id %></li>
+    <li class="list-group-item"><strong>Name:</strong> <%= @subcategory.name %></li>
+    <li class="list-group-item"><strong>Available:</strong>
+      <% if @subcategory.available %>
+        Disponible
+      <% else %>
+        Pas disponible
+      <% end %>
+    </li>
+  </ul>
+  <div class="card-body">
+    <%= link_to 'Modifier', edit_subcategory_path(@subcategory), class:"btn btn-dark" %>
+    <%= link_to 'Retour', subcategories_path, class:"btn btn-light" %>
+  </div>
+</div>

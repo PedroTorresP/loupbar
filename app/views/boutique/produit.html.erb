@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card text-center">
   <header class="card-header text-center fs-2"><%= @product.name %></header>
   <div class="card-body">
     <div class="columns">
@@ -15,6 +15,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><strong>Date de sortie:</strong> <%= @product.date %></li>
           <li class="list-group-item"><strong>Catégorie:</strong> <%= @product.category.name %></li>
+          <li class="list-group-item"><strong>Sous-catégorie:</strong> <%= @product.subcategory.name %></li>
           <li class="list-group-item"><strong>Quantité disponible:</strong> <%= @product.quantity %></li>
           <li class="list-group-item"><strong>Prix:</strong> <%= @product.price %> CHF</li>
           <li class="list-group-item"><%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>
@@ -33,16 +34,16 @@
             <% end %>
           </li>
           <li class="list-group-item">
-                    <% if current_user != nil %>
-            <% if is_wished(@product.id) != nil %>
-              <%= button_to "Enlever ❤️", wishlist_path(:id => is_wished(@product.id).id), :method => :delete , class:"btn btn-danger" %>
-            <% else %>
-              <%= form_with(model: @wishlist, :as => :post, :url => wishlists_path) do |form| %>
-                <%= form.hidden_field :product_id, :value => @product.id %>
-                <%= form.submit "Ajouter ❤️", class:"btn btn-success" %>
+            <% if current_user != nil %>
+              <% if is_wished(@product.id) != nil %>
+                <%= button_to "❤️", wishlist_path(:id => is_wished(@product.id).id), :method => :delete , class:"btn btn-danger" %>
+              <% else %>
+                <%= form_with(model: @wishlist, :as => :post, :url => wishlists_path) do |form| %>
+                  <%= form.hidden_field :product_id, :value => @product.id %>
+                  <%= form.submit "❤️", class:"btn btn-success" %>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
           </li>
         </div>
       </div>

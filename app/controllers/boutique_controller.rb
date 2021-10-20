@@ -2,12 +2,34 @@ class BoutiqueController < ApplicationController
 
     # GET /products or /products.json
     def index
-      @products = Product.all.select { |p| p.available  }
-
-      if request.query_parameters[:query] != nil
-        @products = @products.select { |p| p.name.downcase.include? request.query_parameters[:query].downcase  }
-
+      @products = Product.all.select { |p| p.available || p.quantity > 0  }
+      categoriesName = {}
+      subcategoriesName = {}
+      categoriesName['tous'] = 0
+      subcategoriesName['tous'] = 0
+      Category.all.each do |c|
+        if c.available
+          categoriesName[c.name] = c.id
+        end
       end
+      @categories = categoriesName
+      Subcategory.all.each do |c|
+        if c.available
+          subcategoriesName[c.name] = c.id
+        end
+      end
+      @subcategories = subcategoriesName
+
+      if request.query_parameters[:query].to_s.length > 0
+        @products = @products.select { |p| p.name.downcase.include? request.query_parameters[:query].downcase  }
+      end
+      if request.query_parameters[:category].to_i > 0
+        @products = @products.select { |p| p.category_id == request.query_parameters[:category].to_i  }
+      end
+      if request.query_parameters[:subcategory].to_i > 0
+        @products = @products.select { |p| p.subcategory_id == request.query_parameters[:subcategory].to_i  }
+      end
+      
       case request.query_parameters[:tri]
       when "Date décroissant"
         @products = @products.sort_by(&:date).reverse

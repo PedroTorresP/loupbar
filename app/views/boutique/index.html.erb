@@ -8,11 +8,11 @@
       </div>
     <div class="col-12 col-md-3">
             <%= form.label :category, "Cagétorie:", class:"form-label" %>
-      <%= form.select :category, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
+      <%= form.select :category, @categories, class:"form-select" %>
 </div>
     <div class="col-12 col-md-3">
       <%= form.label :subcategory, "Sous-catégorie:", class:"form-label" %>
-      <%= form.select :subcategory, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
+      <%= form.select :subcategory, @subcategories, class:"form-select" %>
     </div>
     <div class="col-12 col-md-3">
       <%= form.text_field :query, placeholder:"Chercher par nom" %>
@@ -39,7 +39,7 @@
           </div>
           </div>
           <div class="column prod-col">
-          <p class="card-text"><%= p.category.name %> </p>
+          <p class="card-text"><%= p.subcategory.name + " " + p.category.name %> </p>
 
           <% if current_user != nil %>
             <% if is_wished(p.id) != nil %>

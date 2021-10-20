@@ -1,6 +1,6 @@
 <h1> Commander </h1>
 <div class="row">
-  <div class="column">
+  <div class="col-12 col-md-6 text-center">
     <div class="card">
       <div class="card-header">
         <strong>Addresse de livraison</strong>
@@ -19,13 +19,13 @@
       </div>
       <div class="card-body">
         <div class="row order-row justify-content-md-center">
-          <div class="col-6 col-md-3">
+          <div class="col-6 col-md-3 text-center">
             <%= link_to image_tag("store.png", class:"boutique-img"), carts_commander_path + '?payment=' + request.query_parameters[:payment].to_s %>
             <div class=<%= check_order_selected(request.query_parameters[:shipping].to_s,'') %>>
               Retrait au magasin (0CHF)
             </div>
           </div>
-          <div class="col-6 col-md-3">
+          <div class="col-6 col-md-3 text-center">
             <%= link_to image_tag("poste.png", class:"boutique-img"), carts_commander_path + '?shipping=true&payment=' + request.query_parameters[:payment].to_s %>
             <div class=<%= check_order_selected(request.query_parameters[:shipping].to_s,'true') %>>
               Par la poste (7CHF)
@@ -35,32 +35,32 @@
       </div>
     </div>
   </div>
-  <div class="column">
+  <div class="col-12 col-md-6 text-center">
     <div class="card">
       <div class="card-header">
         <strong>Paiement</strong>
       </div>
       <div class="card-body">
         <div class="row order-row justify-content-md-center">
-          <div class="col-6 col-md-3">
+          <div class="col-6 col-md-3 text-center">
             <%= link_to image_tag("store.png", class:"boutique-img"), carts_commander_path + '?shipping=' + request.query_parameters[:shipping].to_s %>
             <div class=<%= check_order_selected(request.query_parameters[:payment].to_s,'') %>>
               Au magasin
             </div>
           </div>
-          <div class="col-6 col-md-3">
+          <div class="col-6 col-md-3 text-center">
             <%= link_to image_tag("twint.png", class:"boutique-img"), carts_commander_path + '?shipping=' + request.query_parameters[:shipping].to_s + '&payment=twint' %>
             <div class=<%= check_order_selected(request.query_parameters[:payment].to_s,'twint') %>>
               Twint
             </div>
           </div>
-          <div class="col-6 col-md-3">
+          <div class="col-6 col-md-3 text-center">
             <%= link_to image_tag("card.png", class:"boutique-img"), carts_commander_path + '?shipping=' + request.query_parameters[:shipping].to_s + '&payment=card' %>
             <div class=<%= check_order_selected(request.query_parameters[:payment].to_s,'card') %>>
               Carte de crédit
             </div>
           </div>
-          <div class="col-6 col-md-3">
+          <div class="col-6 col-md-3 text-center">
             <%= link_to image_tag("paypal.png", class:"boutique-img"), carts_commander_path + '?shipping=' + request.query_parameters[:shipping].to_s + '&payment=paypal' %>
             <div class=<%= check_order_selected(request.query_parameters[:payment].to_s,'paypal') %>>
               Paypal

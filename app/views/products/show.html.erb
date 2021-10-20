@@ -8,7 +8,8 @@
     <li class="list-group-item"><strong>Nom:</strong> <%= @product.name %></li>
     <li class="list-group-item"><strong>Date de sortie:</strong> <%= @product.date %></li>
     <li class="list-group-item"><strong>Cagétorie:</strong> <%= @product.category.name %></li>
-    <li class="list-group-item"><strong>Description:</strong> 
+    <li class="list-group-item"><strong>Sous-cagétorie:</strong> <%= @product.subcategory.name %></li>
+    <li class="list-group-item"><strong>Description:</strong>
       <textarea class="form-control" disabled><%= @product.description %></textarea>
     </li>
     <li class="list-group-item"><strong>Prix:</strong> <%= @product.price %> CHF</li>

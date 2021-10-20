@@ -1,0 +1,30 @@
+<%= render 'navtab' %>
+<p id="notice"><%= notice %></p>
+<h1>Sous-catégories</h1>
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>Nom</th>
+      <th>Affiché?</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @subcategories.each do |subcategory| %>
+      <tr>
+        <td><%= subcategory.name %></td>
+        <td>
+          <% if subcategory.available %>
+            Affiché
+          <% else %>
+            Caché
+          <% end %>
+        </td>
+        <td><%= link_to '✏️', edit_subcategory_path(subcategory) %></td>
+        <td><%= link_to '🗑️', subcategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Crée catégorie', new_subcategory_path, class:"btn btn-dark" %>

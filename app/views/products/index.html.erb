@@ -18,6 +18,7 @@
       <th>Nom</th>
       <th>Date de sortie</th>
       <th>Catégorie</th>
+      <th>Sous-catégorie</th>
       <th>Prix</th>
       <th>Quantité</th>
       <th>Stock Minimun</th>
@@ -31,6 +32,7 @@
         <td><%= product.id %></td>
         <td><%= product.name %></td>
         <td><%= product.date %></td>
+        <td><%= product.subcategory.name %></td>
         <td><%= product.category.name %></td>
         <td><%= product.price %></td>
         <td><%= product.quantity %></td>

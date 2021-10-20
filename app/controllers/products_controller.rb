@@ -37,23 +37,37 @@ class ProductsController < ApplicationController
     @product.date = Date.today
     @product.available = true
     categoriesName = {}
+    subcategoriesName = {}
     Category.all.each do |c|
       if c.available
         categoriesName[c.name] = c.id
       end
     end
     @categories = categoriesName
+    Subcategory.all.each do |c|
+      if c.available
+        subcategoriesName[c.name] = c.id
+      end
+    end
+    @subcategories = subcategoriesName
   end
 
   # GET /products/1/edit
   def edit
     categoriesName = {}
+    subcategoriesName = {}
     Category.all.each do |c|
       if c.available
         categoriesName[c.name] = c.id
       end
     end
     @categories = categoriesName
+    Subcategory.all.each do |c|
+      if c.available
+        subcategoriesName[c.name] = c.id
+      end
+    end
+    @subcategories = subcategoriesName
   end
 
   # POST /products or /products.json
@@ -101,7 +115,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:id, :name, :category_id, :description, :price, :image_path, :quantity, :min_stock, :available, :image, :date)
+      params.require(:product).permit(:id, :name, :category_id, :subcategory_id, :description, :price, :image_path, :quantity, :min_stock, :available, :image, :date )
     end
 
     def authorize_admin
