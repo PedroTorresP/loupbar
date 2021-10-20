@@ -70,7 +70,7 @@
                   <% if @events[0].image.attached? %>
                     <%= link_to image_tag(@events[0].image, class:"boutique-img"), evenements_evenement_path + "?id=" + @events[0].id.to_s %>
                   <% else %>
-                    <%= link_to image_tag("noimage", class:"boutique-img"), evenements_evenement_path + "?id=" + @events[0].id.to_s %>
+                    <%= link_to image_tag("noimage.png", class:"boutique-img"), evenements_evenement_path + "?id=" + @events[0].id.to_s %>
                   <% end %>
                 </div>
                 <p class="card-text">DATE : <%= @events[0].date %></p>
