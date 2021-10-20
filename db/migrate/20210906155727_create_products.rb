@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.integer :quantity
       t.integer :min_stock
       t.boolean :available
-      t.integer :subcategory_id
+      t.integer :subcategory
 
       t.timestamps
     end
