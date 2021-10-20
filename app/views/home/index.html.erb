@@ -21,7 +21,7 @@
                   <% if @products[0].image.attached? %>
                     <%= link_to image_tag(@products[0].image, class:"boutique-img"), boutique_produit_path + "?id=" + @products[0].id.to_s %>
                   <% else %>
-                    <%= link_to image_tag("noimage", class:"boutique-img"), boutique_produit_path + "?id=" + @products[0].id.to_s %>
+                    <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + @products[0].id.to_s %>
                   <% end %>
                 </div>
                 <p class="card-text">PRIX : <%= @products[0].price %> CHF</p>
