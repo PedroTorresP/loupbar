@@ -8,7 +8,7 @@ module CartsHelper
         end
 
         def shipping_total(shipping)
-          if shipping == 'true'
+          if shipping == 'Poste'
             return 7
           else
             return 0
@@ -30,7 +30,7 @@ module CartsHelper
         end
 
         def check_order_selected(shipping, compare)
-          if shipping == compare
+          if shipping.to_s == compare.to_s
             return 'selected'
           else
             return ''

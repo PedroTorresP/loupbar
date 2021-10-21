@@ -9,23 +9,19 @@ class CartsController < ApplicationController
     @cart = session_cart
     @user = User.all.find(current_user.id)
     @order = Order.new()
+    @shipping = cart_form_params[:shipping]
+    @payment = cart_form_params[:payment]
+
+
   end
 
   def create
     @cart = session_cart
     @user = User.all.find(current_user.id)
     @order = Order.new()
+    @order.payment = cart_params[:payment]
+    @order.shipping = cart_params[:shipping]
     @order.user_id = @user.id
-    if params[:payment].to_s != nil
-      @order.payment = params[:payment].to_s
-    else
-      @order.payment = 'magasin'
-    end
-    if params[:shipping] == true
-      @order.shipping = true
-    else
-      @order.shipping = false
-    end
     @order.save
 
     @cart.line_items.each do |item|
@@ -34,6 +30,9 @@ class CartsController < ApplicationController
       @buy.product_id = item.product_id
       @buy.quantity = item.quantity
       @buy.save
+      @product = Product.all.find_by_id(item.product_id)
+      @product.quantity -= item.quantity
+      @product.save
     end
     redirect_to compte_commandes_detail_path + "?id=" + @order.id.to_s, notice: "La commande a été crée."
     session_cart.destroy
@@ -44,6 +43,10 @@ class CartsController < ApplicationController
     session_cart.destroy
     session[:cart_id] = nil
     redirect_to root_path
+  end
+
+  def cart_form_params
+    params.permit(:shipping, :payment)
   end
 
   def cart_params
