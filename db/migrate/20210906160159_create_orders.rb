@@ -3,8 +3,10 @@ class CreateOrders < ActiveRecord::Migration[6.1]
     create_table :orders do |t|
       t.integer :user_id
       t.decimal :discount
-      t.boolean :is_paid
-      t.boolean :is_ready
+      t.integer :is_paid
+      t.integer :is_ready
+      t.integer :shipping
+      t.integer :payment
 
       t.timestamps
     end
