@@ -120,7 +120,7 @@
   style="border:0"
   loading="lazy"
   allowfullscreen
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCrMs4m2ORSG7UvfC7Tt307BGi3gHsgunQ
+  src="https://www.google.com/maps/embed/v1/place?key=<%= Rails.application.credentials.dig(:google, :api) %>
     &q=Leloupbar, Route de Praz-Repos, Jorat-Mézières">
     </iframe>
   </div>
