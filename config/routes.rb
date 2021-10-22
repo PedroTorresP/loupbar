@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'evenements/evenement'
   get 'boutique/produit'
   get 'contact/index'
+  post 'contact/send_mail'
   get 'evenements/index'
   get 'boutique/index'
   devise_for :users

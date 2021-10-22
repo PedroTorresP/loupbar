@@ -39,6 +39,8 @@ class EvenementsController < ApplicationController
     @event = @participant.event
     @placeRestantes = @event.places - @event.participants.length
     @participant.user_id = current_user.id
+    @participant.save
+    EventMailer.with(participant: @participant).event_inscription.deliver_later
 
     if @placeRestantes > 0
     redirect_link = evenements_path + "/evenement?id=" + @event.id.to_s

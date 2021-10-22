@@ -1,0 +1,9 @@
+Inscription à l'évènement <%= @participant.event.name %>
+
+Bonjour <%= @participant.user.first_name + ' ' + @participant.user.last_name %> ,
+
+Vous êtes inscrit à l'évènement <%= @participant.event.name %>
+
+Lien pour les détails : <%= 'www.loupbar.com/event/' + @participant.event.id.to_s %>
+
+Date de l'évènement : <%= @participant.event.date %>

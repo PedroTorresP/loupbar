@@ -1,0 +1,9 @@
+<%= image_tag 'loupbar.png' %>
+<h1>Inscription à l'évènement <%= @participant.event.name %></h1>
+
+<p>Bonjour <%= @participant.user.first_name + ' ' + @participant.user.last_name %> ,
+<br><br>
+Vous êtes inscrit à l'évènement <%= link_to @participant.event.name, 'loupbar/event/' + @participant.event.id.to_s %>
+<br>
+Date de l'évènement : <%= @participant.event.date %>
+<br>

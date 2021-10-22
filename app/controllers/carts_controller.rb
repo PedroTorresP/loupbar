@@ -24,6 +24,7 @@ class CartsController < ApplicationController
     @order.user_id = @user.id
     @order.save
     OrderMailer.with(order: @order).order_created.deliver_later
+    OrderMailer.with(order: @order).order_created_notification.deliver_later
 
     @cart.line_items.each do |item|
       @buy = Buy.new()
