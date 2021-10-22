@@ -33,9 +33,9 @@
       <% end %><br>
       <strong>Paiement: </strong><%= @order.payment %><br>
       <strong>Etat du paiement: </strong>
-      <%= @commande.is_paid %><br>
+      <%= @order.is_paid %><br>
       <strong>Etat de la commande: </strong>
-      <%= @commande.is_ready %><br>
+      <%= @order.is_ready %><br>
       <strong>Date de la commande: </strong><%= @order.created_at %><br>
       <% if @order.discount %>
         <strong>Réduction: </strong><%= @order.discount %> CHF<br>

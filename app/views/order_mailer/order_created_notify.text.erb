@@ -23,9 +23,9 @@ Livraison:
 Paiement:
   <%= @order.payment %>
 Etat du paiement:
-  <%= @commande.is_paid %>
+  <%= @order.is_paid %>
 Etat de la commande:
-  <%= @commande.is_ready %>
+  <%= @order.is_ready %>
 Date de la commande:<%= @order.created_at %>
 <% if @order.discount %>
   Réduction:<%= @order.discount %> CHF
