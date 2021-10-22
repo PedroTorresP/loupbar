@@ -1,0 +1,45 @@
+Confirmation de la commande <%= @order.id %>
+
+Bonjour <%= @order.user.first_name + ' ' + @order.user.last_name %> ,
+
+Voici le récapitulatif de votre commande :
+
+Addresse de livraison
+
+<%= @order.user.first_name + " " + @order.user.last_name%>
+<%= @order.user.address%>
+<%= @order.user.postal_code%>
+Suisse
+
+Informations
+
+Livraison: 
+<% if @order.shipping == 'Poste' %>
+  Poste
+  Numéro de suivi: <%= @order.tracking %>
+<% else %>
+  Retrait au magasin
+<% end %>
+Paiement:<%= @order.payment %>
+Etat du paiement:
+<% if @order.is_paid %>
+  Payé
+<% else %>
+  En attente
+<% end %>
+Etat de la commande:
+<% if @order.is_ready %>
+  Terminé
+<% else %>
+  En attente
+<% end %>
+Date de la commande:<%= @order.created_at %>
+<% if @order.discount %>
+  Réduction:<%= @order.discount %> CHF
+<% end %>
+Montant total de la commande:<%= @total  %> CHF
+
+Produit / Prix unitaire /  Quantité  /  Prix total
+<% @products.each do |buy| %>
+  <%= buy.product.name %> /  <%= buy.product.price %>  /  <%= buy.quantity %> / <%= buy.product.price * buy.quantity  %>
+<% end %>

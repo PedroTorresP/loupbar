@@ -23,6 +23,7 @@ class CartsController < ApplicationController
     @order.shipping = cart_params[:shipping]
     @order.user_id = @user.id
     @order.save
+    OrderMailer.with(order: @order).order_created.deliver_later
 
     @cart.line_items.each do |item|
       @buy = Buy.new()

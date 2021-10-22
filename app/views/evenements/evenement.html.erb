@@ -18,7 +18,7 @@
           </li>
           <li class="list-group-item"><strong>Places restantes:</strong> <%= @placeRestantes %><br>
           </li>
-          <li class="list-group-item"><strong>Prix:</strong> <%= @event.price %> CHF</li>
+          <li class="list-group-item"><strong>Prix (paiement au magasin):</strong> <%= @event.price %> CHF</li>
           <li class="list-group-item"><strong>
               <div class="d-grid gap-2 col-6 mx-auto">
                 <% if current_user == nil %>
@@ -30,7 +30,7 @@
                 <% else %>
                   <%= form_with(model: @participant, :as => :post, :url => evenements_path) do |form| %>
                     <%= form.hidden_field :event_id %>
-                    <%= form.submit "S'inscrire", class:"btn btn-primary" %>
+                    <%= form.submit "S'inscrire", data: { confirm: 'Voulez-vous vous inscrire ?' } , class:"btn btn-primary" %>
                   <% end %>
                 <% end %>
               </li>
