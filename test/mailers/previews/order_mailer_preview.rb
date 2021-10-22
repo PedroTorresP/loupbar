@@ -6,4 +6,20 @@ class OrderMailerPreview < ActionMailer::Preview
     OrderMailer.order_created
   end
 
+  def order_sent
+    OrderMailer.order_sent
+  end
+
+  def order_ready
+    OrderMailer.order_ready
+  end
+
+  def order_created_notify
+    OrderMailer.order_created_notify
+  end
+
+  def order_payment_notify
+    OrderMailer.order_payment_notify
+  end
+
 end

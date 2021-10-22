@@ -1,0 +1,10 @@
+Envoi de la commande <%= @order.id %>
+
+Bonjour <%= @order.user.first_name + ' ' + @order.user.last_name %> ,
+
+Votre commande a été envoyée.
+
+<% if @order.tracking != nil %>
+Numéro de suivi :  <%= @order.tracking %>
+
+<% end %>

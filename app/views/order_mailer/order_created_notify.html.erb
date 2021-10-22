@@ -1,0 +1,71 @@
+<%= image_tag 'loupbar.png' %>
+<h1>Nouvelle commande numéro <%= @order.id %></h1>
+<p>Bonjour,
+<br><br>
+Voici le récapitulatif de la commande :</p>
+<div class="card-body">
+  <h2><%= "Détails commande numéro " + @order.id.to_s %></h2>
+  <div class="card">
+    <div class="card-header">
+      <strong>Addresse de livraison</strong>
+    </div>
+    <div class="card-body">
+      <%= @order.user.first_name + " " + @order.user.last_name%><br>
+      <%= @order.user.address%><br>
+      <%= @order.user.postal_code%><br>
+      Suisse<br>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <strong>Informations</strong>
+    </div>
+    <div class="card-body">
+      <strong>Livraison: </strong>
+      <% if @order.shipping == 'Poste' %>
+        Poste<br>
+        <strong>Numéro de suivi: </strong> <%= @order.tracking %>
+      <% else %>
+        Retrait au magasin
+      <% end %><br>
+      <strong>Paiement: </strong><%= @order.payment %><br>
+      <strong>Etat du paiement: </strong>
+      <% if @order.is_paid %>
+        Payé
+      <% else %>
+        En attente
+      <% end %><br>
+      <strong>Etat de la commande: </strong>
+      <% if @order.is_ready %>
+        Terminé
+      <% else %>
+        En attente
+      <% end %><br>
+      <strong>Date de la commande: </strong><%= @order.created_at %><br>
+      <% if @order.discount %>
+        <strong>Réduction: </strong><%= @order.discount %> CHF<br>
+      <% end %>
+      <strong>Montant total de la commande: </strong><%= @total  %> CHF<br>
+    </div>
+  </div>
+  <table class="table table-bordered table-striped">
+    <thead class="table-warning">
+      <tr>
+        <th>Produit</th>
+        <th>Prix unitaire</th>
+        <th>Quantité</th>
+        <th>Prix total</th>
+      </tr>
+    </thead>
+    <tbody class="table-warning">
+      <% @products.each do |buy| %>
+        <tr >
+          <td><%= link_to buy.product.name, 'mettre adresse ici' + "/?id=" + buy.product.id.to_s %></td>
+          <td><%= buy.product.price %></td>
+          <td><%= buy.quantity %></td>
+          <td><%= buy.product.price * buy.quantity  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
