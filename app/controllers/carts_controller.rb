@@ -21,10 +21,12 @@ class CartsController < ApplicationController
     @order = Order.new()
     @order.payment = cart_params[:payment]
     @order.shipping = cart_params[:shipping]
+    @order.is_paid = 0
+    @order.is_ready = 0
     @order.user_id = @user.id
     @order.save
     OrderMailer.with(order: @order).order_created.deliver_later
-    OrderMailer.with(order: @order).order_created_notification.deliver_later
+    OrderMailer.with(order: @order).order_created_notify.deliver_later
 
     @cart.line_items.each do |item|
       @buy = Buy.new()

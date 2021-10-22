@@ -35,7 +35,7 @@
       </div>
       <div class="card-body">
         <strong>Livraison: </strong>
-        <% if @commande.shipping == 'Poste' %>
+        <% if @commande.shipping == 'poste' %>
           Poste<br>
           <strong>Numéro de suivi: </strong> <%= @commande.tracking %>
         <% else %>
@@ -43,20 +43,12 @@
         <% end %><br>
         <strong>Paiement: </strong><%= @commande.payment %><br>
         <strong>Etat du paiement: </strong>
-        <% if @commande.is_paid %>
-          Payé
-        <% else %>
-          En attente
-        <% end %><br>
+        <%= @commande.is_paid %><br>
         <strong>Etat de la commande: </strong>
-        <% if @commande.is_ready %>
-          Terminé
-        <% else %>
-          En attente
-        <% end %><br>
+        <%= @commande.is_ready %><br>
         <strong>Date de la commande: </strong><%= @commande.created_at %><br>
         <% if @commande.discount %>
-        <strong>Réduction: </strong><%= @commande.discount %> CHF<br>
+          <strong>Réduction: </strong><%= @commande.discount %> CHF<br>
         <% end %>
         <strong>Montant total de la commande: </strong><%= order_total(@commande).to_d  %> CHF<br>
       </div>

@@ -14,11 +14,11 @@
       <li class="list-group-item"><strong>Id:</strong> <%= form.text_field :id, class:"form-control" %></li>
       <li class="list-group-item"><strong>User ID:</strong> <%= form.text_field :user_id, class:"form-control" %></li>
       <li class="list-group-item"><strong>Discount:</strong> <%= form.number_field :discount, class:"form-control" %></li>
-      <li class="list-group-item"><strong>Livraison:</strong> <%= form.check_box :shipping, class:"form-check-input" %></li>
+      <li class="list-group-item"><strong>Livraison:</strong> <%= form.select :shipping, @lst_shipping, {}, class:"form-select" %></li>
       <li class="list-group-item"><strong>Suivi:</strong> <%= form.text_field :tracking, class:"form-control" %></li>
-      <li class="list-group-item"><strong>Type de paiement:</strong> <%= form.text_field :payment, class:"form-control" %></li>
-      <li class="list-group-item"><strong>Etat paiement:</strong> <%= form.check_box :is_paid, class:"form-check-input" %></li>
-      <li class="list-group-item"><strong>Etat commande:</strong> <%= form.check_box :is_ready, class:"form-check-input" %></li>
+      <li class="list-group-item"><strong>Type de paiement:</strong>  <%= form.select :payment, @lst_payment, {}, class:"form-select" %></li>
+      <li class="list-group-item"><strong>Etat paiement:</strong> <%= form.select :is_paid, @lst_is_paid, {}, class:"form-select" %></li>
+      <li class="list-group-item"><strong>Etat commande:</strong> <%= form.select :is_ready, @lst_is_ready, {}, class:"form-select" %></li>
     </ul>
     <div class="card-body">
       <div class="actions">

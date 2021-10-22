@@ -31,7 +31,7 @@
         <% @commandes.each do |commande| %>
           <tr >
             <td><%= commande.id %></td>
-            <td><% if commande.is_ready %>Terminée<% else %> En cours <% end %> </td>
+            <td><%= commande.is_ready %></td>
             <td><%= order_total(commande) %> CHF</td>
             <td><%= link_to 'Voir', compte_commandes_detail_path + "?id=" + commande.id.to_s, class:"btn btn-dark" %></td>
           </tr>

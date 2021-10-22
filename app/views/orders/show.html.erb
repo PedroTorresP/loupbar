@@ -9,17 +9,69 @@
     <li class="list-group-item"><strong>Suivi:</strong> <%= @order.tracking %></li>
     <li class="list-group-item"><strong>Type de paiement:</strong> <%= @order.payment %></li>
     <li class="list-group-item"><strong>Prix total après réduction:</strong> <%=  @totalOrderDiscount %></li>
-    <li class="list-group-item"><strong>Etat paiement:</strong> <% if @order.is_paid %> Payée <% else %> En attente <% end %></li>
-    <li class="list-group-item"><strong>Etat commande:</strong> <% if @order.is_ready %> Terminée <% else %> En attente <% end %></li>
+    <li class="list-group-item"><strong>Etat paiement:</strong> <%= @order.is_paid %></li>
+    <li class="list-group-item"><strong>Etat commande:</strong> <%= @order.is_ready %></li>
     <li class="list-group-item">
-      <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>
-        <%= form.hidden_field :is_paid, :value => !@order.is_paid %>
-        <%= form.submit "Commande payée", class:"btn btn-primary" %>
-      <% end %>
-      <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>
-        <%= form.hidden_field :is_ready, :value => !@order.is_ready %>
-        <%= form.submit "Commande terminée", class:"btn btn-primary" %>
-      <% end %>
+      <div class="status-paiement">
+        <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>
+          <%= form.hidden_field :is_paid, :value => 'attente' %>
+          <% if @order.is_paid == 'attente' %>
+            <%= form.submit "paiement en attente", class:"btn btn-warning" %>
+          <% else %>
+            <%= form.submit "paiement en attente", class:"btn btn-primary" %>
+          <% end %>
+        <% end %>
+        <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>
+          <%= form.hidden_field :is_paid, :value => 'validation' %>
+          <% if @order.is_paid == 'validation' %>
+            <%= form.submit "paiement en validation", class:"btn btn-warning" %>
+          <% else %>
+            <%= form.submit "paiement en validation", class:"btn btn-primary" %>
+          <% end %>
+        <% end %>
+        <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>
+          <%= form.hidden_field :is_paid, :value => 'payée' %>
+          <% if @order.is_paid == 'payée' %>
+            <%= form.submit "payée", class:"btn btn-warning" %>
+          <% else %>
+            <%= form.submit "payée", class:"btn btn-primary" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="status-commande">
+        <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>
+          <%= form.hidden_field :is_ready, :value => 'crée' %>
+          <% if @order.is_ready == 'crée' %>
+            <%= form.submit "commande crée", class:"btn btn-warning" %>
+          <% else %>
+            <%= form.submit "commande crée", class:"btn btn-primary" %>
+          <% end %>
+        <% end %>
+        <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>
+          <%= form.hidden_field :is_ready, :value => 'prête' %>
+          <% if @order.is_ready == 'prête' %>
+            <%= form.submit "commande prête", class:"btn btn-warning" %>
+          <% else %>
+            <%= form.submit "commande prête", class:"btn btn-primary" %>
+          <% end %>
+        <% end %>
+        <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>
+          <%= form.hidden_field :is_ready, :value => 'envoyée' %>
+          <% if @order.is_ready == 'envoyée' %>
+            <%= form.submit "commande envoyée", class:"btn btn-warning" %>
+          <% else %>
+            <%= form.submit "commande envoyée", class:"btn btn-primary" %>
+          <% end %>
+        <% end %>
+        <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>
+          <%= form.hidden_field :is_ready, :value => 'terminée' %>
+          <% if @order.is_ready == 'terminée' %>
+            <%= form.submit "commande terminée", class:"btn btn-warning" %>
+          <% else %>
+            <%= form.submit "commande terminée", class:"btn btn-primary" %>
+          <% end %>
+        <% end %>
+      </div>
     </ul>
     <h3>Détail de la commande</h3>
     <table class="table table-bordered table-striped">

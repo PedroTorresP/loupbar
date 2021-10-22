@@ -1,8 +1,9 @@
 <%= image_tag 'loupbar.png' %>
 <h1>Nouvelle commande numéro <%= @order.id %></h1>
 <p>Bonjour,
-<br><br>
-Voici le récapitulatif de la commande :</p>
+  <br>
+  <br>
+  Voici le récapitulatif de la commande :</p>
 <div class="card-body">
   <h2><%= "Détails commande numéro " + @order.id.to_s %></h2>
   <div class="card">
@@ -22,7 +23,7 @@ Voici le récapitulatif de la commande :</p>
     </div>
     <div class="card-body">
       <strong>Livraison: </strong>
-      <% if @order.shipping == 'Poste' %>
+      <% if @order.shipping == 'poste' %>
         Poste<br>
         <strong>Numéro de suivi: </strong> <%= @order.tracking %>
       <% else %>
@@ -30,17 +31,9 @@ Voici le récapitulatif de la commande :</p>
       <% end %><br>
       <strong>Paiement: </strong><%= @order.payment %><br>
       <strong>Etat du paiement: </strong>
-      <% if @order.is_paid %>
-        Payé
-      <% else %>
-        En attente
-      <% end %><br>
+      <%= @commande.is_paid %><br>
       <strong>Etat de la commande: </strong>
-      <% if @order.is_ready %>
-        Terminé
-      <% else %>
-        En attente
-      <% end %><br>
+      <%= @commande.is_ready %><br>
       <strong>Date de la commande: </strong><%= @order.created_at %><br>
       <% if @order.discount %>
         <strong>Réduction: </strong><%= @order.discount %> CHF<br>

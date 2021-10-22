@@ -20,14 +20,14 @@
       <div class="card-body">
         <div class="row order-row justify-content-md-center">
           <div class="col-6 col-md-3 text-center">
-            <%= link_to image_tag("store.png", class:"boutique-img"), carts_commander_path(:shipping => 'Retrait', :payment => @payment), :method => :get %>
-            <div class=<%= check_order_selected(@shipping,'Retrait') %>>
+            <%= link_to image_tag("store.png", class:"boutique-img"), carts_commander_path(:shipping => 'magasin', :payment => @payment), :method => :get %>
+            <div class=<%= check_order_selected(@shipping,'magasin') %>>
               Retrait au magasin (0CHF)
             </div>
           </div>
           <div class="col-6 col-md-3 text-center">
-            <%= link_to image_tag("poste.png", class:"boutique-img"), carts_commander_path(:shipping => 'Poste', :payment => @payment), :method => :get %>
-            <div class=<%= check_order_selected(@shipping,'Poste') %>>
+            <%= link_to image_tag("poste.png", class:"boutique-img"), carts_commander_path(:shipping => 'poste', :payment => @payment), :method => :get %>
+            <div class=<%= check_order_selected(@shipping,'poste') %>>
               Par la poste (7CHF)
             </div>
           </div>
@@ -43,26 +43,26 @@
       <div class="card-body">
         <div class="row order-row justify-content-md-center">
           <div class="col-6 col-md-3 text-center">
-            <%= link_to image_tag("store.png", class:"boutique-img"), carts_commander_path(:shipping => @shipping, :payment => 'Magasin'), :method => :get %>
-            <div class=<%= check_order_selected(@payment,'Magasin') %>>
+            <%= link_to image_tag("store.png", class:"boutique-img"), carts_commander_path(:shipping => @shipping, :payment => 'boutique'), :method => :get %>
+            <div class=<%= check_order_selected(@payment,'boutique') %>>
               Au magasin
             </div>
           </div>
           <div class="col-6 col-md-3 text-center">
-            <%= link_to image_tag("twint.png", class:"boutique-img"), carts_commander_path(:shipping => @shipping, :payment => 'Twint'), :method => :get %>
-            <div class=<%= check_order_selected(@payment,'Twint') %>>
+            <%= link_to image_tag("twint.png", class:"boutique-img"), carts_commander_path(:shipping => @shipping, :payment => 'twint'), :method => :get %>
+            <div class=<%= check_order_selected(@payment,'twint') %>>
               Twint
             </div>
           </div>
           <div class="col-6 col-md-3 text-center">
-            <%= link_to image_tag("card.png", class:"boutique-img"), carts_commander_path(:shipping => @shipping, :payment => 'Carte'), :method => :get %>
-            <div class=<%= check_order_selected(@payment,'Carte') %>>
+            <%= link_to image_tag("card.png", class:"boutique-img"), carts_commander_path(:shipping => @shipping, :payment => 'virement'), :method => :get %>
+            <div class=<%= check_order_selected(@payment,'virement') %>>
               Carte de crédit
             </div>
           </div>
           <div class="col-6 col-md-3 text-center">
-            <%= link_to image_tag("paypal.png", class:"boutique-img"), carts_commander_path(:shipping => @shipping, :payment => 'Paypal'), :method => :get %>
-            <div class=<%= check_order_selected(@payment,'Paypal') %>>
+            <%= link_to image_tag("paypal.png", class:"boutique-img"), carts_commander_path(:shipping => @shipping, :payment => 'paypal'), :method => :get %>
+            <div class=<%= check_order_selected(@payment,'paypal') %>>
               Paypal
             </div>
           </div>

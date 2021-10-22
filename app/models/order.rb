@@ -3,14 +3,27 @@ class Order < ApplicationRecord
     has_many :buys
 
     enum payment: {
-        Magasin: 0,
-        Twint: 1,
-        Paypal: 2,
-        Carte: 3
+        boutique: 0,
+        twint: 1,
+        paypal: 2,
+        virement: 3
     }
 
     enum shipping: {
-        Retrait: 0,
-        Poste: 1
+        magasin: 0,
+        poste: 1
+    }
+
+    enum is_paid: {
+        attente: 0,
+        validation: 1,
+        payée: 2
+    }
+
+    enum is_ready: {
+        crée: 0,
+        prête: 1,
+        envoyée:2,
+        terminée:3
     }
 end

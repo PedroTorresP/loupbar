@@ -14,7 +14,7 @@ Suisse
 Informations
 
 Livraison: 
-<% if @order.shipping == 'Poste' %>
+<% if @order.shipping == 'poste' %>
   Poste
   Numéro de suivi: <%= @order.tracking %>
 <% else %>
@@ -23,17 +23,9 @@ Livraison:
 Paiement:
   <%= @order.payment %>
 Etat du paiement:
-<% if @order.is_paid %>
-  Payé
-<% else %>
-  En attente
-<% end %>
+  <%= @commande.is_paid %>
 Etat de la commande:
-<% if @order.is_ready %>
-  Terminé
-<% else %>
-  En attente
-<% end %>
+  <%= @commande.is_ready %>
 Date de la commande:<%= @order.created_at %>
 <% if @order.discount %>
   Réduction:<%= @order.discount %> CHF

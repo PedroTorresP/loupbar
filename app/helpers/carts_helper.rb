@@ -8,7 +8,7 @@ module CartsHelper
         end
 
         def shipping_total(shipping)
-          if shipping == 'Poste'
+          if shipping == 'poste'
             return 7
           else
             return 0

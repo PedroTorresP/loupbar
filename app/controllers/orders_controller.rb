@@ -29,12 +29,22 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @products = Product.all
-    @order.payment = "Au magasin"
-    @order.shipping = false
+    @order.payment = 0
+    @order.shipping = 0
+    @order.is_paid = 2
+    @order.is_ready = 3
+    @lst_payment = ['boutique','twint','paypal','virement']
+    @lst_shipping = ['retrait','poste']
+    @lst_is_paid = ['attente','validation','payée']
+    @lst_is_ready = ['crée','prête','envoyée','terminée']
   end
 
   # GET /orders/1/edit
   def edit
+    @lst_payment = ['boutique','twint','paypal','virement']
+    @lst_shipping = ['retrait','poste']
+    @lst_is_paid = ['attente','validation','payée']
+    @lst_is_ready = ['crée','prête','envoyée','terminée']
   end
 
   # POST /orders or /orders.json
