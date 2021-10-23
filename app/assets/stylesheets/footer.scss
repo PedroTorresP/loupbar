@@ -1,3 +1,22 @@
-.footer {
+.footer-row {
+    background-color: rgba(247, 246, 244, 0.3) !important;
+    border-top-color: rgba(2, 2, 2, 0.7) !important;
+    border-width: 2px;
+    border-bottom-color: transparent !important;
+    border-left-color: transparent !important;
+    border-right-color: transparent !important;
+}
 
+.footer-payment-row {
+    background-color: transparent;
+    border-style: none !important;
+
+}
+
+.footer-col {
+    margin-bottom: 20px;
+}
+
+.reference {
+    font-size: 10px;
 }

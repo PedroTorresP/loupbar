@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'information/confidentialite'
+  get 'information/conditions'
+  get 'information/livraison'
   get 'compte/commandes_paiement'
   resources :subcategories
   resources :customisations

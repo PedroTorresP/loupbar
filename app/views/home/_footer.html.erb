@@ -1,12 +1,38 @@
 <br>
-<div class="row align-items-start">
-  <div class="col">
-    INFORMATIONS IMPORTANTES...
+<br>
+<br>
+<br>
+<div class="row footer-row text-center align-items-center">
+  <div class="col-12 footer-col col-md-4">
+    <h4>Informations</h4>
+    Le Loupbar<br>
+    Route de praz repos 26,<br>
+    1084 Carrouge
   </div>
-  <div class="col">
-    Tel : 07777777777
+  <div class="col-12 footer-col col-md-4">
+    <h4>Liens</h4>
+    <%= link_to 'Livraison', information_livraison_path %><br>
+    <%= link_to 'Conditions générales', information_conditions_path %><br>
+    <%= link_to 'Politique de confidentialité', information_confidentialite_path %>
   </div>
-  <div class="col">
-    Email : loupbar@email.com.
+  <div class="col-12 footer-col col-md-4">
+    <div class="row footer-payment-row justify-content-md-center">
+      <h4>Paiements disponible</h4>
+      <div class="col-3 col-md-2">
+        <%= image_tag("paypalcard.png", class:"boutique-img")%>
+      </div>
+      <div class="col-3 col-md-2">
+        <%= image_tag("twint.png", class:"boutique-img")%>
+      </div>
+      <div class="col-3 col-md-2">
+        <%= image_tag("store.png", class:"boutique-img")%>
+      </div>
+      <div class="col-3 col-md-2">
+        <%= image_tag("bank.png", class:"boutique-img")%>
+      </div>
+    </div>
+  </div>
+  <div class="reference text-end">
+    <small>created by <a href="https://github.com/PedroTorresP">Gabriel Pacheco </a></small>
   </div>
 </div>
