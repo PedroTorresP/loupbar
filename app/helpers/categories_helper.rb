@@ -1,7 +1,7 @@
 module CategoriesHelper
 
     def get_categories
-        products = Product.all.select { |p| p.available || p.quantity > 0  }
+        products = Product.all.select { |product| product.available || product.quantity > 0  }
         categories = Category.all
         subcategories = Subcategory.all
         lstCategories = {}

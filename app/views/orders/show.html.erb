@@ -84,12 +84,12 @@
           <th colspan="2"></th>
         </tr>
       </thead>
-      <% @order.buys.each do |b| %>
+      <% @order.buys.each do |buy| %>
         <tr>
-          <td><%= b.product.name %></td>
-          <td><%= b.quantity %></td>
-          <td><%= b.product.price %></td>
-          <td><%= b.product.price * b.quantity %></td>
+          <td><%= buy.product.name %></td>
+          <td><%= buy.quantity %></td>
+          <td><%= buy.product.price %></td>
+          <td><%= buy.product.price * b.quantity %></td>
           <td><%= link_to 'Modifier', edit_order_path(@order) %></td>
           <td><%= link_to 'Supprimer', @order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>

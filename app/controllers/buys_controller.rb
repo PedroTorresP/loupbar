@@ -15,7 +15,7 @@ class BuysController < ApplicationController
   def new
     @buy = Buy.new
     @buy.order_id = request.query_parameters[:order]
-    @products = Product.all.collect { |p| [p.name , p.id] }
+    @products = Product.all.collect { |product| [product.name , product.id] }
   end
 
   # GET /buys/1/edit

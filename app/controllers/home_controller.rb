@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   def index
-    @products = Product.where('DATE(date) <= ?', Date.today).order(date: :desc).first(5)
+    @products = Product.where('DATE(date) <= ?', Datevent.today).order(date: :desc).first(5)
     @wishlist = Product.all.last(5)
-    @events = Event.all.select { |e| e.date >= Date.today.beginning_of_week && e.date <= Date.today.end_of_week }
+    @events = Event.all.select { |event| event.date >= Datevent.today.beginning_of_week && event.date <= Datevent.today.end_of_week }
     p "--------------"
     p @events
   end

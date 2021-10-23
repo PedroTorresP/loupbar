@@ -12,20 +12,20 @@
   </div>
 </div>
 <ul class="list-group">
-  <% @events.each do |e| %>
+  <% @events.each do |event| %>
     <div class="row ">
-      <h5 class="card-title text-center"><strong><%= e.name %></strong></h5>
+      <h5 class="card-title text-center"><strong><%= event.name %></strong></h5>
       <div class="col-6 text-end">
-        <% if e.image.attached? %>
-          <%= image_tag e.image, class:"event-img" %>
+        <% if event.image.attached? %>
+          <%= image_tag event.image, class:"event-img" %>
         <% else %>
           <%= image_tag "noimage", class:"event-img" %>
         <% end %>
       </div>
       <div class="col-6 text-start">
-        <div class="card-text">Date : <%= e.date %> </div>
-        <div class="card-text">PRIX : <%= e.price %> CHF</div>
-        <%= link_to 'Détails', evenements_evenement_path + "?id=" + e.id.to_s, class:"btn btn-primary" %>
+        <div class="card-text">Date : <%= event.date %> </div>
+        <div class="card-text">PRIX : <%= event.price %> CHF</div>
+        <%= link_to 'Détails', evenements_evenement_path + "?id=" + event.id.to_s, class:"btn btn-primary" %>
       </div>
     </div>
   <% end %>

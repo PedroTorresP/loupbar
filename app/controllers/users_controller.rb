@@ -8,15 +8,15 @@ class UsersController < ApplicationController
     @users = User.all
 
     if request.query_parameters[:user_name] != nil
-      @users = @users.select { |u| (u.first_name.downcase+" "+u.last_name.downcase).include? request.query_parameters[:user_name].downcase  }
+      @users = @users.select { |user| (user.first_name.downcase+" "+user.last_name.downcase).include? request.query_parameters[:user_name].downcase  }
 
     end
     if request.query_parameters[:user_mail] != nil
-      @users = @users.select { |u| u.email.downcase.include? request.query_parameters[:user_mail].downcase  }
+      @users = @users.select { |user| user.email.downcase.include? request.query_parameters[:user_mail].downcase  }
 
     end
     if request.query_parameters[:user_id] != nil && request.query_parameters[:user_id] != ""
-      @users = @users.select { |u| u.id == request.query_parameters[:user_id].to_i  }
+      @users = @users.select { |user| user.id == request.query_parameters[:user_id].to_i  }
     end
   end
 

@@ -16,7 +16,7 @@ class ParticipantsController < ApplicationController
   def new
     @participant = Participant.new
     @participant.event_id = request.query_parameters[:event]
-    @users = User.all.collect { |u| [u.first_name + " " + u.last_name , u.id] }
+    @users = User.all.collect { |user| [user.first_name + " " + user.last_name , user.id] }
   end
 
   # GET /participants/1/edit

@@ -23,49 +23,49 @@
   </div>
 </div>
 <div class="row" style="background-color: <%= get_value('row_color')%>;">
-  <% @products.each do |p| %>
+  <% @products.each do |product| %>
     <div class="col-12 col-md-4">
       <div class="card card-boutique">
-        <h5 class="card-title"><strong><%= p.name %></h5></strong>
+        <h5 class="card-title"><strong><%= product.name %></h5></strong>
         <div class="card-body">
         <div class="row prod-row">
         <div class="column prod-col ">
           <div class="boutique-img">
-            <% if p.image.attached? %>
-              <%= link_to image_tag(p.image, class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
+            <% if product.image.attached? %>
+              <%= link_to image_tag(product.image, class:"boutique-img"), boutique_produit_path + "?id=" + product.id.to_s %>
             <% else %>
-              <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + p.id.to_s %>
+              <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + product.id.to_s %>
             <% end %>
           </div>
           </div>
           <div class="column prod-col">
-          <p class="card-text"><%= p.subcategory.name + " " + p.category.name %> </p>
+          <p class="card-text"><%= product.subcategory.name + " " + product.category.name %> </p>
 
           <% if current_user != nil %>
-            <% if is_wished(p.id) != nil %>
-              <%= button_to "❤️", wishlist_path(:id => is_wished(p.id).id), :method => :delete , class:"btn btn-danger" %>
+            <% if is_wished(product.id) != nil %>
+              <%= button_to "❤️", wishlist_path(:id => is_wished(product.id).id), :method => :delete , class:"btn btn-danger" %>
             <% else %>
               <%= form_with(model: @wishlist, :as => :post, :url => wishlists_path) do |form| %>
-                <%= form.hidden_field :product_id, :value => p.id %>
+                <%= form.hidden_field :product_id, :value => product.id %>
                 <%= form.submit "❤️", class:"btn btn-success" %>
               <% end %>
             <% end %>
           <% end %>
-                    <p class="card-text">PRIX : <%= p.price %> CHF</p>
+                    <p class="card-text">PRIX : <%= product.price %> CHF</p>
           </div>
           </div>
           <%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>
-            <% if p.quantity > 0%>
-              <%= form.select :quantity, options_for_select(1..product_quantity_cart(session_cart, p.id)), class:"form-select" %>
+            <% if product.quantity > 0%>
+              <%= form.select :quantity, options_for_select(1..product_quantity_cart(session_cart, product.id)), class:"form-select" %>
             <% else %>
               <%= form.select :quantity, options_for_select(1..100), class:"form-select" %>
             <% end %>
-            <%= form.hidden_field :product_id, :value => p.id %>
-            <% if p.date > Date.today %>
+            <%= form.hidden_field :product_id, :value => product.id %>
+            <% if product.date > Date.today %>
               <%= form.submit "Précommander", class:"btn btn-warning" %>
-            <% elsif p.quantity > 0 %>
+            <% elsif product.quantity > 0 %>
               <%= form.submit "Ajouter au panier", class:"btn btn-primary" %>
-            <% elsif p.available %>
+            <% elsif product.available %>
               <%= form.submit "Sur commande", class:"btn btn-warning" %>
             <% end %>
           <% end %>

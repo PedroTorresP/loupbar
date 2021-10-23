@@ -2,20 +2,20 @@ class BoutiqueController < ApplicationController
 
     # GET /products or /products.json
     def index
-      @products = Product.all.select { |p| p.available || p.quantity > 0  }
+      @products = Product.all.select { |product| product.available || product.quantity > 0  }
       categoriesName = {}
       subcategoriesName = {}
       categoriesName['tous'] = 0
       subcategoriesName['tous'] = 0
-      Category.all.each do |c|
-        if c.available
-          categoriesName[c.name] = c.id
+      Category.all.each do |category|
+        if category.available
+          categoriesName[category.name] = category.id
         end
       end
       @categories = categoriesName
-      Subcategory.all.each do |c|
-        if c.available
-          subcategoriesName[c.name] = c.id
+      Subcategory.all.each do |subcategory|
+        if subcategory.available
+          subcategoriesName[subcategory.name] = subcategory.id
         end
       end
       @subcategories = subcategoriesName

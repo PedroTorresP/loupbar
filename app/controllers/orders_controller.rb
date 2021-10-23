@@ -7,19 +7,19 @@ class OrdersController < ApplicationController
     @orders = Order.all
 
     if request.query_parameters[:customer_name] != nil
-      @orders = @orders.select { |o| (o.user.first_name.downcase+" "+o.user.last_name.downcase).include? request.query_parameters[:customer_name].downcase  }
+      @orders = @orders.select { |order| (order.user.first_name.downcase+" "+order.user.last_name.downcase).include? request.query_parameters[:customer_name].downcase  }
 
     end
     if request.query_parameters[:order_number] != nil && request.query_parameters[:order_number] != ""
-      @orders = @orders.select { |o| o.id == request.query_parameters[:order_number].to_i  }
+      @orders = @orders.select { |order| order.id == request.query_parameters[:order_number].to_i  }
     end
   end
 
   # GET /orders/1 or /orders/1.json
   def show
     total = 0
-    @order.buys.each do |b|
-      total += b.quantity * b.product.price
+    @order.buys.each do |buy|
+      total += buy.quantity * buy.product.price
     end
     @totalOrder = total
     @totalOrderDiscount = total.to_s.to_d - @order.discount.to_s.to_d

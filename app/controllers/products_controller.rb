@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     @products = Product.all.reverse()
 
     if request.query_parameters[:query] != nil
-      @products = @products.select { |p| p.name.downcase.include? request.query_parameters[:query].downcase  }
+      @products = @products.select { |product| product.name.downcase.include? request.query_parameters[:query].downcase  }
 
     end
     case request.query_parameters[:tri]
@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
     end
 
     if request.query_parameters[:low_stock] != nil
-      @products = Product.all.select { |p| p.quantity.to_i < p.min_stock.to_i && p.available  }
+      @products = Product.all.select { |product| product.quantity.to_i < product.min_stock.to_i && product.available  }
 
     end
   end
@@ -38,15 +38,15 @@ class ProductsController < ApplicationController
     @product.available = true
     categoriesName = {}
     subcategoriesName = {}
-    Category.all.each do |c|
-      if c.available
-        categoriesName[c.name] = c.id
+    Category.all.each do |category|
+      if category.available
+        categoriesName[category.name] = category.id
       end
     end
     @categories = categoriesName
-    Subcategory.all.each do |c|
-      if c.available
-        subcategoriesName[c.name] = c.id
+    Subcategory.all.each do |subcategory|
+      if subcategory.available
+        subcategoriesName[subcategory.name] = subcategory.id
       end
     end
     @subcategories = subcategoriesName
@@ -56,15 +56,15 @@ class ProductsController < ApplicationController
   def edit
     categoriesName = {}
     subcategoriesName = {}
-    Category.all.each do |c|
-      if c.available
-        categoriesName[c.name] = c.id
+    Category.all.each do |category|
+      if category.available
+        categoriesName[category.name] = category.id
       end
     end
     @categories = categoriesName
-    Subcategory.all.each do |c|
-      if c.available
-        subcategoriesName[c.name] = c.id
+    Subcategory.all.each do |subcategory|
+      if subcategory.available
+        subcategoriesName[subcategory.name] = subcategory.id
       end
     end
     @subcategories = subcategoriesName
