@@ -1,0 +1,23 @@
+<div class="card-body">
+  Choix de paiement : Paypal
+  <%= image_tag("paypalcard.png", class:"boutique-img")%>
+  <strong>Paypal ou carte de crédit (frais 3,3% + 0,45CHF)</strong><br>
+  Total après frais : <%= order_total(@order).to_d * 1.033 + 0.45  %>
+  <div class="card-body">
+    <strong>Changer de méthode de paiement</strong>
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <%= image_tag("store.png", class:"boutique-img")%>
+        Magasin
+      </div>
+      <div class="col-12 col-md-4">
+        <%= image_tag("twint.png", class:"boutique-img")%>
+        Twint
+      </div>
+      <div class="col-12 col-md-4">
+        <%= image_tag("bank.png", class:"boutique-img")%>
+        Virement bancaire
+      </div>
+    </div>
+  </div>
+</div>

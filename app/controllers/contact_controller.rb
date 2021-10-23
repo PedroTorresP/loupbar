@@ -4,7 +4,7 @@ class ContactController < ApplicationController
 
   def send_mail
     p '-------------------------------------------------------------'
-    p params[:message]
+    #p params[:message]
     ContactMailer.with(order: 'abc').contact.deliver_later
     redirect_to root_path
   end

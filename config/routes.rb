@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'compte/commandes_paiement'
   resources :subcategories
   resources :customisations
   get 'compte/wishlist'

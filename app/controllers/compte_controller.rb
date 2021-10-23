@@ -13,6 +13,10 @@ class CompteController < ApplicationController
     @user = User.all.find(current_user.id)
   end
 
+  def commandes_paiement
+    @order = Order.all.find_by_id(request.query_parameters[:id])
+  end
+
   def wishlist
     @wishlist = Wishlist.all.find_all{ |wish| wish.user_id == current_user.id}
     p @wishlist

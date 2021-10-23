@@ -10,7 +10,7 @@
       <a class="nav-link active" aria-current="page"  href=<%= compte_commandes_path %> >Commandes</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href=compte_evenements_path >Évènements</a>
+      <a class="nav-link" href=<%= compte_evenements_path %> >Évènements</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href=<%= compte_wishlist_path %>>Liste d'envies</a>
@@ -41,7 +41,12 @@
         <% else %>
           Retrait au magasin
         <% end %><br>
-        <strong>Paiement: </strong><%= @commande.payment %><br>
+        <div class="compte-paiement">
+          <strong>Paiement: </strong><%= @commande.payment %><br>
+          <% if @commande.is_paid == 'attente' %>
+            <%= link_to 'payer', compte_commandes_paiement_path + '?id=' + @commande.id.to_s, class:"btn btn-secondary" %>
+          <% end %>
+        </div>
         <strong>Etat du paiement: </strong>
         <%= @commande.is_paid %><br>
         <strong>Etat de la commande: </strong>

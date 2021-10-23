@@ -1,0 +1,49 @@
+<div class="card-body">
+  Choix de paiement : Virement bancaire
+  <%= image_tag("bank.png", class:"boutique-img")%>
+  Pour le virement veuillez indiquez le numéro de commande dans le libellé: Commande <%= @order.id.to_s%> <br>
+  Voici les informations pour effectuer le virement.
+  <div class="card-text">
+    <br>
+    <strong>Votre IBAN (format électronique)</strong><br>
+    CH5000767000S54963150<br>
+    <br>
+    <strong>Votre IBAN (format papier)</strong><br>
+    IBAN CH50 00767 000S 5496 3150<br>
+    <br>
+    <strong>Adresse bancaire</strong><br>
+    Banque Cantonale Vaudoise<br>
+    Place St-François 14, CP 300<br>
+    1002 Lausanne<br>
+    <br>
+    <strong>Clearing National</strong><br>
+    767<br>
+    <br>
+    <strong>SWIFT/BIC</strong><br>
+    BCVLCH2LXXX<br>
+    <br>
+    <strong>CCP</strong><br>
+    10-725-4<br>
+    <br>
+    <strong>Après avoir effectué le virement veuillez cliquer sur le bouton 'payé' pour notifier la boutique</strong>
+    <br>
+    <%= button_to 'payé', root_path, class:"btn btn-warning" %>
+  </div>
+  <div class="card-body">
+    <strong>Changer de méthode de paiement</strong>
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <%= image_tag("store.png", class:"boutique-img")%>
+        Magasin
+      </div>
+      <div class="col-12 col-md-4">
+        <%= image_tag("paypalcard.png", class:"boutique-img")%>
+        Paypal ou carte de crédit <strong>(frais 3,3% + 0,45CHF)</strong>
+      </div>
+      <div class="col-12 col-md-4">
+        <%= image_tag("twint.png", class:"boutique-img")%>
+        Twint
+      </div>
+    </div>
+  </div>
+</div>
