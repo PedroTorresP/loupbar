@@ -1,3 +1,12 @@
+<div class="card" >
+  <div class="card-body">
+    <%= form_with url: new_participant_path, method: :get do |formfilter| %>
+      <%= formfilter.text_field :query, placeholder:"Chercher par nom" %>
+      <%= formfilter.hidden_field :event, value: request.query_parameters[:event] %>
+      <%= formfilter.submit "Filtrer", class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 <%= form_with(model: participant) do |form| %>
   <% if participant.errors.any? %>
     <div id="error_explanation">
@@ -9,11 +18,11 @@
       </ul>
     </div>
   <% end %>
-  <div class="card>
+  <div class="card">
     <ul class="list-group list-group-flush">
       <li class="list-group-item"><strong>Utilisateur:</strong> <%= form.select :user_id, @users, {}, class:"form-select" %></li>
       <li class="list-group-item"><strong>Payé?:</strong> <%= form.check_box :is_paid, class:"form-check-input" %></li>
-      <li class="list-group-item"> <%= form.hidden_field :event_id, class:"form-control" %></li>
+      <li class="list-group-item"> <%= form.hidden_field :event_id, value: request.query_parameters[:event], class:"form-control" %></li>
     </ul>
     <br>
     <%= form.submit "Valider", class:"btn btn-dark"  %>

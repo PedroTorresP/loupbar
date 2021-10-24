@@ -15,7 +15,12 @@ class BuysController < ApplicationController
   def new
     @buy = Buy.new
     @buy.order_id = request.query_parameters[:order]
-    @products = Product.all.collect { |product| [product.name , product.id] }
+    if request.query_parameters[:query] != nil
+      @products = Product.all.select { |product| I18n.transliterate(product.name).downcase.include? I18n.transliterate(request.query_parameters[:query]).downcase  }
+    else
+      @products = Product.all
+    end
+    @products = @products.collect { |product| [product.name.to_s + ' - ' + product.quantity.to_s + ' disponible', product.id] }
   end
 
   # GET /buys/1/edit
@@ -25,7 +30,9 @@ class BuysController < ApplicationController
   # POST /buys or /buys.json
   def create
     @buy = Buy.new(buy_params)
-
+    @product = @buy.product
+    @product.quantity -= @buy.quantity
+    @product.save
     redirect_link = orders_path + "/" + @buy.order_id.to_s
     respond_to do |format|
       if @buy.save

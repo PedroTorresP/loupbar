@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     @products = Product.all.reverse()
 
     if request.query_parameters[:query] != nil
-      @products = @products.select { |product| product.name.downcase.include? request.query_parameters[:query].downcase  }
+      @products = @products.select { |product| I18n.transliterate(product.name).downcase.include? I18n.transliterate(request.query_parameters[:query]).downcase  }
 
     end
     case request.query_parameters[:tri]

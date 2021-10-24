@@ -12,7 +12,7 @@ class EvenementsController < ApplicationController
       event.date.month == request.query_parameters[:month].to_i
     end
     if request.query_parameters[:name] != nil && request.query_parameters[:name] != ""
-      @events = Event.all.select { |event| event.name.downcase.include? request.query_parameters[:name].downcase  }
+      @events = Event.all.select { |event| I18n.transliterate(event.name).downcase.include? I18n.transliterate(request.query_parameters[:name]).downcase  }
 
     end
 

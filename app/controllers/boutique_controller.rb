@@ -21,7 +21,7 @@ class BoutiqueController < ApplicationController
       @subcategories = subcategoriesName
 
       if request.query_parameters[:query].to_s.length > 0
-        @products = @products.select { |p| p.name.downcase.include? request.query_parameters[:query].downcase  }
+        @products = @products.select { |p| I18n.transliterate(p.name).downcase.include? I18n.transliterate(request.query_parameters[:query]).downcase  }
       end
       if request.query_parameters[:category].to_i > 0
         @products = @products.select { |p| p.category_id == request.query_parameters[:category].to_i  }

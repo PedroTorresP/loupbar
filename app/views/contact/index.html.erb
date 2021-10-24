@@ -1,26 +1,24 @@
 <h1>Contact</h1>
-<form>
-  <div class="card">
-    <div class="card-body">
-      <%= form_with(:as => :post, :url => contact_send_mail_path) do |form| %>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <% if user_signed_in? %>
-            <%= form.text_field :email, class:"form-control",  value:User.all.find(current_user.id).email, required:true  %>
-          <% else %>
-            <%= form.text_field :email, class:"form-control", required:true  %>
-          <% end %>
-        </div>
-        <div class="mb-3">
-          <label for="sujet" class="form-label">Sujet</label>
-          <%= form.text_field :subject, class:"form-control", required:true %>
-        </div>
-        <div class="mb-3">
-          <label for="message" class="form-label">Message</label>
-          <%= form.text_area :message, class:"form-control", required:true %>
-        </div>
-        <%= form.submit "Envoyer", data: { confirm: 'Voulez-vous vous envoyer ?' } , class:"btn btn-primary" %>
-      <% end %>
-    </div>
+<div class="card">
+  <div class="card-body">
+    <%= form_with(:as => :post, :url => contact_send_mail_path) do |form| %>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <% if user_signed_in? %>
+          <%= form.text_field :email, class:"form-control",  value:User.all.find(current_user.id).email, required:true  %>
+        <% else %>
+          <%= form.text_field :email, class:"form-control", required:true  %>
+        <% end %>
+      </div>
+      <div class="mb-3">
+        <label for="sujet" class="form-label">Sujet</label>
+        <%= form.text_field :subject, class:"form-control", required:true %>
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <%= form.text_area :message, class:"form-control", required:true %>
+      </div>
+      <%= form.submit "Envoyer", data: { confirm: 'Voulez-vous vous envoyer ?' } , class:"btn btn-primary" %>
+    <% end %>
   </div>
-</form>
+</div>
