@@ -4,18 +4,18 @@
     <div class="row boutique-filter-row">
     <div class="col-12 col-md-3">
       <%= form.label :tri, "Trier:", class:"form-label" %>
-      <%= form.select :tri, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
+      <%= form.select :tri, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]),selected:request.query_parameters[:tri], class:"form-select" %>
       </div>
     <div class="col-12 col-md-3">
             <%= form.label :category, "Cagétorie:", class:"form-label" %>
-      <%= form.select :category, @categories, class:"form-select" %>
+      <%= form.select :category, @categories,selected:request.query_parameters[:category], class:"form-select" %>
 </div>
     <div class="col-12 col-md-3">
       <%= form.label :subcategory, "Sous-catégorie:", class:"form-label" %>
-      <%= form.select :subcategory, @subcategories, class:"form-select" %>
+      <%= form.select :subcategory, @subcategories,selected:request.query_parameters[:subcategory], class:"form-select" %>
     </div>
     <div class="col-12 col-md-3">
-      <%= form.text_field :query, placeholder:"Chercher par nom" %>
+      <%= form.text_field :query, placeholder:"Chercher par nom", value:request.query_parameters[:query] %>
       <%= form.submit "Filtrer" , class:"btn btn-primary" %>
       </div>
       </div>
