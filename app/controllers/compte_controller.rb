@@ -20,6 +20,9 @@ class CompteController < ApplicationController
   def update
     @order = Order.find(compte_params['id'])
     @order.update(compte_params)
+    if compte_params[:is_paid] == 'validation'
+      OrderMailer.with(order: @order).order_payment_notify.deliver_later
+    end
     redirect_back(fallback_location: root_path)
   end
 

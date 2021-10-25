@@ -7,6 +7,7 @@
       <%= form.text_field :order_number, placeholder:"Numéro commande" %>
       <%= form.text_field :customer_name, placeholder:"Nom client" %>
       <%= form.submit "Filtrer", class:"btn btn-primary" %>
+      <%= link_to "En cours", orders_path + "?notfinished=true",  class:"btn btn-primary" %>
     <% end %>
   </div>
 </div>

@@ -6,7 +6,7 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><strong>Id:</strong> <%= @product.id %></li>
     <li class="list-group-item"><strong>Nom:</strong> <%= @product.name %></li>
-    <li class="list-group-item"><strong>Date de sortie:</strong> <%= @product.date %></li>
+    <li class="list-group-item"><strong>Date de sortie:</strong> <%= @product.date.strftime('%d/%m/%Y') %></li>
     <li class="list-group-item"><strong>Cagétorie:</strong> <%= @product.category.name %></li>
     <li class="list-group-item"><strong>Sous-cagétorie:</strong> <%= @product.subcategory.name %></li>
     <li class="list-group-item"><strong>Description:</strong>

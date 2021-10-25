@@ -13,10 +13,16 @@
       </div>
       <div class="column">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Date de sortie:</strong> <%= @product.date %></li>
+          <li class="list-group-item"><strong>Date de sortie:</strong> <%= @product.date.strftime('%d/%m/%Y') %></li>
           <li class="list-group-item"><strong>Catégorie:</strong> <%= @product.category.name %></li>
           <li class="list-group-item"><strong>Sous-catégorie:</strong> <%= @product.subcategory.name %></li>
-          <li class="list-group-item"><strong>Quantité disponible:</strong> <%= @product.quantity %></li>
+          <li class="list-group-item"><strong>Quantité disponible:</strong>
+            <% if @product.quantity < 0 %>
+              0 
+            <% else %>
+              <%= @product.quantity %>
+            <% end %>
+          </li>
           <li class="list-group-item"><strong>Prix:</strong> <%= @product.price %> CHF</li>
           <li class="list-group-item"><%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>
               <% if @product.quantity > 0%>

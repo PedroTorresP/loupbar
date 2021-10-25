@@ -52,7 +52,7 @@
           <% if @order.is_ready == 'prête' %>
             <%= form.submit "commande prête", class:"btn btn-warning" %>
           <% else %>
-            <%= form.submit "commande prête", class:"btn btn-primary" %>
+            <%= form.submit "commande prête", data: { confirm: 'Le client sera notifié êtes vous certain ?' }, class:"btn btn-primary" %>
           <% end %>
         <% end %>
         <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>
@@ -60,7 +60,7 @@
           <% if @order.is_ready == 'envoyée' %>
             <%= form.submit "commande envoyée", class:"btn btn-warning" %>
           <% else %>
-            <%= form.submit "commande envoyée", class:"btn btn-primary" %>
+            <%= form.submit "commande envoyée", data: { confirm: 'Le client sera notifié êtes vous certain ?' }, class:"btn btn-primary" %>
           <% end %>
         <% end %>
         <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>

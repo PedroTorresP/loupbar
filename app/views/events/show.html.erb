@@ -8,6 +8,7 @@
     <li class="list-group-item"><strong>Description:</strong> 
       <textarea class="form-control" disabled><%= @event.description %></textarea>
     </li>
+    <li class="list-group-item"><strong>Date:</strong> <%= @event.date.strftime('%d/%m/%Y') %></li>
     <li class="list-group-item"><strong>Prix:</strong> <%= @event.price %></li>
     <li class="list-group-item"><strong>Places total:</strong> <%= @event.places %></li>
     <li class="list-group-item"><strong>Places restantes:</strong> <%= @event.places - @event.participants.length %></li>

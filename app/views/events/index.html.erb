@@ -25,7 +25,7 @@
       <tr>
         <td><%= event.id %></td>
         <td><%= event.name %></td>
-        <td><%= event.date %></td>
+        <td><%= event.date.strftime('%d/%m/%Y') %></td>
         <td><%= event.description %></td>
         <td><%= event.price %></td>
         <td><%= event.places %></td>

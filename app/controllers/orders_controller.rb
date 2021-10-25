@@ -13,6 +13,10 @@ class OrdersController < ApplicationController
     if request.query_parameters[:order_number] != nil && request.query_parameters[:order_number] != ""
       @orders = @orders.select { |order| order.id == request.query_parameters[:order_number].to_i  }
     end
+
+    if request.query_parameters[:notfinished] != nil
+      @orders = @orders.select { |order| order.is_ready != 'terminée'  }
+    end
   end
 
   # GET /orders/1 or /orders/1.json
@@ -64,6 +68,11 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
+    if order_params[:is_ready] == 'prête'
+      OrderMailer.with(order: @order).order_ready.deliver_later
+    elsif order_params[:is_ready] == 'envoyée'
+      OrderMailer.with(order: @order).order_sent.deliver_later
+    end
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order, notice: "La commande a été modifiée." }

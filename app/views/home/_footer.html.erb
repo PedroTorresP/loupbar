@@ -3,7 +3,7 @@
 <br>
 <br>
 <div class="row footer-row text-center align-items-center">
-  <div class="col-12 footer-col col-md-4">
+  <div class="col-12 footer-col col-md-3">
     <h4>Informations</h4>
     Le Loupbar<br>
     Route de praz repos 26,<br>
@@ -15,7 +15,7 @@
     <%= link_to 'Conditions générales', information_conditions_path %><br>
     <%= link_to 'Politique de confidentialité', information_confidentialite_path %>
   </div>
-  <div class="col-12 footer-col col-md-4">
+  <div class="col-12 footer-col col-md-3">
     <div class="row footer-payment-row justify-content-md-center">
       <h4>Paiements disponible</h4>
       <div class="col-3 col-md-2">
@@ -31,5 +31,8 @@
         <%= image_tag("bank.png", class:"boutique-img")%>
       </div>
     </div>
+  </div>
+    <div class="col-12 footer-col col-md-2">
+    <%= link_to image_tag("logocomplet.png", class:"boutique-img"), root_path %>
   </div>
 </div>

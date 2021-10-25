@@ -8,11 +8,9 @@ class ContactMailer < ApplicationMailer
   layout false
 
   def contact
-    @sender = 'eddy@malou.com'
-    @subject = 'alaide please'
-    @content = 'Bonjour
-    aidez moi svp
-    pls'
+    @sender = params[:sender]
+    @subject = params[:subject]
+    @content = params[:message]
 
     mail to: 'loupbar@email.com',from: @sender,  subject: @subject
   end
