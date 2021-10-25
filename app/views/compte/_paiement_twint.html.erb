@@ -1,22 +1,42 @@
 <div class="card-body">
   Choix de paiement : Twint
   <%= image_tag("twint.png", class:"boutique-img")%>
-  à implémenter
-  <div class="card-body">
-    <strong>Changer de méthode de paiement</strong>
-    <div class="row">
-      <div class="col-12 col-md-4">
-        <%= image_tag("store.png", class:"boutique-img")%>
-        Magasin
-      </div>
-      <div class="col-12 col-md-4">
-      <%= image_tag("paypalcard.png", class:"boutique-img")%>
-        Paypal ou carte de crédit <strong>(frais 3,3% + 0,45CHF)</strong>
-      </div>
-      <div class="col-12 col-md-4">
-        <%= image_tag("bank.png", class:"boutique-img")%>
-        Virement bancaire
-      </div>
+  <div class="card-text">
+    Pour le effectuer un paiement via Twint envoyez l'argent au numéro de téléphone de la boutique +41787219296 et indiquez dans le libellé: Commande <%= @order.id.to_s%> <br>
+    <br>
+    <strong>Après avoir effectué le virement veuillez cliquer sur le bouton 'payé' pour notifier la boutique</strong>
+    <br>
+    <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
+      <%= formB.hidden_field :is_paid, :value => 'validation' %>
+      <%= formB.hidden_field :id, :value => @order.id %>
+      <%= formB.submit "payé", data: { confirm: 'Vous ne pourrez plus changer de méthode de paiement êtes vous certain de vouloir confirmer le paiement ?' }, class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+<div class="card-body">
+  <strong>Changer de méthode de paiement</strong>
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
+        <%= formB.hidden_field :payment, :value => 'boutique' %>
+        <%= formB.hidden_field :id, :value => @order.id %>
+        <%= image_submit_tag "store.png", class:"boutique-img" %>
+      <% end %>
+    </div>
+    <div class="col-12 col-md-4">
+      <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
+        <%= formB.hidden_field :payment, :value => 'paypal' %>
+        <%= formB.hidden_field :id, :value => @order.id %>
+        <%= image_submit_tag "paypalcard.png", class:"boutique-img" %>
+      <% end %>
+    </div>
+    <div class="col-12 col-md-4">
+      <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
+        <%= formB.hidden_field :payment, :value => 'virement' %>
+        <%= formB.hidden_field :id, :value => @order.id %>
+        <%= image_submit_tag "bank.png", class:"boutique-img" %>
+      <% end %>
     </div>
   </div>
+</div>
 </div>

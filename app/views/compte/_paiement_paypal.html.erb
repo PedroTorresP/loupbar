@@ -2,22 +2,58 @@
   Choix de paiement : Paypal
   <%= image_tag("paypalcard.png", class:"boutique-img")%>
   <strong>Paypal ou carte de crédit (frais 3,3% + 0,45CHF)</strong><br>
-  Total après frais : <%= order_total(@order).to_d * 1.033 + 0.45  %>
+  Total après frais : <%= ((order_total(@order).to_d * 1.033 + 0.45) * 20).round / 20.0  %>
+  <div id="paypal-button-container"></div>
   <div class="card-body">
     <strong>Changer de méthode de paiement</strong>
     <div class="row">
       <div class="col-12 col-md-4">
-        <%= image_tag("store.png", class:"boutique-img")%>
-        Magasin
+        <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
+          <%= formB.hidden_field :payment, :value => 'boutique' %>
+          <%= formB.hidden_field :id, :value => @order.id %>
+          <%= image_submit_tag "store.png", class:"boutique-img" %>
+        <% end %>
       </div>
       <div class="col-12 col-md-4">
-        <%= image_tag("twint.png", class:"boutique-img")%>
-        Twint
+        <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
+          <%= formB.hidden_field :payment, :value => 'twint' %>
+          <%= formB.hidden_field :id, :value => @order.id %>
+          <%= image_submit_tag "twint.png", class:"boutique-img" %>
+        <% end %>
       </div>
       <div class="col-12 col-md-4">
-        <%= image_tag("bank.png", class:"boutique-img")%>
-        Virement bancaire
+        <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
+          <%= formB.hidden_field :payment, :value => 'virement' %>
+          <%= formB.hidden_field :id, :value => @order.id %>
+          <%= image_submit_tag "bank.png", class:"boutique-img" %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+<script
+    id="paypal-sdk-js-src"
+    src="https://www.paypal.com/sdk/js?currency=CHF&client-id=AbtznLD2yMM_ID5OHpQGXzlX_ycEUW9ElbSPnaZ_gokR61TtCgBF4LeoMUP_R0PqR5DrhGqkoZIU0yX7"
+    data-sdk-integration-source="button-factory"
+  ></script>
+<script>
+  paypal.Buttons({
+    env: 'sandbox', // Valid values are sandbox and live.
+    createOrder: function(data, actions) {
+    // This function sets up the details of the transaction, including the amount and line item details.
+    return actions.order.create({
+      purchase_units: [{
+        description: 'Commande au Loupbar : ' + <%= @order.id.to_s %>,
+        amount: {
+          value: <%= ((order_total(@order).to_d * 1.033 + 0.45) * 20).round / 20.0 %>
+        }
+      }]
+    });
+  },
+  onApprove: async (data, actions) => {
+    const order = await actions.order.capture();
+    <%= order_paid(@order.id) %>;
+    window.location.reload();
+  }
+    }).render('#paypal-button-container');
+</script>

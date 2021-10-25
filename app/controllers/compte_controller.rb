@@ -17,9 +17,18 @@ class CompteController < ApplicationController
     @order = Order.all.find_by_id(request.query_parameters[:id])
   end
 
+  def update
+    @order = Order.find(compte_params['id'])
+    @order.update(compte_params)
+    redirect_back(fallback_location: root_path)
+  end
+
   def wishlist
     @wishlist = Wishlist.all.find_all{ |wish| wish.user_id == current_user.id}
-    p @wishlist
+  end
+
+  def compte_params
+    params.require(:order).permit(:id, :payment, :is_paid)
   end
 
 end

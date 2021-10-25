@@ -19,6 +19,19 @@
   <div class="card-body text-center">
     <h2><%= "Paiement de la commande numéro " + @order.id.to_s %></h2>
     <h4></strong>Montant à payer : <%= order_total(@order).to_d  %> CHF</strong></h4>
+
+<% if @order.is_paid == 'attente' %>
+  <% if @order.payment == 'paypal' %>
     <%= render 'paiement_paypal' %>
-  </div>
+  <% elsif @order.payment == 'boutique' %>
+    <%= render 'paiement_magasin' %>
+  <% elsif @order.payment == 'twint' %>
+    <%= render 'paiement_twint' %>
+  <% elsif @order.payment == 'virement' %>
+    <%= render 'paiement_bank' %>
+  <% end %>
+<% else %>
+  <h3>La commande a été payée</h3>
+<% end %>
+</div>
 </div>

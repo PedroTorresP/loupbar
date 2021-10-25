@@ -6,16 +6,25 @@
     <strong>Changer de méthode de paiement</strong>
     <div class="row">
       <div class="col-12 col-md-4">
-      <%= image_tag("paypalcard.png", class:"boutique-img")%>
-        Paypal ou carte de crédit <strong>(frais 3,3% + 0,45CHF)</strong>
+        <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
+          <%= formB.hidden_field :payment, :value => 'paypal' %>
+          <%= formB.hidden_field :id, :value => @order.id %>
+          <%= image_submit_tag "paypalcard.png", class:"boutique-img" %>
+        <% end %>
       </div>
       <div class="col-12 col-md-4">
-      <%= image_tag("twint.png", class:"boutique-img")%>
-        Twint
+        <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
+          <%= formB.hidden_field :payment, :value => 'twint' %>
+          <%= formB.hidden_field :id, :value => @order.id %>
+          <%= image_submit_tag "twint.png", class:"boutique-img" %>
+        <% end %>
       </div>
       <div class="col-12 col-md-4">
-      <%= image_tag("bank.png", class:"boutique-img")%>
-        Virement bancaire
+        <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
+          <%= formB.hidden_field :payment, :value => 'virement' %>
+          <%= formB.hidden_field :id, :value => @order.id %>
+          <%= image_submit_tag "bank.png", class:"boutique-img" %>
+        <% end %>
       </div>
     </div>
   </div>

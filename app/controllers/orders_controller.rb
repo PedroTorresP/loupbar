@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
     @order.is_paid = 2
     @order.is_ready = 3
     @lst_payment = ['boutique','twint','paypal','virement']
-    @lst_shipping = ['retrait','poste']
+    @lst_shipping = ['magasin','poste']
     @lst_is_paid = ['attente','validation','payée']
     @lst_is_ready = ['crée','prête','envoyée','terminée']
   end
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     @lst_payment = ['boutique','twint','paypal','virement']
-    @lst_shipping = ['retrait','poste']
+    @lst_shipping = ['magasin','poste']
     @lst_is_paid = ['attente','validation','payée']
     @lst_is_ready = ['crée','prête','envoyée','terminée']
   end
