@@ -50,6 +50,18 @@ class ProductsController < ApplicationController
       end
     end
     @subcategories = subcategoriesName
+
+    if request.query_parameters[:id] != nil
+      @copyProduct = Product.find_by_id(request.query_parameters[:id])
+      @product.name = @copyProduct.name
+      @product.description = @copyProduct.description
+      @product.category_id = @copyProduct.category_id
+      @product.subcategory_id = @copyProduct.subcategory_id
+      @product.date = @copyProduct.date
+      @product.price = @copyProduct.price
+      @product.available = @copyProduct.available
+    end
+
   end
 
   # GET /products/1/edit
