@@ -1,5 +1,5 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="card text-dark bg-light mb-3">
+  <div class="card text-dark bg-light mb-3 login-card">
     <div class="card-header">
       <h2>Connection</h2>
     </div>
@@ -7,7 +7,7 @@
       <div class="field form-group">
         <%= f.email_field :email, class:"form-control", autofocus: true, autocomplete: "email", placeholder:"Email" %>
       </div>
-    </br>
+    <br>
     <div class="field form-group">
       <%= f.password_field :password, class:"form-control", autocomplete: "current-password", placeholder:"Mot de passe" %>
     </div>

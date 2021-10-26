@@ -38,11 +38,6 @@
         <li class="navbar-nav">
           <%= link_to 'Panier ('+sub_total(session_cart).to_s+' CHF)', "/carts/show", class:"nav-link" %>
         </li>
-        <% if user_signed_in? %>
-          <% if User.all.find(current_user.id).is_admin %>
-            <%= link_to 'Admin', products_path, class:"btn btn-secondary" %>
-          <% end %>
-        <% end %>
       </div>
     </div>
   </div>
@@ -93,13 +88,6 @@
       <li class="navbar-nav">
         <%= link_to 'Panier ('+sub_total(session_cart).to_s+' CHF)', "/carts/show", class:"nav-link" %>
       </li>
-      <% if user_signed_in? %>
-        <% if User.all.find(current_user.id).is_admin %>
-          <div class="text-center">
-            <%= link_to 'Admin', products_path, class:"btn btn-secondary" %>
-          </div>
-        <% end %>
-      <% end %>
     </div>
   </div>
 </div>
