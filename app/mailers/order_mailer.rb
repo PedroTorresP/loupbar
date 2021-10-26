@@ -8,8 +8,6 @@ class OrderMailer < ApplicationMailer
   def order_created
     @order = params[:order]
     @buys = Buy.select { |buy| buy.order_id == @order.id}
-    p 'buys LIST------------------------------'
-    p @buys
     @total = order_total(@order)
 
     mail to: @order.user.email, subject: "Confirmation de la commande "+@order.id.to_s
@@ -17,7 +15,7 @@ class OrderMailer < ApplicationMailer
 
   def order_created_notify
     @order = params[:order]
-    @buys = Buy.all.select { |buy| buy.order_id == @order.id}
+    @buys = Buy.select { |buy| buy.order_id == @order.id}
     @total = order_total(@order)
 
     mail to: 'loupbar@email.com', subject: "Notification de création commande "+@order.id.to_s
@@ -31,7 +29,7 @@ class OrderMailer < ApplicationMailer
 
   def order_ready
     @order = params[:order]
-    @buys = Buy.all.select { |buy| buy.order_id == @order.id}
+    @buys = Buy.select { |buy| buy.order_id == @order.id}
     mail to: @order.user.email, subject: "Commande "+@order.id.to_s+" prête à être retirée"
   end
 

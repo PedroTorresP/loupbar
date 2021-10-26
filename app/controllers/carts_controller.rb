@@ -25,8 +25,7 @@ class CartsController < ApplicationController
     @order.is_ready = 0
     @order.user_id = @user.id
     @order.save
-    OrderMailer.with(order: @order).order_created.deliver_later
-    OrderMailer.with(order: @order).order_created_notify.deliver_later
+
 
     @cart.line_items.each do |item|
       @buy = Buy.new()
@@ -39,6 +38,8 @@ class CartsController < ApplicationController
       @product.quantity -= item.quantity
       @product.save
     end
+    OrderMailer.with(order: @order).order_created.deliver_later
+    OrderMailer.with(order: @order).order_created_notify.deliver_later
     redirect_to compte_commandes_detail_path + "?id=" + @order.id.to_s, notice: "La commande a été crée."
     session_cart.destroy
     session[:cart_id] = nil
