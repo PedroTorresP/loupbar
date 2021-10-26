@@ -8,6 +8,8 @@ class OrderMailer < ApplicationMailer
   def order_created
     @order = params[:order]
     @buys = Buy.all.select { |buy| buy.order_id == @order.id}
+    p 'buys LIST------------------------------'
+    p @buys
     @total = order_total(@order)
 
     mail to: @order.user.email, subject: "Confirmation de la commande "+@order.id.to_s
