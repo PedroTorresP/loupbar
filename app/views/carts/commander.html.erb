@@ -55,9 +55,9 @@
             </div>
           </div>
           <div class="col-6 col-md-3 text-center">
-            <%= link_to image_tag("card.png", class:"boutique-img"), carts_commander_path(:shipping => @shipping, :payment => 'virement'), :method => :get %>
+            <%= link_to image_tag("bank.png", class:"boutique-img"), carts_commander_path(:shipping => @shipping, :payment => 'virement'), :method => :get %>
             <div class=<%= check_order_selected(@payment,'virement') %>>
-              Carte de crédit
+              Virement bancaire
             </div>
           </div>
           <div class="col-6 col-md-3 text-center">

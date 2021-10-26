@@ -28,7 +28,7 @@
     <h3>Total du panier: <%= sub_total(@cart) %> CHF</h3>
     <br>
     <% if user_signed_in? %>
-      <%= link_to "Confirmer et acheter", carts_commander_path, class:"btn btn-primary" %>
+      <%= link_to "Confirmer et acheter", carts_commander_path+'?payment=boutique&shipping=magasin', class:"btn btn-primary" %>
     <% else %>
       <%= link_to "Veuillez vous connecter pour acheter", new_user_session_path, class:"btn btn-primary" %>
     <% end %>

@@ -32,6 +32,7 @@ class CartsController < ApplicationController
       @buy = Buy.new()
       @buy.order_id = @order.id
       @buy.product_id = item.product_id
+      @buy.price = item.product.price
       @buy.quantity = item.quantity
       @buy.save
       @product = Product.all.find_by_id(item.product_id)

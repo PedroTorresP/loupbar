@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
     belongs_to :user
-    has_many :buys
+    has_many :buys, dependent: :destroy
 
     enum payment: {
         boutique: 0,
@@ -24,6 +24,7 @@ class Order < ApplicationRecord
         crée: 0,
         prête: 1,
         envoyée:2,
-        terminée:3
+        terminée:3,
+        annulée:4
     }
 end

@@ -100,10 +100,22 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1 or /products/1.json
   def destroy
-    @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: "Le produit a été supprimé." }
-      format.json { head :no_content }
+    if @product.id != 1
+      @orders = Order.select {|order| order.product_id == @product.id}
+      @wishlist = Wishlist.select {|wish| wish.product_id == @product.id}
+      @orders.each do |order|
+        order.product_id = 1
+        order.save
+      end
+      @wishlist.each do |wish|
+        wish.product_id = 1
+        wish.save
+      end
+      @product.destroy
+      respond_to do |format|
+        format.html { redirect_to products_url, notice: "Le produit a été supprimé." }
+        format.json { head :no_content }
+      end
     end
   end
 

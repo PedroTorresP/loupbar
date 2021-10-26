@@ -36,5 +36,5 @@ Montant total de la commande:<%= @total  %> CHF
 
 Produit / Prix unitaire /  Quantité  /  Prix total
 <% @products.each do |buy| %>
-  <%= buy.product.name %> /  <%= buy.product.price %>  /  <%= buy.quantity %> / <%= buy.product.price * buy.quantity  %>
+  <%= buy.product.name %> /  <%= buy.price %>  /  <%= buy.quantity %> / <%= buy.price * buy.quantity  %>
 <% end %>

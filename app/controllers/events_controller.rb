@@ -53,10 +53,17 @@ class EventsController < ApplicationController
 
   # DELETE /events/1 or /events/1.json
   def destroy
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: "L'évènement a été supprimé." }
-      format.json { head :no_content }
+    if @event.id != 1
+      @participants = Participant.select{|participant| participant.event_id == @event.id }
+      @participants.each do |participant|
+        participant.event_id = 1
+        participant.save
+      end
+      @event.destroy
+      respond_to do |format|
+        format.html { redirect_to events_url, notice: "L'évènement a été supprimé." }
+        format.json { head :no_content }
+      end
     end
   end
 

@@ -50,10 +50,17 @@ class SubcategoriesController < ApplicationController
 
   # DELETE /subcategories/1 or /subcategories/1.json
   def destroy
-    @subcategory.destroy
-    respond_to do |format|
-      format.html { redirect_to subcategories_url, notice: "Subcategory was successfully destroyed." }
-      format.json { head :no_content }
+    if @subcategory.id != 1
+      @products = Product.select {|product| product.subcategory_id == @subcategory.id }
+      @products.each  do |product|
+        product.subcategory_id = 1
+        product.save
+      end
+      @subcategory.destroy
+      respond_to do |format|
+        format.html { redirect_to subcategories_url, notice: "Subcategory was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 

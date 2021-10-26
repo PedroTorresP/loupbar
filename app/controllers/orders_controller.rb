@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
     @lst_payment = ['boutique','twint','paypal','virement']
     @lst_shipping = ['magasin','poste']
     @lst_is_paid = ['attente','validation','payée']
-    @lst_is_ready = ['crée','prête','envoyée','terminée']
+    @lst_is_ready = ['crée','prête','envoyée','terminée','annulée']
   end
 
   # GET /orders/1/edit
@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
     @lst_payment = ['boutique','twint','paypal','virement']
     @lst_shipping = ['magasin','poste']
     @lst_is_paid = ['attente','validation','payée']
-    @lst_is_ready = ['crée','prête','envoyée','terminée']
+    @lst_is_ready = ['crée','prête','envoyée','terminée','annulée']
   end
 
   # POST /orders or /orders.json
@@ -72,6 +72,12 @@ class OrdersController < ApplicationController
       OrderMailer.with(order: @order).order_ready.deliver_later
     elsif order_params[:is_ready] == 'envoyée'
       OrderMailer.with(order: @order).order_sent.deliver_later
+    elsif order_params[:is_ready] == 'annulée'
+      @order.buys.each do |buy|
+        product = buy.product
+        product.quantity += buy.quantity
+        product.save
+      end
     end
     respond_to do |format|
       if @order.update(order_params)

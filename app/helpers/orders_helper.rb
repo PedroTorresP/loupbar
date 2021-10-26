@@ -2,7 +2,7 @@ module OrdersHelper
     def order_total(order)
         sum = 0
         order.buys.each do |buy|
-          sum+= buy.quantity * buy.product.price
+          sum+= buy.quantity * buy.price
         end
         if order.shipping
             sum += 7

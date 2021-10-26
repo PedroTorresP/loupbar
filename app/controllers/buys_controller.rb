@@ -31,6 +31,7 @@ class BuysController < ApplicationController
   def create
     @buy = Buy.new(buy_params)
     @product = @buy.product
+    @buy.price = @product.price
     @product.quantity -= @buy.quantity
     @product.save
     redirect_link = orders_path + "/" + @buy.order_id.to_s

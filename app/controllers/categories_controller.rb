@@ -51,10 +51,18 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1 or /categories/1.json
   def destroy
-    @category.destroy
-    respond_to do |format|
-      format.html { redirect_to categories_url, notice: "La catégorie a été supprimée." }
-      format.json { head :no_content }
+    if @category.id != 1
+      @products = Product.select {|product| product.category_id == @category.id }
+      @products.each  do |product|
+        product.category_id = 1
+        product.save
+      end
+      @category.destroy
+    
+      respond_to do |format|
+        format.html { redirect_to categories_url, notice: "La catégorie a été supprimée." }
+        format.json { head :no_content }
+      end
     end
   end
 
