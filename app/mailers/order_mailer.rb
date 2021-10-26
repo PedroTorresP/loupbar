@@ -30,6 +30,7 @@ class OrderMailer < ApplicationMailer
   def order_ready
     @order = params[:order]
     @buys = Buy.select { |buy| buy.order_id == @order.id}
+    @total = order_total(@order)
     mail to: @order.user.email, subject: "Commande "+@order.id.to_s+" prête à être retirée"
   end
 
@@ -44,7 +45,7 @@ class OrderMailer < ApplicationMailer
     order.buys.each do |buy|
       sum+= buy.quantity * buy.price
     end
-    if order.shipping
+    if order.shipping == 'poste'
         sum += 7
     end
     if order.discount

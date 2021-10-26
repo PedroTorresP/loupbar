@@ -4,7 +4,7 @@ module OrdersHelper
         order.buys.each do |buy|
           sum+= buy.quantity * buy.price
         end
-        if order.shipping
+        if order.shipping == 'poste'
             sum += 7
         end
         if order.discount
