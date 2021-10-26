@@ -9,7 +9,10 @@ class WishlistsController < ApplicationController
     end
 
     def destroy
-        Wishlist.all.find(params[:id]).destroy
+        @wishlist = Wishlist.all.find(params[:id])
+        if current_user.id == @wishlist.user_id
+            @wishlist.destroy
+        end
         redirect_back(fallback_location: root_path)
     end
 
@@ -17,4 +20,6 @@ class WishlistsController < ApplicationController
     def wishlist_params
         params.require(:wishlist).permit(:product_id)
     end
+  
+
 end

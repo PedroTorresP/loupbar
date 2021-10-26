@@ -1,5 +1,6 @@
 class CustomisationsController < ApplicationController
   before_action :set_customisation, only: %i[ show edit update destroy ]
+  before_action :authorize_admin
 
   # GET /customisations or /customisations.json
   def index
@@ -65,5 +66,9 @@ class CustomisationsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def customisation_params
       params.require(:customisation).permit(:name, :image, :value)
+    end
+
+    def authorize_admin
+      redirect_to(root_path) unless current_user && current_user.is_admin?
     end
 end

@@ -9,16 +9,19 @@ class CompteController < ApplicationController
 
   def commandes_detail
     @commande = Order.all.find_by_id(request.query_parameters[:id])
+    check_user(@commande.user_id)
     @produits = Buy.all.find_all { |buy| buy.order_id == @commande.id}
     @user = User.all.find(current_user.id)
   end
 
   def commandes_paiement
     @order = Order.all.find_by_id(request.query_parameters[:id])
+    check_user(@order.user_id)
   end
 
   def update
     @order = Order.find(compte_params['id'])
+    check_user(@order.user_id)
     @order.update(compte_params)
     if compte_params[:is_paid] == 'validation'
       OrderMailer.with(order: @order).order_payment_notify.deliver_later
@@ -32,6 +35,11 @@ class CompteController < ApplicationController
 
   def compte_params
     params.require(:order).permit(:id, :payment, :is_paid)
+  end
+
+  private
+  def check_user(user_id)
+    redirect_to(root_path) unless current_user.id == user_id
   end
 
 end

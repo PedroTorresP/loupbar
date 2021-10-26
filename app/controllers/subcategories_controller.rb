@@ -1,5 +1,6 @@
 class SubcategoriesController < ApplicationController
   before_action :set_subcategory, only: %i[ show edit update destroy ]
+  before_action :authorize_admin
 
   # GET /subcategories or /subcategories.json
   def index
@@ -74,4 +75,9 @@ class SubcategoriesController < ApplicationController
     def subcategory_params
       params.require(:subcategory).permit(:id, :name, :available)
     end
+
+    def authorize_admin
+      redirect_to(root_path) unless current_user && current_user.is_admin?
+    end
+
 end
