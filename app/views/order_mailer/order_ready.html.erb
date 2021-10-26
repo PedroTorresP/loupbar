@@ -55,7 +55,7 @@
     <tbody class="table-warning">
       <% @products.each do |buy| %>
         <tr >
-          <td><%= link_to buy.product.name, 'mettre adresse ici' + "/?id=" + buy.product.id.to_s %></td>
+          <td><%= buy.product.name %></td>
           <td><%= buy.price %></td>
           <td><%= buy.quantity %></td>
           <td><%= buy.price * buy.quantity  %></td>

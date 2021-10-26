@@ -8,7 +8,7 @@ class OrderMailer < ApplicationMailer
   def order_created
     @order = params[:order]
     @products = Buy.all.find_all { |buy| buy.order_id == @order.id}
-    @total = 1
+    @total = order_total(@order)
 
     mail to: @order.user.email, subject: "Confirmation de la commande "+@order.id.to_s
   end
@@ -16,7 +16,7 @@ class OrderMailer < ApplicationMailer
   def order_created_notify
     @order = params[:order]
     @products = Buy.all.find_all { |buy| buy.order_id == @order.id}
-    @total = 1
+    @total = order_total(@order)
 
     mail to: 'loupbar@email.com', subject: "Notification de création commande "+@order.id.to_s
   end
@@ -37,5 +37,19 @@ class OrderMailer < ApplicationMailer
     @order = params[:order]
 
     mail to: 'loupbar@email.com', subject: "La commande "+@order.id.to_s+" a été payée"
+  end
+
+  def order_total(order)
+    sum = 0
+    order.buys.each do |buy|
+      sum+= buy.quantity * buy.price
+    end
+    if order.shipping
+        sum += 7
+    end
+    if order.discount
+        sum -= order.discount
+    end
+    return sum
   end
 end
