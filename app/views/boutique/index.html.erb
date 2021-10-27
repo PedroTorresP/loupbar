@@ -4,7 +4,7 @@
     <div class="row boutique-filter-row">
     <div class="col-12 col-md-3">
       <%= form.label :tri, "Trier:", class:"form-label" %>
-      <%= form.select :tri, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]),selected:request.query_parameters[:tri], class:"form-select" %>
+      <%= form.select :tri, @tri,selected:request.query_parameters[:tri], class:"form-select" %>
       </div>
     <div class="col-12 col-md-3">
             <%= form.label :category, "Cagétorie:", class:"form-label" %>

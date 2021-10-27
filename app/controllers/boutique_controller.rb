@@ -5,8 +5,13 @@ class BoutiqueController < ApplicationController
       @products = Product.all.select { |product| product.available || product.quantity > 0  }
       categoriesName = {}
       subcategoriesName = {}
-      categoriesName['tous'] = 0
-      subcategoriesName['tous'] = 0
+      @tri = {}
+      @tri['Date décroissant'] = 0
+      @tri['Date croissant'] = 1
+      @tri['Prix décroissant'] = 2
+      @tri['Prix croissant'] = 3
+      categoriesName['Toutes'] = 0
+      subcategoriesName['Toutes'] = 0
       Category.all.each do |category|
         if category.available
           categoriesName[category.name] = category.id
@@ -30,14 +35,14 @@ class BoutiqueController < ApplicationController
         @products = @products.select { |p| p.subcategory_id == request.query_parameters[:subcategory].to_i  }
       end
       
-      case request.query_parameters[:tri]
-      when "Date décroissant"
+      case request.query_parameters[:tri].to_i
+      when 0
         @products = @products.sort_by(&:date).reverse
-      when "Date croissant"
+      when 1
         @products = @products.sort_by(&:date)
-      when "Prix décroissant"
+      when 2
         @products = @products.sort_by(&:price).reverse
-      when "Prix croissant"
+      when 3
         @products = @products.sort_by(&:price)
       end
 
