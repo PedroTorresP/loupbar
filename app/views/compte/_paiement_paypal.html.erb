@@ -51,9 +51,10 @@
     });
   },
   onApprove: async (data, actions) => {
-    const order = await actions.order.capture();
-    <%= order_paid(@order.id) %>;
-    window.location.reload();
+    const order = await actions.order.capture().then(function(details) {
+      if(details.status == 'COMPLETED') {
+        window.location.replace('/compte/commandes_paiement_validation'+"?id="+<%= @order.id.to_s %>+'&status='+details.status);
+    }});
   }
     }).render('#paypal-button-container');
 </script>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'compte/commandes_paiement_validation'
   get 'information/confidentialite'
   get 'information/conditions'
   get 'information/livraison'

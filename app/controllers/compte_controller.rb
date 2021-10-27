@@ -29,6 +29,17 @@ class CompteController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def commandes_paiement_validation
+    @order = Order.all.find_by_id(request.query_parameters[:id])
+    status = request.query_parameters[:status]
+    check_user(@order.user_id)
+    if status == 'COMPLETED'
+      @order.is_paid = 'validation'
+      @order.save
+    end
+    redirect_to compte_commandes_paiement_path + '?id='+@order.id.to_s
+  end
+
   def wishlist
     @wishlist = Wishlist.all.find_all{ |wish| wish.user_id == current_user.id}
   end
