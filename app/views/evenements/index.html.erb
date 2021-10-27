@@ -1,35 +1,39 @@
-<h1>Evenements</h1>
 <div class="card">
-  <div class="card-body text-center">
-    <%= form_with url: evenements_index_path, method: :get do |form| %>
-      <%= link_to "<", prev_month_year( request.query_parameters[:month].to_i,  request.query_parameters[:year].to_i), class:"btn btn-primary" %>
-      <%= form.select :month, options_for_select(month_options, selected: request.query_parameters[:month].to_i), class:"form-select" %>
-      <%= form.select :year, options_for_select(2020..Time.now.year, selected: request.query_parameters[:year].to_i), class:"form-select" %>
-      <%= link_to ">", next_month_year( request.query_parameters[:month].to_i,  request.query_parameters[:year].to_i), class:"btn btn-primary" %>
-      <%= form.text_field :name, placeholder:"Chercher par nom", value:request.query_parameters[:name] %>
-      <%= form.submit "Filtrer", class:"btn btn-primary" %>
-    <% end %>
+  <div class="card-header">
+    <h1>Evenements</h1>
   </div>
-</div>
-<div class="event-card">
-  <ul class="list-group">
-    <% @events.each do |event| %>
-      <div class="row ">
-        <h5 class="card-title text-center"><strong><%= event.name %></strong></h5>
-        <div class="col-6 text-end">
-          <% if event.image.attached? %>
-            <%= image_tag event.image, class:"event-img" %>
-          <% else %>
-            <%= image_tag "noimage", class:"event-img" %>
-          <% end %>
-        </div>
-        <div class="col-6 text-start">
-          <div class="card-text">Date : <%= event.date.strftime('%d/%m/%Y') %> </div>
-          <div class="card-text">Heure : <%= event.time %> </div>
-          <div class="card-text">Prix : <%= event.price %> CHF</div>
-          <%= link_to 'Détails', evenements_evenement_path + "?id=" + event.id.to_s, class:"btn btn-primary" %>
-        </div>
-      </div>
-    <% end %>
-  </ul>
+  <div class="card-body">
+    <div class="card-body text-center">
+      <%= form_with url: evenements_index_path, method: :get do |form| %>
+        <%= link_to "<", prev_month_year( request.query_parameters[:month].to_i,  request.query_parameters[:year].to_i), class:"btn btn-primary" %>
+        <%= form.select :month, options_for_select(month_options, selected: request.query_parameters[:month].to_i), class:"form-select" %>
+        <%= form.select :year, options_for_select(2020..Time.now.year, selected: request.query_parameters[:year].to_i), class:"form-select" %>
+        <%= link_to ">", next_month_year( request.query_parameters[:month].to_i,  request.query_parameters[:year].to_i), class:"btn btn-primary" %>
+        <%= form.text_field :name, placeholder:"Chercher par nom", value:request.query_parameters[:name] %>
+        <%= form.submit "Filtrer", class:"btn btn-primary" %>
+      <% end %>
+    </div>
+    <div class="event-card">
+      <ul class="list-group">
+        <% @events.each do |event| %>
+          <div class="row ">
+            <h5 class="card-title text-center"><strong><%= event.name %></strong></h5>
+            <div class="col-6 text-end">
+              <% if event.image.attached? %>
+                <%= image_tag event.image, class:"event-img" %>
+              <% else %>
+                <%= image_tag "noimage", class:"event-img" %>
+              <% end %>
+            </div>
+            <div class="col-6 text-start">
+              <div class="card-text">Date : <%= event.date.strftime('%d/%m/%Y') %> </div>
+              <div class="card-text">Heure : <%= event.time %> </div>
+              <div class="card-text">Prix : <%= event.price %> CHF</div>
+              <%= link_to 'Détails', evenements_evenement_path + "?id=" + event.id.to_s, class:"btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

@@ -9,6 +9,9 @@
           <%= link_to 'Évènements', evenements_index_path, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
+          <%= link_to image_tag("cardmarket.png", class:"imgnavbar"), "https://www.cardmarket.com/fr/WeissSchwarz/Users/Leloupbar/Offers", class:"nav-link" %>
+        </li>
+        <li class="navbar-nav">
           <%= link_to 'Contact', contact_index_path, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
@@ -33,9 +36,6 @@
           <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", class:"nav-link" %>
         </li>
         <li class="navbar-nav">
-          <%= link_to image_tag("cardmarket.png", class:"imgnavbar"), "https://www.cardmarket.com/fr/WeissSchwarz/Users/Leloupbar/Offers", class:"nav-link" %>
-        </li>
-        <li class="navbar-nav">
           <%= link_to 'Panier ('+sub_total(session_cart).to_s+' CHF)', "/carts/show", class:"nav-link" %>
         </li>
       </div>
@@ -46,7 +46,7 @@
 <div class="mobile">
   <button class="mobileButton" style="background-image: url(<%= url_for(get_image('menu_logo')) %>)" type="image" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
   </button>
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -57,6 +57,9 @@
       </li>
       <li class="navbar-nav">
         <%= link_to 'Évènements', evenements_index_path, class:"nav-link" %>
+      </li>
+      <li class="navbar-nav">
+        <%= link_to image_tag("cardmarket.png", class:"imgnavbar"), "https://www.cardmarket.com/fr/WeissSchwarz/Users/Leloupbar/Offers", class:"nav-link" %>
       </li>
       <li class="navbar-nav">
         <%= link_to 'Contact', contact_index_path, class:"nav-link" %>
@@ -83,17 +86,8 @@
         <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", class:"nav-link" %>
       </li>
       <li class="navbar-nav">
-        <%= link_to image_tag("cardmarket.png", class:"imgnavbar"), "https://www.cardmarket.com/fr/WeissSchwarz/Users/Leloupbar/Offers", class:"nav-link" %>
-      </li>
-      <li class="navbar-nav">
         <%= link_to 'Panier ('+sub_total(session_cart).to_s+' CHF)', "/carts/show", class:"nav-link" %>
       </li>
     </div>
   </div>
 </div>
-
-<script>
-document.body.addEventListener('click', function(e){
-    e.stopPropagation()
-})
-</script>

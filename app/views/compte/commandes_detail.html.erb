@@ -44,7 +44,7 @@
         <div class="compte-paiement">
           <strong>Paiement: </strong><%= @commande.payment %><br>
           <% if @commande.is_paid == 'attente' %>
-            <%= link_to 'payer', compte_commandes_paiement_path + '?id=' + @commande.id.to_s, target: :_blank, class:"btn btn-secondary" %>
+            <strong>Vous pouvez changer le moyen de paiement et payer :</strong> <%= link_to 'Payer', compte_commandes_paiement_path + '?id=' + @commande.id.to_s, target: :_blank, class:"btn btn-warning" %>
           <% end %>
         </div>
         <strong>Etat du paiement: </strong>

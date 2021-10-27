@@ -58,6 +58,8 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     
     respond_to do |format|
+      p '---------'
+      p respond_to
       if @order.save
         format.html { redirect_to @order, notice: "La commande a été créée." }
         format.json { render :show, status: :created, location: @order }

@@ -9,8 +9,10 @@
 
   .navbar-nav {
     font-family: 'Courier New', Courier, monospace !important;
+    font-weight: bold;
+    font-size: large;
     float:none;
-    margin:0 auto;
+    margin: auto;
     display: block;
     text-align: center;
 }
@@ -26,11 +28,11 @@
   z-index: 10001;
 }
 
-@media only screen and (max-width : 1160px) {
+@media only screen and (max-width : 1251px) {
   .desktop {display: none;}
 }
 
-@media only screen and (min-width : 1161px) {
+@media only screen and (min-width : 1252px) {
   .mobile {display: none;}
 }
 
@@ -40,11 +42,9 @@
   z-index: 10000;
   width: 120px;
   height: 32px;
-  
   background-repeat: no-repeat;
   background-size:cover;
   top: 0px;
   left: 0px;
 
 }
-
