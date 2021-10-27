@@ -30,7 +30,7 @@
         <% @participations.each do |participation| %>
           <tr >
             <td><%= participation.event.name %></td>
-            <td><%= participation.event.date %></td>
+            <td><%= participation.event.date.strftime('%d/%m/%Y') %></td>
             <td><%= link_to 'Voir', evenements_evenement_path + "?id=" + participation.event.id.to_s, class:"btn btn-dark" %> </td>
           </tr>
         <% end %>

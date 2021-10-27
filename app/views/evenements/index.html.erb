@@ -25,7 +25,8 @@
         </div>
         <div class="col-6 text-start">
           <div class="card-text">Date : <%= event.date.strftime('%d/%m/%Y') %> </div>
-          <div class="card-text">PRIX : <%= event.price %> CHF</div>
+          <div class="card-text">Heure : <%= event.time.to_s.slice(11,5) %> </div>
+          <div class="card-text">Prix : <%= event.price %> CHF</div>
           <%= link_to 'Détails', evenements_evenement_path + "?id=" + event.id.to_s, class:"btn btn-primary" %>
         </div>
       </div>
