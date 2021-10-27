@@ -98,13 +98,16 @@
           <td><%= buy.quantity %></td>
           <td><%= buy.price %></td>
           <td><%= buy.price * buy.quantity %></td>
-          <td><%= link_to 'Modifier', edit_order_path(@order) %></td>
-          <td><%= link_to 'Supprimer', @order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= button_to "-", buy_path(:id => buy.id, :quantity => -1), :method => :put , class:"btn btn-danger" %>
+          </td>
+          <td><%= button_to "+", buy_path(:id => buy.id, :quantity => +1), :method => :put , class:"btn btn-success" %>
+          </td>
         </tr>
       <% end %>
-      <div class="card-body">
-        <%= link_to 'Ajouter produit à la commande ➕', new_buy_path + "?order=" + @order.id.to_s, class:"btn btn-success" %>
-        <%= link_to 'Modifier la commande ✏️', edit_order_path(@order), class:"btn btn-dark" %>
-        <%= link_to 'Retour ⬅️', orders_path, class:"btn btn-dark" %>
-      </div>
+    </table>
+    <div class="card-body">
+      <%= link_to 'Ajouter produit à la commande ➕', new_buy_path + "?order=" + @order.id.to_s, class:"btn btn-success" %>
+      <%= link_to 'Modifier la commande ✏️', edit_order_path(@order), class:"btn btn-dark" %>
+      <%= link_to 'Retour ⬅️', orders_path, class:"btn btn-dark" %>
     </div>
+  </div>
