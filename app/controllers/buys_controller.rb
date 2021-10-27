@@ -50,7 +50,7 @@ class BuysController < ApplicationController
   def update
     @buy_update = Buy.all.find(params[:id])
     @product = @buy_update.product
-    if @product.quantity > 0 && @product.available || params[:quantity].to_i == -1
+    if @product.quantity > 0 && !@product.available || params[:quantity].to_i == -1 || @product.available
       if @buy_update.quantity + params[:quantity].to_i == 0
           @product.quantity -= params[:quantity].to_i
           @product.save
