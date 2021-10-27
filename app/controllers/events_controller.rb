@@ -8,6 +8,8 @@ class EventsController < ApplicationController
     if request.query_parameters[:event_name] != nil
       @events = @events.select { |event| I18n.transliterate(event.name).downcase.include? I18n.transliterate(request.query_parameters[:event_name]).downcase  }
     end
+
+    @events = Kaminari.paginate_array(@events).page(params[:page]).per(20)
   end
 
   # GET /events/1 or /events/1.json

@@ -26,5 +26,7 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @categories %>
+
 <br>
 <%= link_to 'Crée catégorie', new_category_path, class:"btn btn-dark" %>

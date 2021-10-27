@@ -5,6 +5,8 @@ class CategoriesController < ApplicationController
   # GET /categories or /categories.json
   def index
     @categories = Category.all
+    @categories = Kaminari.paginate_array(@categories).page(params[:page]).per(20)
+
   end
 
   # GET /categories/1 or /categories/1.json

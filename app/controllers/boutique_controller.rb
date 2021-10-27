@@ -40,6 +40,9 @@ class BoutiqueController < ApplicationController
       when "Prix croissant"
         @products = @products.sort_by(&:price)
       end
+
+      @products = Kaminari.paginate_array(@products).page(params[:page]).per(18)
+
     end
 
     def produit

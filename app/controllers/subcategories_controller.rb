@@ -5,6 +5,8 @@ class SubcategoriesController < ApplicationController
   # GET /subcategories or /subcategories.json
   def index
     @subcategories = Subcategory.all
+    @subcategories = Kaminari.paginate_array(@subcategories).page(params[:page]).per(20)
+
   end
 
   # GET /subcategories/1 or /subcategories/1.json

@@ -17,6 +17,8 @@ class OrdersController < ApplicationController
     if request.query_parameters[:notfinished] != nil
       @orders = @orders.select { |order| order.is_ready != 'terminée'  }
     end
+
+    @orders = Kaminari.paginate_array(@orders).page(params[:page]).per(20)
   end
 
   # GET /orders/1 or /orders/1.json

@@ -18,6 +18,8 @@ class UsersController < ApplicationController
     if request.query_parameters[:user_id] != nil && request.query_parameters[:user_id] != ""
       @users = @users.select { |user| user.id == request.query_parameters[:user_id].to_i  }
     end
+    @users = Kaminari.paginate_array(@users).page(params[:page]).per(20)
+
   end
 
   # GET /users/1 or /users/1.json

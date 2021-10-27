@@ -47,5 +47,7 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @users %>
+
 <br>
 <%= link_to 'Crée utilisateur', new_user_path, class:"btn btn-dark"  %>

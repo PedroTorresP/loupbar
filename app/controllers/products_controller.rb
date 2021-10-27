@@ -25,6 +25,8 @@ class ProductsController < ApplicationController
       @products = Product.all.select { |product| product.quantity.to_i < product.min_stock.to_i && product.available  }
 
     end
+
+    @products = Kaminari.paginate_array(@products).page(params[:page]).per(20)
   end
 
   # GET /products/1 or /products/1.json

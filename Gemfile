@@ -63,3 +63,6 @@ gem 'devise', '~> 4.8'
 #AWS S3
 gem "aws-sdk-s3", require: false
 
+#Pagination
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
+

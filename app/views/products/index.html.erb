@@ -32,8 +32,8 @@
         <td><%= product.id %></td>
         <td><%= product.name %></td>
         <td><%= product.date.strftime('%d/%m/%Y') %></td>
-        <td><%= product.subcategory.name %></td>
         <td><%= product.category.name %></td>
+        <td><%= product.subcategory.name %></td>
         <td><%= product.price %></td>
         <td><%= product.quantity %></td>
         <td><%= product.min_stock %></td>
@@ -50,5 +50,6 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @products %>
 <br>
 <%= link_to 'Crée produit', new_product_path, class:"btn btn-dark" %>
