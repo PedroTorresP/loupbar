@@ -40,14 +40,15 @@
   
   position:fixed;
   z-index: 10000;
-  width: 120px;
+  width: 140px;
   height: 35px;
   background-repeat: no-repeat;
   background-size:contain;
   background-color: transparent;
   border: none;
   top: 0px;
-  left: 0px;
+  left: 50%;
+  margin-left: -70px;
 
 }
 
@@ -62,7 +63,7 @@
   background-color: transparent;
   text-align: right;
   border: none;
-  font-size: 16px;
+  font-size: 15px;
   top: 0px;
   right: 0px;
   color: black;
@@ -81,12 +82,15 @@
   background-size:cover;
   top: 0px;
   right: 0px;
-  font-size: 20px;
+  font-size: 22px;
   font-family: 'Courier New', Courier, monospace !important;
   font-weight: bold;
   border-top: none;
   border-left: none;
   border-right: none;
   border-width: 1px;
+  text-align: left;
+  vertical-align: middle;
+  
 
 }
