@@ -44,8 +44,9 @@
 </nav>
 </div>
 <div class="mobile">
-  <%= link_to image_tag(get_image('menu_logo'), class:"img-header"), root_path, class:"btn btn-light wideButton" %>
-  <button class="mobileButton" style="background-color: <%= get_value('header_color')%>;"  type="image" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  <button class="mobileButton" style="background-image: url(<%= url_for(get_image('menu_logo')) %>)" type="image" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  </button>
+  <button class="wideButton" style="background-color: <%= get_value('header_color')%>;"  type="image" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
   Menu
   </button>
   <%= link_to '🛒 ('+prod_total(session_cart).to_s+')', "/carts/show", class:"btn btn-secondary cartButton" %>
