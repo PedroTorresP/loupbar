@@ -16,9 +16,9 @@
             <td><%= line_item.product.name %></td>
             <td><%= line_item.product.price %></td>
             <td>
-            <%= button_to "-", line_item_path(:id => line_item.id, :quantity => -1), :method => :put , class:"btn btn-danger" %>
-            <%= line_item.quantity %>
-            <%= button_to "+", line_item_path(:id => line_item.id, :quantity => +1), :method => :put , class:"btn btn-success" %>
+              <%= button_to "-", line_item_path(:id => line_item.id, :quantity => -1), :method => :put , class:"btn btn-danger" %>
+              <%= line_item.quantity %>
+              <%= button_to "+", line_item_path(:id => line_item.id, :quantity => +1), :method => :put , class:"btn btn-success" %>
             </td>
             <td><%= button_to "🗑️", line_item_path(:id => line_item.id), :method => :delete , class:"btn btn-warning" %></td>
           </tr>
@@ -28,7 +28,11 @@
     <h3>Total du panier: <%= sub_total(@cart) %> CHF</h3>
     <br>
     <% if user_signed_in? %>
-      <%= link_to "Confirmer et acheter", carts_commander_path+'?payment=boutique&shipping=magasin', class:"btn btn-primary" %>
+      <% if sub_total(@cart) <= 0%>
+        <%= link_to "Veuillez ajouter des produits", boutique_index_path, class:"btn btn-primary" %>
+      <%else%>
+        <%= link_to "Confirmer et acheter", carts_commander_path+'?payment=boutique&shipping=magasin', class:"btn btn-primary" %>
+      <% end %>
     <% else %>
       <%= link_to "Veuillez vous connecter pour acheter", new_user_session_path, class:"btn btn-primary" %>
     <% end %>
