@@ -15,7 +15,7 @@ class LineItemsController < ApplicationController
         end
 
         @line_item.save
-        redirect_back(fallback_location: root_path)
+        redirect_back(fallback_location: root_path, notice: "Le produit a été ajouté.")
     end
 
     def update
