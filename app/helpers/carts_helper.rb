@@ -7,6 +7,14 @@ module CartsHelper
             return sum
         end
 
+        def prod_total(cart)
+          sum = 0
+          cart.line_items.each do |line_item|
+            sum+= line_item.quantity
+          end
+          return sum
+      end
+
         def shipping_total(shipping)
           if shipping == 'poste'
             return 7

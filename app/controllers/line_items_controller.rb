@@ -33,7 +33,7 @@ class LineItemsController < ApplicationController
 
     def destroy
         LineItem.all.find(params[:id]).destroy
-        redirect_back(fallback_location: root_path)
+        redirect_back(fallback_location: root_path, notice:'Le produit a été supprimé')
     end
 
     private

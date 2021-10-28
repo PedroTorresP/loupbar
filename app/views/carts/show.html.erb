@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @cart.line_items.each do |line_item| %>
+        <% @cart.line_items.order('id ASC').each do |line_item| %>
           <tr class="table-warning">
             <td><%= line_item.product.name %></td>
             <td><%= line_item.product.price %></td>

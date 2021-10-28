@@ -48,7 +48,7 @@ class CartsController < ApplicationController
   def destroy
     session_cart.destroy
     session[:cart_id] = nil
-    redirect_to root_path
+    redirect_to(root_path,  notice:'Le panier a été vidé')
   end
 
   def cart_form_params
