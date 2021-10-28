@@ -49,7 +49,7 @@
   <button class="wideButton" style="background-color: <%= get_value('header_color')%>;"  type="image" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
   Menu
   </button>
-  <%= link_to '🛒 ('+sub_total(session_cart).to_s+' Fr)', "/carts/show", class:"btn btn-secondary cartButton" %>
+  <%= link_to '🛒 ('+sub_total(session_cart).to_s+' CHF)', "/carts/show", class:"btn btn-secondary cartButton" %>
   <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
