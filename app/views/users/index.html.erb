@@ -19,7 +19,7 @@
       <th>Nom</th>
       <th>Prénom</th>
       <th>Code postal</th>
-      <th>Addresse</th>
+      <th>Adresse</th>
       <th>Administrateur</th>
       <th colspan="4"></th>
     </tr>
@@ -40,7 +40,7 @@
             Non
           <% end %>
         </td>
-        <td><%= link_to '🛒', orders_path(:order => {:user_id => user.id}), method: :post, data: { confirm: 'Voulez vous crée une commande ?' } %></td>
+        <td><%= link_to '🛒', orders_path(:order => {:user_id => user.id}), method: :post, data: { confirm: 'Voulez vous créée une commande ?' } %></td>
         <td><%= link_to '🔎', user %></td>
         <td><%= link_to '✏️', edit_user_path(user) %></td>
         <td><%= link_to '🗑️', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

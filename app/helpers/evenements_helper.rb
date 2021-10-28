@@ -9,7 +9,7 @@ module EvenementsHelper
             ["Mai",5],
             ["Juin",6],
             ["Juillet",7],
-            ["Aout",8],
+            ["Août",8],
             ["Septembre",9],
             ["Octobre",10],
             ["Novembre",11],

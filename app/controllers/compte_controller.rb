@@ -1,6 +1,7 @@
 class CompteController < ApplicationController
   def evenements
     @participations = Participant.all.find_all { |participant| participant.user_id == current_user.id}
+    @participations
   end
 
   def commandes

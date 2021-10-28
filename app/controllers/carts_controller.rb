@@ -40,7 +40,7 @@ class CartsController < ApplicationController
     end
     OrderMailer.with(order: @order).order_created.deliver_later
     OrderMailer.with(order: @order).order_created_notify.deliver_later
-    redirect_to compte_commandes_detail_path + "?id=" + @order.id.to_s, notice: "La commande a été crée."
+    redirect_to compte_commandes_detail_path + "?id=" + @order.id.to_s, notice: "La commande a été créée."
     session_cart.destroy
     session[:cart_id] = nil
   end

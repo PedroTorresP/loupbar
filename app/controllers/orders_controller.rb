@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
     @lst_payment = ['boutique','twint','paypal','virement']
     @lst_shipping = ['magasin','poste']
     @lst_is_paid = ['attente','validation','payée']
-    @lst_is_ready = ['crée','prête','envoyée','terminée','annulée']
+    @lst_is_ready = ['créée','prête','envoyée','terminée','annulée']
   end
 
   # GET /orders/1/edit
@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
     @lst_payment = ['boutique','twint','paypal','virement']
     @lst_shipping = ['magasin','poste']
     @lst_is_paid = ['attente','validation','payée']
-    @lst_is_ready = ['crée','prête','envoyée','terminée','annulée']
+    @lst_is_ready = ['créée','prête','envoyée','terminée','annulée']
   end
 
   # POST /orders or /orders.json

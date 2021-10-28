@@ -36,6 +36,8 @@
     <% else %>
       <%= link_to "Veuillez vous connecter pour acheter", new_user_session_path, class:"btn btn-primary" %>
     <% end %>
-    <%= link_to "Vider le panier", cart_path(@cart.id),method: :delete, data: {confirm: "Êtes vous certain de vouloir vider le panier?"}, class:"btn btn-danger" %>
+    <% if sub_total(@cart) > 0%>
+      <%= link_to "Vider le panier", cart_path(@cart.id),method: :delete, data: {confirm: "Êtes vous certain de vouloir vider le panier?"}, class:"btn btn-danger" %>
+    <% end %>
   </div>
 </div>

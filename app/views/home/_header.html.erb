@@ -9,7 +9,7 @@
           <%= link_to 'Évènements', evenements_index_path, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
-          <%= link_to image_tag("cardmarket.png", class:"imgnavbar"), "https://www.cardmarket.com/fr/WeissSchwarz/Users/Leloupbar/Offers", class:"nav-link" %>
+          <%= link_to image_tag("cardmarket.png", class:"imgnavbar"), "https://www.cardmarket.com/fr/WeissSchwarz/Users/Leloupbar/Offers", target: :_blank, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
           <%= link_to 'Contact', contact_index_path, class:"nav-link" %>
@@ -33,7 +33,7 @@
           </li>
         <% end %>
         <li class="navbar-nav">
-          <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", class:"nav-link" %>
+          <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", target: :_blank, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
           <%= link_to 'Panier ('+sub_total(session_cart).to_s+' CHF)', "/carts/show", class:"nav-link" %>
@@ -63,7 +63,7 @@
         <%= link_to 'Évènements', evenements_index_path, class:"nav-link" %>
       </li>
       <li class="navbar-nav">
-        <%= link_to image_tag("cardmarket.png", class:"imgnavbar"), "https://www.cardmarket.com/fr/WeissSchwarz/Users/Leloupbar/Offers", class:"nav-link" %>
+        <%= link_to image_tag("cardmarket.png", class:"imgnavbar"), "https://www.cardmarket.com/fr/WeissSchwarz/Users/Leloupbar/Offers", target: :_blank, class:"nav-link" %>
       </li>
       <li class="navbar-nav">
         <%= link_to 'Contact', contact_index_path, class:"nav-link" %>
@@ -87,7 +87,7 @@
         </li>
       <% end %>
       <li class="navbar-nav">
-        <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", class:"nav-link" %>
+        <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", target: :_blank, class:"nav-link" %>
       </li>
       <li class="navbar-nav">
         <%= link_to 'Panier ('+sub_total(session_cart).to_s+' CHF)', "/carts/show", class:"nav-link" %>
