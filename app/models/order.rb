@@ -21,7 +21,7 @@ class Order < ApplicationRecord
     }
 
     enum is_ready: {
-        crée: 0,
+        créée: 0,
         prête: 1,
         envoyée:2,
         terminée:3,

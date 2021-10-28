@@ -40,11 +40,11 @@
       </div>
       <div class="status-commande">
         <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>
-          <%= form.hidden_field :is_ready, :value => 'crée' %>
-          <% if @order.is_ready == 'crée' %>
-            <%= form.label "commande crée", class:"btn btn-warning" %>
+          <%= form.hidden_field :is_ready, :value => 'créée' %>
+          <% if @order.is_ready == 'créée' %>
+            <%= form.label "commande créée", class:"btn btn-warning" %>
           <% else %>
-            <%= form.submit "commande crée", class:"btn btn-primary" %>
+            <%= form.submit "commande créée", class:"btn btn-primary" %>
           <% end %>
         <% end %>
         <%= form_with(model: @order, :as => :put, :url => order_path) do |form| %>

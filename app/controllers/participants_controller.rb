@@ -36,7 +36,7 @@ class ParticipantsController < ApplicationController
     redirect_link = events_path + "/" + @participant.event_id.to_s
     respond_to do |format|
       if @participant.save
-        format.html { redirect_to redirect_link, notice: "Le participant a été crée." }
+        format.html { redirect_to redirect_link, notice: "Le participant a été créée." }
         format.json { render :show, status: :created, location: @participant }
       else
         format.html { render :new, status: :unprocessable_entity }
