@@ -9,7 +9,7 @@ module CustomisationsHelper
     end
 
     def get_value(name)
-        return 'blue'#Customisation.all.find_by_name(name).value
+        return Customisation.all.find_by_name(name).value
     end
 
     module_function :get_image
