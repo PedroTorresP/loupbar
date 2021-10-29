@@ -16,7 +16,7 @@
     </div>
     <div class="col-12 col-md-3">
       <%= form.text_field :query, placeholder:"Chercher par nom", value:request.query_parameters[:query] %>
-      <%= form.submit "Filtrer" , class:"btn btn-primary" %>
+      <%= form.submit "Filtrer" , class:"btn btn-primary btn-sm" %>
       </div>
       </div>
     <% end %>
@@ -43,11 +43,11 @@
 
           <% if current_user != nil %>
             <% if is_wished(product.id) != nil %>
-              <%= button_to "❤️", wishlist_path(:id => is_wished(product.id).id), :method => :delete , class:"btn btn-danger" %>
+              <%= button_to "❤️", wishlist_path(:id => is_wished(product.id).id), :method => :delete , class:"btn btn-danger btn-sm" %>
             <% else %>
               <%= form_with(model: @wishlist, :as => :post, :url => wishlists_path) do |form| %>
                 <%= form.hidden_field :product_id, :value => product.id %>
-                <%= form.submit "❤️", class:"btn btn-success" %>
+                <%= form.submit "❤️", class:"btn btn-success btn-sm" %>
               <% end %>
             <% end %>
           <% end %>
@@ -62,11 +62,11 @@
             <% end %>
             <%= form.hidden_field :product_id, :value => product.id %>
             <% if product.date > Date.today %>
-              <%= form.submit "Précommander", class:"btn btn-warning" %>
+              <%= form.submit "Précommander", class:"btn btn-warning btn-sm" %>
             <% elsif product.quantity > 0 %>
-              <%= form.submit "Ajouter au panier", class:"btn btn-primary" %>
+              <%= form.submit "Ajouter au panier", class:"btn btn-primary btn-sm" %>
             <% elsif product.available %>
-              <%= form.submit "Sur commande", class:"btn btn-warning" %>
+              <%= form.submit "Sur commande", class:"btn btn-warning btn-sm" %>
             <% end %>
           <% end %>
         </div>
