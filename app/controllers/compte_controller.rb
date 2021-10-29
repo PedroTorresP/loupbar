@@ -1,7 +1,7 @@
 class CompteController < ApplicationController
   def evenements
     @participations = Participant.all.find_all { |participant| participant.user_id == current_user.id}
-    @participations
+    @participations = @participations.sort_by{|participation| participation.event.date }.reverse
   end
 
   def commandes
