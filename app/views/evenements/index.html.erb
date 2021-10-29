@@ -4,7 +4,7 @@
   </div>
   <div class="card-body">
     <div class="card-body text-center">
-      <%= form_with url: evenements_index_path, method: :get do |form| %>
+      <%= form_with url: evenements_path, method: :get do |form| %>
         <%= link_to "<", prev_month_year( request.query_parameters[:month].to_i,  request.query_parameters[:year].to_i), class:"btn btn-primary" %>
         <%= form.select :month, options_for_select(month_options, selected: request.query_parameters[:month].to_i), class:"form-select" %>
         <%= form.select :year, options_for_select(2020..Time.now.year, selected: request.query_parameters[:year].to_i), class:"form-select" %>

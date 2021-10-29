@@ -29,7 +29,7 @@
     <br>
     <% if user_signed_in? %>
       <% if sub_total(@cart) <= 0%>
-        <%= link_to "Veuillez ajouter des produits", boutique_index_path, class:"btn btn-primary" %>
+        <%= link_to "Veuillez ajouter des produits", boutique_path, class:"btn btn-primary" %>
       <%else%>
         <%= link_to "Confirmer et acheter", carts_commander_path+'?payment=boutique&shipping=magasin', class:"btn btn-primary" %>
       <% end %>

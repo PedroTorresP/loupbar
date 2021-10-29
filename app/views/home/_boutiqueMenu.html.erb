@@ -5,7 +5,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <% get_categories.each do |category| %>
       <% p 'result----->' + category.name %>
-      <li><a class="dropdown-item" href=<%= boutique_index_path + '?category='+category.id.to_s%>><%= category.name %></a></li>
+      <li><a class="dropdown-item" href=<%= boutique_path + '?category='+category.id.to_s%>><%= category.name %></a></li>
     <% end %>
   </ul>
 </div>

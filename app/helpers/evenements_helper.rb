@@ -24,7 +24,7 @@ module EvenementsHelper
         else
             month += 1
         end
-        return evenements_index_path + "?month=" + month.to_s + "&year=" + year.to_s
+        return evenements_path + "?month=" + month.to_s + "&year=" + year.to_s
 
 
     end
@@ -36,7 +36,7 @@ module EvenementsHelper
         else
             month -= 1
         end
-        return evenements_index_path + "?month=" + month.to_s + "&year=" + year.to_s
+        return evenements_path + "?month=" + month.to_s + "&year=" + year.to_s
     end
 
     module_function :month_options

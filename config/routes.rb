@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   get 'compte/evenements'
   get 'evenements/evenement'
   get 'boutique/produit'
-  get 'contact/index'
   post 'contact/send_mail'
-  get 'evenements/index'
-  get 'boutique/index'
+  get 'contact', to: 'contact#index'
+  get 'evenements', to: 'evenements#index'
+  get 'boutique', to: 'boutique#index'
   devise_for :users
   resources :events
   resources :participants

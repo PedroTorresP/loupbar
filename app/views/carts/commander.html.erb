@@ -83,7 +83,7 @@
           <%= form.hidden_field :payment, value:@payment %>
           <div class="order-buttons">
             <% if sub_total(@cart) <= 0%>
-              <%= link_to "Veuillez ajouter des produits", boutique_index_path, class:"btn btn-primary" %>
+              <%= link_to "Veuillez ajouter des produits", boutique_path, class:"btn btn-primary" %>
             <%else%>
               <%= form.submit "Confirmer", class:"btn btn-primary" %>
             <% end %>
