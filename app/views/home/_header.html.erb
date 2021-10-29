@@ -44,10 +44,9 @@
 </nav>
 </div>
 <div class="mobile">
-  <button class="mobileButton" style="background-image: url(<%= url_for(get_image('menu_logo')) %>)" type="image" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-  </button>
-  <button class="wideButton" style="background-color: <%= get_value('header_color')%>;"  type="image" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-  Menu
+  <%= link_to image_tag(get_image('menu_logo'), class:"logo-mobile"), root_path, style:'background-color:'+get_value('header_color'), class:"button wideButton" %>
+  <button class="mobileButton"  type="image" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    Menu
   </button>
   <%= link_to '🛒 ('+prod_total(session_cart).to_s+')', "/carts/show", class:"btn btn-secondary cartButton" %>
   <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
