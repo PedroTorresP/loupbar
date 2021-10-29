@@ -38,7 +38,7 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'rack-mini-profiler', '~> 2.0'
   #sqlite3 DB for dev
-  gem 'sqlite3', '~> 1.4'
+  #gem 'sqlite3', '~> 1.4'
 end
 
 group :production do
