@@ -14,7 +14,8 @@
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>
-      <th>Numéro de commande</th>
+      <th>Numéro</th>
+      <th>Date</th>
       <th>Client</th>
       <th>Réduction</th>
       <th>Livraison</th>
@@ -29,6 +30,7 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.id %></td>
+        <td><%= order.created_at.in_time_zone("Paris") %></td>
         <td><%= order.user.first_name + " " + order.user.last_name %></td>
         <td><%= order.discount %></td>
         <td><%= order.shipping %></td>

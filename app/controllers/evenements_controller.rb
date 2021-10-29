@@ -8,6 +8,9 @@ class EvenementsController < ApplicationController
       request.query_parameters[:month] = Time.now.month
     end
     @events = @events.select do |event|
+      p '----------------------'
+      p event.date.year
+      p request.query_parameters[:year].to_i
       event.date.year == request.query_parameters[:year].to_i
       event.date.month == request.query_parameters[:month].to_i
     end

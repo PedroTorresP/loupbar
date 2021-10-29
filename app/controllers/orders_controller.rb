@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.all.reverse
 
     if request.query_parameters[:customer_name] != nil
       @orders = @orders.select { |order| (order.user.first_name.downcase+" "+order.user.last_name.downcase).include? request.query_parameters[:customer_name].downcase  }

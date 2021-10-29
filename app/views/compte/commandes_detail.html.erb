@@ -51,7 +51,7 @@
         <%= @commande.is_paid %><br>
         <strong>Etat de la commande: </strong>
         <%= @commande.is_ready %><br>
-        <strong>Date de la commande: </strong><%= @commande.created_at %><br>
+        <strong>Date de la commande: </strong><%= @commande.created_at.in_time_zone("Paris") %><br>
         <% if @commande.discount %>
           <strong>Réduction: </strong><%= @commande.discount %> CHF<br>
         <% end %>
