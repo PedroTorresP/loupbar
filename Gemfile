@@ -37,8 +37,13 @@ group :development do
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'rack-mini-profiler', '~> 2.0'
+<<<<<<< HEAD
   #sqlite3 DB for dev
   gem 'sqlite3', '~> 1.4'
+=======
+  #DB
+  gem 'pg', '~> 1.2', '>= 1.2.3'
+>>>>>>> parent of 1833412 (test)
 end
 
 group :production do
