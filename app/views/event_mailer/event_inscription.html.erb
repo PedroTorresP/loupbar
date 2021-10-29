@@ -3,7 +3,7 @@
 
 <p>Bonjour <%= @participant.user.first_name + ' ' + @participant.user.last_name %> ,
 <br><br>
-Vous êtes inscrit à l'évènement <%= link_to @participant.event.name, 'loupbar/event/' + @participant.event.id.to_s %>
+Vous êtes inscrit à l'évènement <%= @participant.event.name %>
 <br>
 Date de l'évènement : <%= @participant.event.date %>
 <br>
