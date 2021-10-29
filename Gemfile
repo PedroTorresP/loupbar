@@ -38,12 +38,10 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'rack-mini-profiler', '~> 2.0'
   #DB
-  gem 'pg', '~> 1.2', '>= 1.2.3'
 end
 
 group :production do
-  #DB
-  gem 'pg', '~> 1.2', '>= 1.2.3'
+
 end
 
 group :test do
@@ -65,4 +63,7 @@ gem "aws-sdk-s3", require: false
 
 #Pagination
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
+
+#DB
+gem 'pg', '~> 1.2', '>= 1.2.3'
 
