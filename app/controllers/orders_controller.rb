@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     end
 
     if request.query_parameters[:notfinished] != nil
-      @orders = @orders.select { |order| order.is_ready != 'terminée'  }
+      @orders = @orders.select { |order| order.is_ready != 'terminée' && order.is_ready != 'annulée'  }
     end
 
     @orders = Kaminari.paginate_array(@orders).page(params[:page]).per(20)

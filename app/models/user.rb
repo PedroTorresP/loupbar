@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :orders
   has_many :participants
-  has_many :wishlists
+  has_many :wishlists, dependent: :destroy
 end
