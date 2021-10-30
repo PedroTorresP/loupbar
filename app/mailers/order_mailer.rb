@@ -18,7 +18,7 @@ class OrderMailer < ApplicationMailer
     @buys = Buy.select { |buy| buy.order_id == @order.id}
     @total = order_total(@order)
 
-    mail to: 'loupbar@email.com', subject: "Notification de création commande "+@order.id.to_s
+    mail to: 'pedrothebossur@hotmail.com', subject: "Notification de création commande "+@order.id.to_s
   end
 
   def order_sent
@@ -37,7 +37,7 @@ class OrderMailer < ApplicationMailer
   def order_payment_notify
     @order = params[:order]
 
-    mail to: 'loupbar@email.com', subject: "La commande "+@order.id.to_s+" a été payée"
+    mail to: 'pedrothebossur@hotmail.com', subject: "La commande "+@order.id.to_s+" a été payée"
   end
 
   def order_total(order)
