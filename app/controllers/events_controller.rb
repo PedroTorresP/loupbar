@@ -19,6 +19,14 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+
+    if request.query_parameters[:id] != nil
+      @copyEvent = Event.find_by_id(request.query_parameters[:id])
+      @event.name = @copyEvent.name
+      @event.description = @copyEvent.description
+      @event.price = @copyEvent.price
+      @event.places = @copyEvent.places
+    end
   end
 
   # GET /events/1/edit

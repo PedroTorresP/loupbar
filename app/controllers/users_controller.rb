@@ -65,10 +65,22 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "L'utilisateur a été supprimé." }
-      format.json { head :no_content }
+    if @user.id != 1
+      @orders = Order.select {|order| order.user_id == @user.id}
+      @participants = Participant.select {|participant| participant.user_id == @user.id}
+      @orders.each do |order|
+        order.user_id = 3
+        order.save
+      end
+      @participants.each do |participant|
+        participant.user_id = 3
+        participant.save
+      end
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: "L'utilisateur a été supprimé." }
+        format.json { head :no_content }
+      end
     end
   end
 

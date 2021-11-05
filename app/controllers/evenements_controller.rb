@@ -7,13 +7,10 @@ class EvenementsController < ApplicationController
     if request.query_parameters[:month] == nil
       request.query_parameters[:month] = Time.now.month
     end
-    @events = @events.select do |event|
-      p '----------------------'
-      p event.date.year
-      p request.query_parameters[:year].to_i
-      event.date.year == request.query_parameters[:year].to_i
-      event.date.month == request.query_parameters[:month].to_i
-    end
+    @events = @events.select{ |event|
+      event.date.year == request.query_parameters[:year].to_i &&
+      event.date.month == request.query_parameters[:month].to_i }
+      
     if request.query_parameters[:name] != nil && request.query_parameters[:name] != ""
       @events = Event.all.select { |event| I18n.transliterate(event.name).downcase.include? I18n.transliterate(request.query_parameters[:name]).downcase  }
 
