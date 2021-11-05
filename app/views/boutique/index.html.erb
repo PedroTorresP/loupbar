@@ -43,11 +43,11 @@
 
           <% if current_user != nil %>
             <% if is_wished(product.id) != nil %>
-              <%= button_to "❤️", wishlist_path(:id => is_wished(product.id).id), :method => :delete , class:"btn btn-danger btn-sm" %>
+              <%= button_to "💖", wishlist_path(:id => is_wished(product.id).id), :method => :delete , class:"btn btn-light btn-sm" %>
             <% else %>
               <%= form_with(model: @wishlist, :as => :post, :url => wishlists_path) do |form| %>
                 <%= form.hidden_field :product_id, :value => product.id %>
-                <%= form.submit "❤️", class:"btn btn-success btn-sm" %>
+                <%= form.submit "🤍", class:"btn btn-light btn-sm" %>
               <% end %>
             <% end %>
           <% end %>

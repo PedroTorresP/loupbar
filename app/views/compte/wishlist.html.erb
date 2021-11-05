@@ -38,7 +38,7 @@
           <p class="card-text"><%= wish.product.category.name %> </p>
                     <% if current_user != nil %>
             <% if is_wished(wish.product.id) != nil %>
-              <%= button_to "❤️", wishlist_path(:id => is_wished(wish.product.id).id), :method => :delete , class:"btn btn-danger" %>
+              <%= button_to "💖", wishlist_path(:id => is_wished(wish.product.id).id), :method => :delete , class:"btn btn-light" %>
               <% end %>
             <% end %>
           <p class="card-text">PRIX : <%= wish.product.price %> CHF</p>
