@@ -121,6 +121,6 @@ Rails.application.configure do
 
   #action mailer pour devise localhost -> huroku url pour configurer
   #config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.default_url_options = { host: "http://leloupbar.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "http://www.leloupbar.ch" }
   config.action_mailer.delivery_method = :smtp
 end

@@ -12,6 +12,6 @@ class ContactMailer < ApplicationMailer
     @subject = params[:subject]
     @content = params[:message]
 
-    mail to: 'miss_tohru@hotmail.com', reply_to: @sender,  subject: @subject
+    mail to: 'donotreplyleloupbar@outlook.fr', reply_to: @sender,  subject: @subject
   end
 end
