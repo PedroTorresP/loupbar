@@ -10,7 +10,7 @@ class OrderMailer < ApplicationMailer
     @buys = Buy.select { |buy| buy.order_id == @order.id}
     @total = order_total(@order)
 
-    mail to: @order.user.email, subject: "Confirmation de la commande "+@order.id.to_s
+    mail to: @order.user.email, reply_to: 'renaudrey1989@outlook.fr', subject: "Confirmation de la commande "+@order.id.to_s
   end
 
   def order_created_notify
@@ -18,26 +18,26 @@ class OrderMailer < ApplicationMailer
     @buys = Buy.select { |buy| buy.order_id == @order.id}
     @total = order_total(@order)
 
-    mail to: 'donotreplyleloupbar@outlook.fr', reply_to: 'renaudrey1989@outlook.fr', subject: "Notification de création commande "+@order.id.to_s
+    mail to: 'renaudrey1989@outlook.fr', subject: "Notification de création commande "+@order.id.to_s
   end
 
   def order_sent
     @order = params[:order]
 
-    mail to: @order.user.email, subject: "Envoi de la commande "+@order.id.to_s
+    mail to: @order.user.email, reply_to: 'renaudrey1989@outlook.fr', subject: "Envoi de la commande "+@order.id.to_s
   end
 
   def order_ready
     @order = params[:order]
     @buys = Buy.select { |buy| buy.order_id == @order.id}
     @total = order_total(@order)
-    mail to: @order.user.email, subject: "Commande "+@order.id.to_s+" prête à être retirée"
+    mail to: @order.user.email, reply_to: 'renaudrey1989@outlook.fr', subject: "Commande "+@order.id.to_s+" prête à être retirée"
   end
 
   def order_payment_notify
     @order = params[:order]
 
-    mail to: 'donotreplyleloupbar@outlook.fr', reply_to: 'renaudrey1989@outlook.fr', subject: "La commande "+@order.id.to_s+" a été payée"
+    mail to: 'renaudrey1989@outlook.fr', subject: "La commande "+@order.id.to_s+" a été payée"
   end
 
   def order_total(order)
