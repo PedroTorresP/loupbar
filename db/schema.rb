@@ -71,8 +71,18 @@ ActiveRecord::Schema.define(version: 2021_10_27_141914) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-# Could not dump table "events" because of following StandardError
-#   Unknown type '' for column 'image'
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "image"
+    t.decimal "price"
+    t.integer "places"
+    t.string "result"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
+    t.string "time"
+  end
 
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity", default: 1
@@ -88,10 +98,10 @@ ActiveRecord::Schema.define(version: 2021_10_27_141914) do
     t.decimal "discount"
     t.integer "is_paid"
     t.integer "is_ready"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.integer "shipping"
     t.integer "payment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "tracking"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -103,11 +113,25 @@ ActiveRecord::Schema.define(version: 2021_10_27_141914) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_participants_on_event_id"
-    t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
-# Could not dump table "products" because of following StandardError
-#   Unknown type 'attached' for column 'image'
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.decimal "price"
+    t.string "image_path"
+    t.integer "quantity"
+    t.integer "min_stock"
+    t.boolean "available"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "category_id"
+    t.string "image"
+    t.date "date"
+    t.integer "subcategory_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["subcategory_id"], name: "index_products_on_subcategory_id"
+  end
 
   create_table "subcategories", force: :cascade do |t|
     t.string "name"
@@ -119,18 +143,18 @@ ActiveRecord::Schema.define(version: 2021_10_27_141914) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
-    t.string "email"
+    t.string "email", default: "", null: false
     t.string "first_name"
     t.string "last_name"
     t.string "postal_code"
     t.string "address"
     t.boolean "is_admin"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -42,7 +42,7 @@ group :development do
 end
 
 group :production do
-  #DB
+  #PostgreSQL DB
   gem 'pg', '~> 1.2', '>= 1.2.3'
 end
 
