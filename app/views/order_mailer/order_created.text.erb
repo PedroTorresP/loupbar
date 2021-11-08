@@ -2,6 +2,10 @@ Confirmation de la commande <%= @order.id %>
 
 Bonjour <%= @order.user.first_name + ' ' + @order.user.last_name %> ,
 
+Merci pour votre commande. Nous vous contacterons une fois qu'elle sera disponible. Veuillez noter qu'en cas de précommande il sera nécessaire d'attendre jusqu'à la sortie de l'article.
+
+Si vous avez choisi un moyen de paiement autre qu'au retrait veuillez si possible payer ou modifier le moyen de paiement.
+
 Voici le récapitulatif de votre commande :
 
 Adresse de livraison
@@ -10,6 +14,7 @@ Adresse de livraison
 <%= @order.user.address%>
 <%= @order.user.postal_code%>
 Suisse
+Téléphone : <%= @user.phone%>
 
 Informations
 

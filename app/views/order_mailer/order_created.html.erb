@@ -2,6 +2,11 @@
 <p>Bonjour <%= @order.user.first_name + ' ' + @order.user.last_name %> ,
   <br>
   <br>
+  Merci pour votre commande. Nous vous contacterons une fois qu'elle sera disponible. Veuillez noter qu'en cas de précommande il sera nécessaire d'attendre jusqu'à la sortie de l'article.
+  <br>
+  Si vous avez choisi un moyen de paiement autre qu'au retrait veuillez si possible payer ou modifier le moyen de paiement.
+  <br>
+  <br>
   Voici le récapitulatif de votre commande :</p>
 <div class="card-body">
   <h2><%= "Détails commande numéro " + @order.id.to_s %></h2>
@@ -14,6 +19,7 @@
       <%= @order.user.address%><br>
       <%= @order.user.postal_code%><br>
       Suisse<br>
+      Téléphone : <%= @user.phone%><br>
     </div>
   </div>
   <div class="card">
