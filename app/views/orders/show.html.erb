@@ -7,6 +7,8 @@
     <li class="list-group-item"><strong>Réduction:</strong> <%= @order.discount %></li>
     <li class="list-group-item"><strong>Livraison:</strong> <%= @order.shipping %></li>
     <li class="list-group-item"><strong>Suivi:</strong> <%= @order.tracking %></li>
+    <li class="list-group-item"><strong>Adresse:</strong> <%= @order.user.address %></li>
+    <li class="list-group-item"><strong>Code postal:</strong> <%= @order.user.city.to_s + @order.user.postal_code.to_s %></li>
     <li class="list-group-item"><strong>Type de paiement:</strong> <%= @order.payment %></li>
     <li class="list-group-item"><strong>Prix total après réduction:</strong> <%=  @totalOrderDiscount %></li>
     <li class="list-group-item"><strong>Etat paiement:</strong> <%= @order.is_paid %></li>
