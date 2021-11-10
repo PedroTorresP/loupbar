@@ -40,6 +40,10 @@
         <%= f.text_field :address, autocomplete: "address", class:"form-control", :required => true %>
       </div>
       <div class="field form-group">
+        <%= f.label "Ville" %><br />
+        <%= f.text_field :city, autocomplete: "city", class:"form-control", :required => true %>
+      </div>
+      <div class="field form-group">
         <%= f.label "Code postal" %><br />
         <%= f.text_field :postal_code, autocomplete: "postal_code", class:"form-control", :required => true %>
       </div>
