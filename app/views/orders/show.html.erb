@@ -3,14 +3,17 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><strong>Numéro de commande:</strong> <%= @order.id %></li>
     <li class="list-group-item"><strong>Client:</strong> <%= @order.user.first_name + " " + @order.user.last_name  %></li>
-    <li class="list-group-item"><strong>Prix total:</strong> <%= @totalOrder %></li>
+    <li class="list-group-item"><strong>Prix total:</strong> <%= @totalOrder %> CHF</li>
     <li class="list-group-item"><strong>Réduction:</strong> <%= @order.discount %></li>
     <li class="list-group-item"><strong>Livraison:</strong> <%= @order.shipping %></li>
     <li class="list-group-item"><strong>Suivi:</strong> <%= @order.tracking %></li>
     <li class="list-group-item"><strong>Adresse:</strong> <%= @order.user.address %></li>
     <li class="list-group-item"><strong>Code postal:</strong> <%= @order.user.city.to_s + @order.user.postal_code.to_s %></li>
     <li class="list-group-item"><strong>Type de paiement:</strong> <%= @order.payment %></li>
-    <li class="list-group-item"><strong>Prix total après réduction:</strong> <%=  @totalOrderDiscount %></li>
+    <% if @order.shipping == 'poste' %>
+    <li class="list-group-item"><strong>Frais de livraison:</strong> 7 CHF</li>
+    <% end %>
+    <li class="list-group-item"><strong>Prix total après réduction:</strong> <%=  @totalOrderDiscount %> CHF</li>
     <li class="list-group-item"><strong>Etat paiement:</strong> <%= @order.is_paid %></li>
     <li class="list-group-item"><strong>Etat commande:</strong> <%= @order.is_ready %></li>
     <li class="list-group-item">

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
   before_action :authorize_admin
+  include OrdersHelper
 
   # GET /orders or /orders.json
   def index
@@ -28,7 +29,7 @@ class OrdersController < ApplicationController
       total += buy.quantity * buy.product.price
     end
     @totalOrder = total
-    @totalOrderDiscount = total.to_s.to_d - @order.discount.to_s.to_d
+    @totalOrderDiscount = order_total(@order).to_d - @order.discount.to_s.to_d
   end
 
   # GET /orders/new

@@ -40,8 +40,22 @@
         <% if @commande.shipping == 'poste' %>
           Poste<br>
           <strong>Numéro de suivi: </strong> <%= @commande.tracking %>
+          <% if @commande.is_paid == 'attente' %>
+            <%= form_with(model: @commande, :as => :patch, :url => compte_path(:id => @commande.id)) do |form| %>
+              <%= form.hidden_field :shipping, :value => 'magasin' %>
+              <%= form.hidden_field :id, :value => @commande.id %>
+              <%= form.submit "Récupérer à la boutique", class:"btn btn-warning" %>
+            <% end %>
+          <% end %>
         <% else %>
           Retrait au magasin
+          <% if @commande.is_paid == 'attente' %>
+          <%= form_with(model: @commande, :as => :patch, :url => compte_path(:id => @commande.id)) do |form| %>
+            <%= form.hidden_field :shipping, :value => 'poste' %>
+            <%= form.hidden_field :id, :value => @commande.id %>
+            <%= form.submit "Envoyer par la poste", class:"btn btn-warning" %>
+          <% end %>
+          <% end %>
         <% end %><br>
         <div class="compte-paiement">
           <strong>Paiement: </strong><%= @commande.payment %><br>
@@ -56,6 +70,9 @@
         <strong>Date de la commande: </strong><%= @commande.created_at.in_time_zone("Paris") %><br>
         <% if @commande.discount %>
           <strong>Réduction: </strong><%= @commande.discount %> CHF<br>
+        <% end %>
+        <% if @commande.shipping == 'poste'%>
+        <strong>Frais de livraison: </strong>7 CHF<br>
         <% end %>
         <strong>Montant total de la commande: </strong><%= order_total(@commande).to_d  %> CHF<br>
       </div>

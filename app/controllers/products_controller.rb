@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.date = Date.today
-    @product.available = true
+    @product.available = false
     categoriesName = {}
     subcategoriesName = {}
     Category.all.each do |category|

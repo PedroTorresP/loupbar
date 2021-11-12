@@ -2,7 +2,7 @@ class BoutiqueController < ApplicationController
 
     # GET /products or /products.json
     def index
-      @products = Product.all.select { |product| product.available || product.quantity > 0  }
+      @products = Product.all.select { |product| product.available || product.quantity > 0 || product.date > Date.today }
       categoriesName = {}
       subcategoriesName = {}
       @tri = {}

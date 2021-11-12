@@ -23,6 +23,7 @@ class CompteController < ApplicationController
   def update
     @order = Order.find(compte_params['id'])
     check_user(@order.user_id)
+    p @order
     @order.update(compte_params)
     if compte_params[:is_paid] == 'validation'
       OrderMailer.with(order: @order).order_payment_notify.deliver_later
@@ -46,7 +47,7 @@ class CompteController < ApplicationController
   end
 
   def compte_params
-    params.require(:order).permit(:id, :payment, :is_paid)
+    params.require(:order).permit(:id, :payment, :shipping, :is_paid)
   end
 
   private
