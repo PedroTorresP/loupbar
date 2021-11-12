@@ -19,7 +19,7 @@
           </li>
           <li class="list-group-item"><strong>Places restantes:</strong> <%= @placeRestantes %><br>
           </li>
-          <li class="list-group-item"><strong>Prix (paiement au magasin):</strong> <%= @event.price %> CHF</li>
+          <li class="list-group-item"><strong>Prix (paiement au magasin):</strong> <%= number_to_currency(@event.price, unit:"CHF", format: "%n %u", delimiter:"'") %> </li>
           <li class="list-group-item"><strong>
               <div class="d-grid gap-2 col-6 mx-auto">
                 <% if Date.today > @event.date %>

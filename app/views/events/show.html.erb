@@ -10,7 +10,7 @@
     </li>
     <li class="list-group-item"><strong>Date:</strong> <%= @event.date.strftime('%d/%m/%Y') %></li>
     <li class="list-group-item"><strong>Heure:</strong> <%= @event.time %></li>
-    <li class="list-group-item"><strong>Prix:</strong> <%= @event.price %></li>
+    <li class="list-group-item"><strong>Prix:</strong> <%= number_to_currency(@event.price, unit:"CHF", format: "%n %u", delimiter:"'") %></li>
     <li class="list-group-item"><strong>Places total:</strong> <%= @event.places %></li>
     <li class="list-group-item"><strong>Places restantes:</strong> <%= @event.places - @event.participants.length %></li>
     <li class="list-group-item"><strong>Résultat:</strong> <%= @event.result %></li>

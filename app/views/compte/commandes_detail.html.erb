@@ -72,9 +72,9 @@
           <strong>Réduction: </strong><%= @commande.discount %> CHF<br>
         <% end %>
         <% if @commande.shipping == 'poste'%>
-        <strong>Frais de livraison: </strong>7 CHF<br>
+        <strong>Frais de livraison: </strong>7.00 CHF<br>
         <% end %>
-        <strong>Montant total de la commande: </strong><%= order_total(@commande).to_d  %> CHF<br>
+        <strong>Montant total de la commande: </strong><%= number_to_currency(order_total(@commande).to_d, unit:"CHF", format: "%n %u", delimiter:"'")  %><br>
       </div>
     </div>
     <table class="table table-bordered table-striped">
@@ -90,9 +90,9 @@
         <% @produits.each do |buy| %>
           <tr >
             <td><%= link_to buy.product.name, boutique_produit_path + "/?id=" + buy.product.id.to_s %></td>
-            <td><%= buy.price %></td>
+            <td><%= number_to_currency(buy.price, unit:"CHF", format: "%n %u", delimiter:"'") %></td>
             <td><%= buy.quantity %></td>
-            <td><%= buy.price * buy.quantity  %></td>
+            <td><%= number_to_currency(buy.price * buy.quantity, unit:"CHF", format: "%n %u", delimiter:"'")   %></td>
           </tr>
         <% end %>
       </tbody>

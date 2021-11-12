@@ -24,7 +24,7 @@
                     <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + @products[0].id.to_s %>
                   <% end %>
                 </div>
-                <p class="card-text">PRIX : <%= @products[0].price %> CHF</p>
+                <p class="card-text">PRIX : <%= number_to_currency(@products[0].price, unit:"CHF", format: "%n %u", delimiter:"'") %></p>
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
                       <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + product.id.to_s %>
                     <% end %>
                   </div>
-                  <p class="card-text">PRIX : <%= product.price %> CHF</p>
+                  <p class="card-text">PRIX : <%= number_to_currency(product.price, unit:"CHF", format: "%n %u", delimiter:"'") %></p>
                 </div>
               </div>
             </div>

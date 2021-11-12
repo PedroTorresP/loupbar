@@ -41,7 +41,7 @@
               <%= button_to "💖", wishlist_path(:id => is_wished(wish.product.id).id), :method => :delete , class:"btn btn-light" %>
               <% end %>
             <% end %>
-          <p class="card-text">PRIX : <%= wish.product.price %> CHF</p>
+          <p class="card-text">PRIX : <%= number_to_currency(wish.product.price, unit:"CHF", format: "%n %u", delimiter:"'") %></p>
           </div>
           </div>
           <%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>

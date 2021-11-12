@@ -3,17 +3,17 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><strong>Numéro de commande:</strong> <%= @order.id %></li>
     <li class="list-group-item"><strong>Client:</strong> <%= @order.user.first_name + " " + @order.user.last_name  %></li>
-    <li class="list-group-item"><strong>Prix total:</strong> <%= @totalOrder %> CHF</li>
-    <li class="list-group-item"><strong>Réduction:</strong> <%= @order.discount %></li>
+    <li class="list-group-item"><strong>Prix total:</strong> <%= number_to_currency(@totalOrder, unit:"CHF", format: "%n %u", delimiter:"'") %></li>
+    <li class="list-group-item"><strong>Réduction:</strong> <%= number_to_currency(@order.discount, unit:"CHF", format: "%n %u", delimiter:"'") %></li>
     <li class="list-group-item"><strong>Livraison:</strong> <%= @order.shipping %></li>
     <li class="list-group-item"><strong>Suivi:</strong> <%= @order.tracking %></li>
     <li class="list-group-item"><strong>Adresse:</strong> <%= @order.user.address %></li>
     <li class="list-group-item"><strong>Code postal:</strong> <%= @order.user.city.to_s + @order.user.postal_code.to_s %></li>
     <li class="list-group-item"><strong>Type de paiement:</strong> <%= @order.payment %></li>
     <% if @order.shipping == 'poste' %>
-    <li class="list-group-item"><strong>Frais de livraison:</strong> 7 CHF</li>
+    <li class="list-group-item"><strong>Frais de livraison:</strong> 7.00 CHF</li>
     <% end %>
-    <li class="list-group-item"><strong>Prix total après réduction:</strong> <%=  @totalOrderDiscount %> CHF</li>
+    <li class="list-group-item"><strong>Prix total après réduction:</strong> <%=  number_to_currency(@totalOrderDiscount, unit:"CHF", format: "%n %u", delimiter:"'") %></li>
     <li class="list-group-item"><strong>Etat paiement:</strong> <%= @order.is_paid %></li>
     <li class="list-group-item"><strong>Etat commande:</strong> <%= @order.is_ready %></li>
     <li class="list-group-item">
@@ -94,18 +94,17 @@
           <th>Quantité</th>
           <th>Prix Unitaire</th>
           <th>Prix Total</th>
-          <th colspan="2"></th>
+          <th colspan="1"></th>
         </tr>
       </thead>
       <% @order.buys.each do |buy| %>
         <tr>
           <td><%= buy.product.name %></td>
           <td><%= buy.quantity %></td>
-          <td><%= buy.price %></td>
-          <td><%= buy.price * buy.quantity %></td>
+          <td><%= number_to_currency(buy.price, unit:"CHF", format: "%n %u", delimiter:"'") %></td>
+          <td><%= number_to_currency(buy.price * buy.quantity, unit:"CHF", format: "%n %u", delimiter:"'")  %></td>
           <td><%= button_to "-", buy_path(:id => buy.id, :quantity => -1), :method => :put , class:"btn btn-danger" %>
-          </td>
-          <td><%= button_to "+", buy_path(:id => buy.id, :quantity => +1), :method => :put , class:"btn btn-success" %>
+          <%= button_to "+", buy_path(:id => buy.id, :quantity => +1), :method => :put , class:"btn btn-success" %>
           </td>
         </tr>
       <% end %>

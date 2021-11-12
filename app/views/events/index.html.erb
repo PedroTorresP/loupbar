@@ -29,7 +29,7 @@
         <td><%= event.date.strftime('%d/%m/%Y') %></td>
         <td><%= event.time %></td>
         <td><%= event.description %></td>
-        <td><%= event.price %></td>
+        <td><%= number_to_currency(event.price, unit:"CHF", format: "%n %u", delimiter:"'") %></td>
         <td><%= event.places %></td>
         <td><%= link_to '🔎', event %></td>
         <td><%= link_to '✏️', edit_event_path(event) %></td>

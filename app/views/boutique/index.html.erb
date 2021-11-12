@@ -51,7 +51,7 @@
               <% end %>
             <% end %>
           <% end %>
-                    <p class="card-text">PRIX : <%= product.price %> CHF</p>
+                    <p class="card-text">PRIX : <%= number_to_currency(product.price, unit:"CHF", format: "%n %u", delimiter:"'") %></p>
           </div>
           </div>
           <%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>
