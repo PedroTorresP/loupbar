@@ -77,6 +77,16 @@
         <strong>Montant total de la commande: </strong><%= number_to_currency(order_total(@commande).to_d, unit:"CHF", format: "%n %u", delimiter:"'")  %><br>
       </div>
     </div>
+        <% if @preorder && @current %>
+    <div class="card text-white bg-danger text-center " style="max-width: 30rem;">
+    Attention certains articles sont en précommande. Veuillez contacter la boutique si vous souhaiter séparer la commande.
+    </div>
+    <% end %>
+    <% if @preorder %>
+    <div class="card bg-warning text-center" style="max-width: 30rem;">
+    La commande sera envoyée dès que les articles en précommande seront disponibles. Le <%= @dateSortie.strftime('%d/%m/%Y') %>
+    </div>
+    <% end %>
     <table class="table table-bordered table-striped">
       <thead class="table-warning">
         <tr>

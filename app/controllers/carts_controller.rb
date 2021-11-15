@@ -3,6 +3,17 @@ class CartsController < ApplicationController
 
   def show
     @cart = session_cart
+    @dateSortie = Date.today
+    @cart.line_items.each do |item|
+      if item.product.date > Date.today
+        @preorder = true
+        if item.product.date > @dateSortie 
+          @dateSortie = item.product.date
+        end
+      elsif item.product.date <= Date.today
+        @current = true
+      end
+    end
   end
 
   def commander
