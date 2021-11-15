@@ -13,6 +13,17 @@ class CompteController < ApplicationController
     check_user(@commande.user_id)
     @produits = Buy.all.find_all { |buy| buy.order_id == @commande.id}
     @user = User.all.find(current_user.id)
+    @dateSortie = Date.today
+    @produits.each do |buy|
+      if buy.product.date > Date.today
+        @preorder = true
+        if buy.product.date > @dateSortie 
+          @dateSortie = buy.product.date
+        end
+      elsif buy.product.date <= Date.today
+        @current = true
+      end
+    end
   end
 
   def commandes_paiement
