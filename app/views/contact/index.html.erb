@@ -20,7 +20,11 @@
         <label for="message" class="form-label">Message</label>
         <%= form.text_area :message, class:"form-control", required:true %>
       </div>
-      <%= form.submit "Envoyer", data: { confirm: 'Voulez-vous vous envoyer ?' } , class:"btn btn-primary" %>
+      <% if user_signed_in? %>
+        <%= form.submit "Envoyer", data: { confirm: 'Voulez-vous vous envoyer ?' } , class:"btn btn-primary" %>
+      <% else %>
+        <%= link_to "Veuillez vous connecter pour envoyer un message", new_user_session_path, class:"btn btn-primary" %>
+      <% end %>
     <% end %>
   </div>
 </div>
