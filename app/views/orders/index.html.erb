@@ -30,7 +30,7 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.id %></td>
-        <td><%= order.created_at.in_time_zone("Paris") %></td>
+        <td><%= order.created_at.in_time_zone("Paris").to_s[0,19] %></td>
         <td><%= order.user.first_name + " " + order.user.last_name %></td>
         <td><%= order.discount %></td>
         <td><%= order.shipping %></td>
