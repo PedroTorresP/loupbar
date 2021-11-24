@@ -87,6 +87,15 @@ class ProductsController < ApplicationController
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)
+    i = 1
+    while i < 8000 do
+      @product = Product.new(product_params)
+      @product.name = 'Test avec beaucoup de produits '+ i.to_s
+      @product.category_id = rand(1..10)
+      @product.save
+      i = i + 1
+    end
+
 
     respond_to do |format|
       if @product.save

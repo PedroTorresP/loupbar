@@ -34,7 +34,7 @@
             <% if product.image.attached? %>
               <%= link_to image_tag(product.image, class:"boutique-img"), boutique_produit_path + "?id=" + product.id.to_s %>
             <% else %>
-              <%= link_to image_tag("noimage.png", class:"boutique-img"), boutique_produit_path + "?id=" + product.id.to_s %>
+              <%= link_to image_tag("https://picsum.photos/300/2" + rand(10..99).to_s, class:"boutique-img"), boutique_produit_path + "?id=" + product.id.to_s %>
             <% end %>
           </div>
           </div>

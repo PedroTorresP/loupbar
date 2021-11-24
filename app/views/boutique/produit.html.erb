@@ -7,7 +7,7 @@
           <% if @product.image.attached? %>
             <%= image_tag @product.image, alt:"noimage", class:"boutique-img" %>
           <% else %>
-            <%= image_tag "noimage", class:"boutique-img" %>
+            <%= image_tag "https://picsum.photos/300/200", class:"boutique-img" %>
           <% end %>
         </div>
       </div>
