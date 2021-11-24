@@ -92,7 +92,7 @@ class ProductsController < ApplicationController
       @product = Product.new(product_params)
       @product.name = 'Test avec beaucoup de produits '+ i.to_s
       @product.category_id = rand(1..10)
-      @product.sub_category_id = rand(1..10)
+      @product.subcategory_id = rand(1..10)
       @product.price = rand(1..100)
       @product.quantity = rand(1..100)
       i = i + 1
