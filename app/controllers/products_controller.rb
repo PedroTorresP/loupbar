@@ -88,14 +88,16 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     i = 1
-    while i < 8000 do
+    while i < 4000 do
       @product = Product.new(product_params)
-      @product.name = 'Test avec beaucoup de produits '+ i.to_s
+      @product.name = 'Test avec beaucoup de produits '+ rand(1..100).to_s
       @product.category_id = rand(1..10)
       @product.subcategory_id = rand(1..10)
       @product.price = rand(1..100)
       @product.quantity = rand(1..100)
+      @product.save
       i = i + 1
+      
     end
 
 
