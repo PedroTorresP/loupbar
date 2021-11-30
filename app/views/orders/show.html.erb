@@ -99,7 +99,7 @@
       </thead>
       <% @order.buys.each do |buy| %>
         <tr>
-          <td><%= buy.product.name %></td>
+          <td><%= link_to buy.product.name, boutique_produit_path + "/?id=" + buy.product.id.to_s %></td>
           <td><%= buy.quantity %></td>
           <td><%= number_to_currency(buy.price, unit:"CHF", format: "%n %u", delimiter:"'") %></td>
           <td><%= number_to_currency(buy.price * buy.quantity, unit:"CHF", format: "%n %u", delimiter:"'")  %></td>
