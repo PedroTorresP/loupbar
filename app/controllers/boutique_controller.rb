@@ -14,13 +14,13 @@ class BoutiqueController < ApplicationController
       subcategoriesName['Toutes'] = 0
       Category.all.each do |category|
         if category.available
-          categoriesName[category.name] = category.id
+          categoriesName[category.name[0..20]] = category.id
         end
       end
       @categories = categoriesName
       Subcategory.all.each do |subcategory|
         if subcategory.available
-          subcategoriesName[subcategory.name] = subcategory.id
+          subcategoriesName[subcategory.name[0..20]] = subcategory.id
         end
       end
       @subcategories = subcategoriesName
