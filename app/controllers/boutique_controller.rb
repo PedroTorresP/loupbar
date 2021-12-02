@@ -6,10 +6,11 @@ class BoutiqueController < ApplicationController
       categoriesName = {}
       subcategoriesName = {}
       @tri = {}
-      @tri['Date décroissant'] = 0
-      @tri['Date croissant'] = 1
-      @tri['Prix décroissant'] = 2
-      @tri['Prix croissant'] = 3
+      @tri['Ajouté dernièrement'] = 0
+      @tri['Date décroissant'] = 1
+      @tri['Date croissant'] = 2
+      @tri['Prix décroissant'] = 3
+      @tri['Prix croissant'] = 4
       categoriesName['Toutes'] = 0
       subcategoriesName['Toutes'] = 0
       Category.all.each do |category|
@@ -37,12 +38,14 @@ class BoutiqueController < ApplicationController
       
       case request.query_parameters[:tri].to_i
       when 0
-        @products = @products.sort_by(&:date).reverse
+        @products = @products.sort_by(&:created_at).reverse
       when 1
-        @products = @products.sort_by(&:date)
+        @products = @products.sort_by(&:date).reverse
       when 2
-        @products = @products.sort_by(&:price).reverse
+        @products = @products.sort_by(&:date)
       when 3
+        @products = @products.sort_by(&:price).reverse
+      when 4
         @products = @products.sort_by(&:price)
       end
 
