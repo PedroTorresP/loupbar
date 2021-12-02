@@ -23,7 +23,7 @@
               <%= @product.quantity %>
             <% end %>
           </li>
-          <li class="list-group-item"><strong>Prix:</strong> <%= @product.price %> CHF</li>
+          <li class="list-group-item"><strong>Prix:</strong> <%= number_to_currency(@product.price, unit:"CHF", format: "%n %u", delimiter:"'") %> CHF</li>
           <li class="list-group-item"><%= form_with(model: @line_item, :as => :post, :url => line_items_path) do |form| %>
               <% if @product.quantity > 0%>
                 <%= form.select :quantity, options_for_select(1..product_quantity_cart(session_cart, @product.id)), class:"form-select" %>
