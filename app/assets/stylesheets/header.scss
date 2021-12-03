@@ -21,10 +21,11 @@ body {
 
 .dropdown li {
   position: relative;
+  z-index: 1000000;
 }
 
 .dropdown li a {
-  color: #ffffff;
+  color: #ffffffc7;
   text-align: center;
   text-decoration: none;
   display: block;
@@ -39,12 +40,12 @@ body {
   list-style: none;
   display: none;
   line-height: normal;
-  background-color: #333;
+  background-color: rgba(51, 51, 51, 0.959);
 }
 
 .dropdown li ul li a {
   text-align: left;
-  color: #cccccc;
+  color: #ccccccb7;
   font-size: 14px;
   padding: 10px;
   display: block;
@@ -52,7 +53,7 @@ body {
 }
 
 .dropdown li ul li a:hover {
-  background-color: #4e4e4e;
+  background-color: #4e4e4eee;
   color: #ffffff;
 }
 
@@ -62,7 +63,7 @@ body {
 }
 
 ul li:hover>a {
-  background-color: #dbdbdb;
+  background-color: #dbdbdb5e;
 }
 
 ul li:hover>ul {
