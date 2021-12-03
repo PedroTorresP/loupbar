@@ -76,11 +76,6 @@
             <%= link_to 'Tous', boutique_path, class:"nav-link" %>
             <% get_categories.each do |category| %>
               <li><a href='<%= boutique_path + "?category=" + category.id.to_s %>'><%= category.name %></a>
-                <ul>
-                  <% get_subcategories(category).each do |subcategory| %>
-                    <li><a href='<%= boutique_path + "?category=" + category.id.to_s + "&subcategory=" + subcategory.to_s %>'><%= Subcategory.find(subcategory).name %></a>
-                    <% end %>
-                  </ul>
                 </li>
               <% end %>
             </div>
