@@ -11,7 +11,7 @@
     <li class="list-group-item"><strong>Code postal:</strong> <%= @order.user.city.to_s + @order.user.postal_code.to_s %></li>
     <li class="list-group-item"><strong>Type de paiement:</strong> <%= @order.payment %></li>
     <% if @order.shipping == 'poste' %>
-    <li class="list-group-item"><strong>Frais de livraison:</strong> 7.00 CHF</li>
+      <li class="list-group-item"><strong>Frais de livraison:</strong> 7.00 CHF</li>
     <% end %>
     <li class="list-group-item"><strong>Prix total après réduction:</strong> <%=  number_to_currency(@totalOrderDiscount, unit:"CHF", format: "%n %u", delimiter:"'") %></li>
     <li class="list-group-item"><strong>Etat paiement:</strong> <%= @order.is_paid %></li>
@@ -94,7 +94,7 @@
           <th>Quantité</th>
           <th>Prix Unitaire</th>
           <th>Prix Total</th>
-          <th colspan="1"></th>
+          <th colspan="2"></th>
         </tr>
       </thead>
       <% @order.buys.each do |buy| %>
@@ -103,8 +103,32 @@
           <td><%= buy.quantity %></td>
           <td><%= number_to_currency(buy.price, unit:"CHF", format: "%n %u", delimiter:"'") %></td>
           <td><%= number_to_currency(buy.price * buy.quantity, unit:"CHF", format: "%n %u", delimiter:"'")  %></td>
-          <td><%= button_to "-", buy_path(:id => buy.id, :quantity => -1), :method => :put , class:"btn btn-danger" %>
-          <%= button_to "+", buy_path(:id => buy.id, :quantity => +1), :method => :put , class:"btn btn-success" %>
+          <td class="text-center">
+            <div class="status-commande">
+              <%= form_with(model: buy, :as => :put, :url => buy_path(:id => buy.id)) do |form| %>
+                <%= form.hidden_field :quantity, value: buy.quantity - 1 %>
+                <%= form.submit "-", class:"btn btn-danger"%>
+              <% end %>
+              <%= form_with(model: buy, :as => :put, :url => buy_path(:id => buy.id)) do |form| %>
+                <%= form.hidden_field :quantity, value: buy.quantity + 1 %>
+                <%= form.submit "+", class:"btn btn-success"%>
+              <% end %>
+            </div>
+          </td>
+          <td>
+            <p>
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=<%="#collapseWidthExample"+buy.id.to_s %> aria-expanded="false" aria-controls="collapseWidthExample">
+                Transférer
+              </button>
+            </p>
+            <div class="collapse collapse-horizontal" id=<%="collapseWidthExample"+buy.id.to_s %>>
+              <div class="" style="width: 200px;">
+                <%= form_with(model: buy, :as => :put, :url => buy_path(:id => buy.id)) do |form| %>
+                  ID: <%= form.text_field :order_id, size:4 %>
+                  <%= form.submit "OK", class:"btn btn-success"%>
+                <% end %>
+              </div>
+            </div>
           </td>
         </tr>
       <% end %>

@@ -48,20 +48,22 @@ class BuysController < ApplicationController
 
   # PATCH/PUT /buys/1 or /buys/1.json
   def update
-    @buy_update = Buy.all.find(params[:id])
-    @product = @buy_update.product
-    if @product.quantity > 0 && !@product.available || params[:quantity].to_i == -1 || @product.available
-      if @buy_update.quantity + params[:quantity].to_i == 0
-          @product.quantity -= params[:quantity].to_i
-          @product.save
-          @buy_update.destroy
+    respond_to do |format|
+      redir = '/orders/' + @buy.order_id.to_s
+      product = @buy.product
+      diff = buy_params[:quantity].to_i - @buy.quantity 
+      if @buy.update(buy_params)
+        product.quantity = product.quantity - diff
+        product.save
+        if @buy.quantity == 0
+          @buy.destroy
+        end
+        format.html { redirect_to redir, notice: "L'achat a été modifié." }
+        format.json { render :show, status: :ok, location: @buy }
       else
-          @buy_update.quantity += params[:quantity].to_i
-          @product.quantity -= params[:quantity].to_i
-          @product.save
-          @buy_update.save
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @buy.errors, status: :unprocessable_entity }
       end
-      redirect_back(fallback_location: root_path)
     end
   end
 
