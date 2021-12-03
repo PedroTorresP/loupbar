@@ -2,8 +2,8 @@ module CategoriesHelper
 
     def get_categories
         products = Product.all.select { |product| product.available || product.quantity > 0  }
-        categories = Category.all
-        subcategories = Subcategory.all
+        categories = Category.where.not(id: 1)
+        subcategories = Subcategory.where.not(id: 1)
         lstCategories = {}
         p '-------------------------------------------------------------------->'
         categories.each do |category|
