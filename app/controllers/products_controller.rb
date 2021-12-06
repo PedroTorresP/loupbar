@@ -5,11 +5,35 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     @products = Product.all.reverse()
+    categoriesName = {}
+    subcategoriesName = {}
+    categoriesName['Toutes'] = 0
+    subcategoriesName['Toutes'] = 0
+    Category.all.each do |category|
+      if category.available
+        categoriesName[category.name[0..20]] = category.id
+      end
+    end
+    @categories = categoriesName
+    Subcategory.all.each do |subcategory|
+      if subcategory.available
+        subcategoriesName[subcategory.name[0..20]] = subcategory.id
+      end
+    end
+    @subcategories = subcategoriesName
+
 
     if request.query_parameters[:query] != nil
       @products = @products.select { |product| I18n.transliterate(product.name).downcase.include? I18n.transliterate(request.query_parameters[:query]).downcase  }
 
     end
+    if request.query_parameters[:category].to_i > 0
+      @products = @products.select { |p| p.category_id == request.query_parameters[:category].to_i  }
+    end
+    if request.query_parameters[:subcategory].to_i > 0
+      @products = @products.select { |p| p.subcategory_id == request.query_parameters[:subcategory].to_i  }
+    end
+
     case request.query_parameters[:tri]
     when "Date décroissant"
       @products = @products.sort_by(&:date).reverse
@@ -103,7 +127,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to products_path, notice: "Le produit a été modifié." }
+        format.html { redirect_back fallback_location: root_path, notice: "Le produit a été modifié." }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit, status: :unprocessable_entity }

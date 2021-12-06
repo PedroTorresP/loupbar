@@ -6,6 +6,10 @@
       <%= form.label :tri, "Trier:", class:"form-label" %>
       <%= form.select :tri, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
       <%= form.text_field :query, placeholder:"Chercher par nom" %>
+      <%= form.label :category, "Catégorie:", class:"form-label" %>
+      <%= form.select :category, @categories,selected:request.query_parameters[:category], class:"form-select" %>
+      <%= form.label :subcategory, "Sous-catégorie:", class:"form-label" %>
+      <%= form.select :subcategory, @subcategories,selected:request.query_parameters[:subcategory], class:"form-select" %>
       <%= form.submit "Filtrer", class:"btn btn-primary" %>
       <%= link_to "Stock bas("+low_stock_count.to_s+")", products_path + "?low_stock=true",  class:"btn btn-danger" %>
     <% end %>
@@ -35,7 +39,12 @@
         <td><%= product.category.name %></td>
         <td><%= product.subcategory.name %></td>
         <td><%= product.price %></td>
-        <td><%= product.quantity %></td>
+        <td>
+          <%= form_with(model: product, :as => :put, :url => product_path(:id => product.id)) do |form| %>
+            <%= form.text_field :quantity, size:3 %>
+            <%= form.submit "✔️", class:"btn btn-success"%>
+          <% end %>
+        </td>
         <td><%= product.min_stock %></td>
         <td><% if product.available %>
             Disponible
