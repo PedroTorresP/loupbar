@@ -21,7 +21,12 @@
           <% end %>
         </td>
         <td><%= link_to '✏️', edit_subcategory_path(subcategory) %></td>
-        <td><%= link_to '🗑️', subcategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= form_with(model: subcategory, :method => :delete, :url => subcategory_path(:id => subcategory.id)) do |form| %>
+            <%= form.select :id, @subcategoriesList, {} %>
+            <%= form.submit "CHANGER ET SUPPRIMER", class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

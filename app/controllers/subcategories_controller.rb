@@ -6,7 +6,13 @@ class SubcategoriesController < ApplicationController
   def index
     @subcategories = Subcategory.all
     @subcategories = Kaminari.paginate_array(@subcategories).page(params[:page]).per(20)
-
+    subcategoriesName = {}
+    Subcategory.all.each do |subcategory|
+      if subcategory.available
+        subcategoriesName[subcategory.name] = subcategory.id
+      end
+    end
+    @subcategoriesList = subcategoriesName
   end
 
   # GET /subcategories/1 or /subcategories/1.json
@@ -53,10 +59,17 @@ class SubcategoriesController < ApplicationController
 
   # DELETE /subcategories/1 or /subcategories/1.json
   def destroy
-    if @subcategory.id != 1
+    if @subcategory.id > 1
+    if @subcategory.id == subcategory_params[:id].to_i
+      newID = 1
+    else
+      newID = subcategory_params[:id].to_i
+    end
+
+
       @products = Product.select {|product| product.subcategory_id == @subcategory.id }
       @products.each  do |product|
-        product.subcategory_id = 1
+        product.subcategory_id = newID
         product.save
       end
       @subcategory.destroy
