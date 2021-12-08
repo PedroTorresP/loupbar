@@ -4,6 +4,15 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
+
+    if request.query_parameters[:action].to_s == "show"
+      @products = Product.select {|product| product.show == false}
+      @products.each do |product|
+        product.show = true
+        product.save
+      end
+    end
+
     @products = Product.all.reverse()
     categoriesName = {}
     subcategoriesName = {}
@@ -61,6 +70,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.date = Date.today
+    @product.show = true
     @product.available = false
     categoriesName = {}
     subcategoriesName = {}
@@ -165,7 +175,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:id, :name, :category_id, :subcategory_id, :description, :price, :image_path, :quantity, :min_stock, :available, :image, :date )
+      params.require(:product).permit(:id, :name, :category_id, :subcategory_id, :description, :price, :image_path, :quantity, :min_stock, :available, :image, :date, :show )
     end
 
     def authorize_admin

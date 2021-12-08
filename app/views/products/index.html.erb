@@ -12,6 +12,7 @@
       <%= form.select :subcategory, @subcategories,selected:request.query_parameters[:subcategory], class:"form-select" %>
       <%= form.submit "Filtrer", class:"btn btn-primary" %>
       <%= link_to "Stock bas("+low_stock_count.to_s+")", products_path + "?low_stock=true",  class:"btn btn-danger" %>
+      <%= link_to "Rendre visible tous les produits", products_path + "?action=show", data: { confirm: 'Êtes vous certain de vouloir rendre tous les produits visible ?' },  class:"btn btn-success" %>
     <% end %>
   </div>
 </div>
@@ -27,6 +28,7 @@
       <th>Quantité</th>
       <th>Stock Minimun</th>
       <th>Commandable</th>
+      <th>Affiché?</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -50,6 +52,11 @@
             Disponible
           <% else %>
             Pas disponible
+          <% end %></td>
+        <td><% if product.show %>
+            Oui
+          <% else %>
+            Non
           <% end %></td>
         <td><%= link_to '🔎', product %></td>
         <td><%= link_to '✏️', edit_product_path(product) %></td>
