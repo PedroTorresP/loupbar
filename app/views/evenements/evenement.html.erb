@@ -53,7 +53,7 @@
       </div>
       <div class="card-body">
         <h3 class="card-title"> DESCRIPTION </h3>
-        <%= simple_format h(@event.description), class:'evenement-description' %>
+        <%= simple_format h(@event.description.html_safe), class:'evenement-description' %>
       </div>
     </div>
   </div>
