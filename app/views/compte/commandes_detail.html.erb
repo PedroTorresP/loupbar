@@ -57,6 +57,10 @@
           <% end %>
           <% end %>
         <% end %><br>
+        <% if @commande.comment_shop != nil %>
+        <strong>Commentaire de la boutique: </strong>
+        <%= @commande.comment_shop %><br>
+        <% end %>
         <div class="compte-paiement">
           <strong>Paiement: </strong><%= @commande.payment %><br>
           <% if @commande.is_paid == 'attente' %>

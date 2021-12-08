@@ -7,6 +7,7 @@
     <li class="list-group-item"><strong>Réduction:</strong> <%= number_to_currency(@order.discount, unit:"CHF", format: "%n %u", delimiter:"'") %></li>
     <li class="list-group-item"><strong>Livraison:</strong> <%= @order.shipping %></li>
     <li class="list-group-item"><strong>Suivi:</strong> <%= @order.tracking %></li>
+    <li class="list-group-item"><strong>Commentaire Boutique:</strong> <%= @order.comment_shop %></li>
     <li class="list-group-item"><strong>Adresse:</strong> <%= @order.user.address %></li>
     <li class="list-group-item"><strong>Code postal:</strong> <%= @order.user.city.to_s + @order.user.postal_code.to_s %></li>
     <li class="list-group-item"><strong>Type de paiement:</strong> <%= @order.payment %></li>

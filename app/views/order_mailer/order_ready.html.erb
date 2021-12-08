@@ -32,6 +32,10 @@
       <% else %>
         Retrait au magasin
       <% end %><br>
+      <% if @order.comment_shop != nil %>
+        <strong>Commentaire de la boutique: </strong>
+        <%= @order.comment_shop %><br>
+      <% end %>
       <strong>Paiement: </strong><%= @order.payment %><br>
       <strong>Etat du paiement: </strong>
       <%= @order.is_paid %><br>
