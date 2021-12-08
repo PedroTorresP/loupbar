@@ -9,7 +9,7 @@
                 <li><a href='<%= boutique_path + "?category=" + category.id.to_s %>'><%= category.name %></a>
                   <ul>
                     <% get_subcategories(category).each do |subcategory| %>
-                      <li><a href='<%= boutique_path + "?category=" + category.id.to_s + "&subcategory=" + subcategory.to_s %>'><%= Subcategory.find(subcategory).name %></a>
+                      <li><a href='<%= boutique_path + "?category=" + category.id.to_s + "&subcategory=" + subcategory.id.to_s %>'><%= subcategory.name %></a>
                       <% end %>
                     </ul>
                   </li>
