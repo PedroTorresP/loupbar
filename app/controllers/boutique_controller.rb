@@ -30,10 +30,10 @@ class BoutiqueController < ApplicationController
         @products = @products.select { |p| I18n.transliterate(p.name).downcase.include? I18n.transliterate(request.query_parameters[:query]).downcase  }
       end
       if request.query_parameters[:category].to_i > 0
-        @products = @products.select { |p| p.category_id == request.query_parameters[:category].to_i  }
+        @products = @products.select { |p| p.category_id == request.query_parameters[:category].to_i || p.description.include?('#'+categoriesName.key(request.query_parameters[:category].to_i))  }
       end
       if request.query_parameters[:subcategory].to_i > 0
-        @products = @products.select { |p| p.subcategory_id == request.query_parameters[:subcategory].to_i  }
+        @products = @products.select { |p| p.subcategory_id == request.query_parameters[:subcategory].to_i || p.description.include?('#'+subcategoriesName.key(request.query_parameters[:subcategory].to_i))  }
       end
       
       case request.query_parameters[:tri].to_i
