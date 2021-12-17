@@ -59,6 +59,10 @@ class CartsController < ApplicationController
   def destroy
     session_cart.destroy
     session[:cart_id] = nil
+    oldCarts = Cart.all.find_all {|cart| cart.created_at.before?(1.week.ago) }
+    oldCarts.each do |cart|
+      cart.destroy
+    end
     redirect_to(root_path,  notice:'Le panier a été vidé')
   end
 
