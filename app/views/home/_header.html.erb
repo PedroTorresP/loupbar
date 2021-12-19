@@ -67,53 +67,51 @@
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <li class="navbar-nav">
         <li class="navbar-nav" data-bs-toggle="collapse" data-bs-target=<%="#collapseWidthExample" %> aria-expanded="false" aria-controls="collapseWidthExample">
-          Boutique ˅
+          <a class="nav-link">Boutique ˅</a >
         </li>
         <div class="navbar-nav collapse collapse-horizontal" id=<%="collapseWidthExample" %>>
           <div class="" style="width: 200px;">
             <%= link_to 'Tous', boutique_path, class:"nav-link" %>
             <% get_categories.each do |category| %>
               <li><a href='<%= boutique_path + "?category=" + category.id.to_s %>'><%= category.name %></a>
-                </li>
-              <% end %>
-            </div>
+              </li>
+            <% end %>
           </div>
+        </div>
+      <li class="navbar-nav">
+        <%= link_to 'Évènements', evenements_path, class:"nav-link" %>
+      </li>
+      <li class="navbar-nav">
+        <%= link_to image_tag("cardmarket.png", class:"imgnavbar"), "https://www.cardmarket.com/fr/WeissSchwarz/Users/Leloupbar/Offers", target: :_blank, class:"nav-link" %>
+      </li>
+      <li class="navbar-nav">
+        <%= link_to 'Contact', contact_path, class:"nav-link" %>
+      </li>
+      <li class="navbar-nav">
+        <%= link_to image_tag(get_image('logo'), class:"imgnavbar"), root_path, class:"nav-link" %>
+      </li>
+      <% if user_signed_in? %>
+        <li class="navbar-nav">
+          <%= link_to 'Compte', edit_user_registration_path, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
-          <%= link_to 'Évènements', evenements_path, class:"nav-link" %>
+          <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class:"nav-link" %>
+        </li>
+      <% else %>
+        <li class="navbar-nav">
+          <%= link_to 'Inscription', new_user_registration_path, class:"nav-link" %>
         </li>
         <li class="navbar-nav">
-          <%= link_to image_tag("cardmarket.png", class:"imgnavbar"), "https://www.cardmarket.com/fr/WeissSchwarz/Users/Leloupbar/Offers", target: :_blank, class:"nav-link" %>
+          <%= link_to 'Connexion', new_user_session_path, class:"nav-link" %>
         </li>
-        <li class="navbar-nav">
-          <%= link_to 'Contact', contact_path, class:"nav-link" %>
-        </li>
-        <li class="navbar-nav">
-          <%= link_to image_tag(get_image('logo'), class:"imgnavbar"), root_path, class:"nav-link" %>
-        </li>
-        <% if user_signed_in? %>
-          <li class="navbar-nav">
-            <%= link_to 'Compte', edit_user_registration_path, class:"nav-link" %>
-          </li>
-          <li class="navbar-nav">
-            <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class:"nav-link" %>
-          </li>
-        <% else %>
-          <li class="navbar-nav">
-            <%= link_to 'Inscription', new_user_registration_path, class:"nav-link" %>
-          </li>
-          <li class="navbar-nav">
-            <%= link_to 'Connexion', new_user_session_path, class:"nav-link" %>
-          </li>
-        <% end %>
-        <li class="navbar-nav">
-          <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", target: :_blank, class:"nav-link" %>
-        </li>
-        <li class="navbar-nav">
-          <%= link_to 'Panier ('+sub_total(session_cart).to_s+' CHF)', "/carts/show", class:"nav-link" %>
-        </li>
-      </div>
+      <% end %>
+      <li class="navbar-nav">
+        <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", target: :_blank, class:"nav-link" %>
+      </li>
+      <li class="navbar-nav">
+        <%= link_to 'Panier ('+sub_total(session_cart).to_s+' CHF)', "/carts/show", class:"nav-link" %>
+      </li>
     </div>
   </div>
+</div>
