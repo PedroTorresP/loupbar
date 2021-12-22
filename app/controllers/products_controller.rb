@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
     end
 
     @products = Product.all.reverse()
+    @products = @products.sort_by(&:updated_at).reverse
     categoriesName = {}
     subcategoriesName = {}
     categoriesName['Toutes'] = 0
@@ -44,6 +45,8 @@ class ProductsController < ApplicationController
     end
 
     case request.query_parameters[:tri]
+    when "Derniers ajoutés"
+      @products = @products.sort_by(&:updated_at).reverse
     when "Date décroissant"
       @products = @products.sort_by(&:date).reverse
     when "Date croissant"

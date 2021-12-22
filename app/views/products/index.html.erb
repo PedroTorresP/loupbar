@@ -4,7 +4,7 @@
   <div class="card-body">
     <%= form_with url: products_path, method: :get do |form| %>
       <%= form.label :tri, "Trier:", class:"form-label" %>
-      <%= form.select :tri, options_for_select(["Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
+      <%= form.select :tri, options_for_select(["Derniers ajoutés","Date décroissant", "Date croissant", "Prix décroissant", "Prix croissant"]), class:"form-select" %>
       <%= form.text_field :query, placeholder:"Chercher par nom" %>
       <%= form.label :category, "Catégorie:", class:"form-label" %>
       <%= form.select :category, @categories,selected:request.query_parameters[:category], class:"form-select" %>
