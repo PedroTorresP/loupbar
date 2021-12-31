@@ -138,5 +138,6 @@
       <%= link_to 'Ajouter produit à la commande ➕', new_buy_path + "?order=" + @order.id.to_s, class:"btn btn-success" %>
       <%= link_to 'Modifier la commande ✏️', edit_order_path(@order), class:"btn btn-dark" %>
       <%= link_to 'Retour ⬅️', orders_path, class:"btn btn-dark" %>
+      <%= link_to 'Imprimer 🖨️', orders_print_path + '?id=' + @order.id.to_s, target: :_blank, class:"btn btn-dark" %>
     </div>
   </div>

@@ -32,6 +32,17 @@ class OrdersController < ApplicationController
     @totalOrderDiscount = order_total(@order).to_d - @order.discount.to_s.to_d
   end
 
+  def print
+    @order = Order.find(request.query_parameters[:id])
+    total = 0
+    @order.buys.each do |buy|
+      total += buy.quantity * buy.product.price
+    end
+    @totalOrder = total
+    @totalOrderDiscount = order_total(@order).to_d - @order.discount.to_s.to_d
+    render layout: false
+  end
+
   # GET /orders/new
   def new
     @order = Order.new
