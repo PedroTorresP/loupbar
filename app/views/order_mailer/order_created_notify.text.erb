@@ -8,8 +8,10 @@ Adresse de livraison
 
 <%= @order.user.first_name + " " + @order.user.last_name%>
 <%= @order.user.address%>
+<%= @order.user.city%>
 <%= @order.user.postal_code%>
 Suisse
+Téléphone : <%= @order.user.phone%>
 
 Informations
 
@@ -34,5 +36,5 @@ Montant total de la commande:<%= @total  %> CHF
 
 Produit / Prix unitaire /  Quantité  /  Prix total
 <% @buys.each do |buy| %>
-  <%= buy.product.name %> /  <%= buy.price %>  /  <%= buy.quantity %> / <%= buy.price * buy.quantity  %>
+  <%= buy.product.name %> /  <%= number_to_currency(buy.price, unit:"CHF", format: "%n %u", delimiter:"'") %>  /  <%= buy.quantity %> / <%= number_to_currency(buy.price * buy.quantity, unit:"CHF", format: "%n %u", delimiter:"'")  %>
 <% end %>

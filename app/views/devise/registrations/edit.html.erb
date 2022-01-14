@@ -32,8 +32,16 @@
         <%= f.email_field :email, autocomplete: "email", class:"form-control", :required => true %>
       </div>
       <div class="field form-group">
+        <%= f.label :phone %><br />
+        <%= f.text_field :phone, autocomplete: "phone", class:"form-control", :required => true %>
+      </div>
+      <div class="field form-group">
         <%= f.label "Adresse" %><br />
         <%= f.text_field :address, autocomplete: "address", class:"form-control", :required => true %>
+      </div>
+      <div class="field form-group">
+        <%= f.label "Ville" %><br />
+        <%= f.text_field :city, autocomplete: "city", class:"form-control", :required => true %>
       </div>
       <div class="field form-group">
         <%= f.label "Code postal" %><br />

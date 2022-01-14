@@ -21,12 +21,16 @@
           <% end %>
         </td>
         <td><%= link_to '✏️', edit_category_path(category) %></td>
-        <td><%= link_to '🗑️', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= form_with(model: category, :method => :delete, :url => category_path(:id => category.id)) do |form| %>
+            <%= form.select :id, @categoriesList, {} %>
+            <%= form.submit "CHANGER ET SUPPRIMER", class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <%= paginate @categories %>
-
 <br>
 <%= link_to 'Créée catégorie', new_category_path, class:"btn btn-dark" %>

@@ -12,8 +12,10 @@
     <div class="card-body">
       <%= @order.user.first_name + " " + @order.user.last_name%><br>
       <%= @order.user.address%><br>
+      <%= @order.user.city%><br>
       <%= @order.user.postal_code%><br>
       Suisse<br>
+      Téléphone : <%= @order.user.phone%><br>
     </div>
   </div>
   <div class="card">
@@ -35,9 +37,9 @@
       <%= @order.is_ready %><br>
       <strong>Date de la commande: </strong><%= @order.created_at %><br>
       <% if @order.discount %>
-        <strong>Réduction: </strong><%= @order.discount %> CHF<br>
+        <strong>Réduction: </strong><%= number_to_currency(@order.discount, unit:"CHF", format: "%n %u", delimiter:"'") %><br>
       <% end %>
-      <strong>Montant total de la commande: </strong><%= @total  %> CHF<br>
+      <strong>Montant total de la commande: </strong><%= number_to_currency(@total, unit:"CHF", format: "%n %u", delimiter:"'")  %><br>
     </div>
   </div>
   <table class="table table-bordered table-striped">
@@ -53,9 +55,9 @@
       <% @buys.each do |buy| %>
         <tr >
           <td><%= buy.product.name %></td>
-          <td><%= buy.price %></td>
+          <td><%= number_to_currency(buy.price, unit:"CHF", format: "%n %u", delimiter:"'") %></td>
           <td><%= buy.quantity %></td>
-          <td><%= buy.price * buy.quantity  %></td>
+          <td><%= number_to_currency(buy.price * buy.quantity, unit:"CHF", format: "%n %u", delimiter:"'")  %></td>
         </tr>
       <% end %>
     </tbody>

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
   before_action :authorize_admin
+  include OrdersHelper
 
   # GET /orders or /orders.json
   def index
@@ -28,7 +29,18 @@ class OrdersController < ApplicationController
       total += buy.quantity * buy.product.price
     end
     @totalOrder = total
-    @totalOrderDiscount = total.to_s.to_d - @order.discount.to_s.to_d
+    @totalOrderDiscount = order_total(@order).to_d - @order.discount.to_s.to_d
+  end
+
+  def print
+    @order = Order.find(request.query_parameters[:id])
+    total = 0
+    @order.buys.each do |buy|
+      total += buy.quantity * buy.product.price
+    end
+    @totalOrder = total
+    @totalOrderDiscount = order_total(@order).to_d - @order.discount.to_s.to_d
+    render layout: false
   end
 
   # GET /orders/new
@@ -109,7 +121,7 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:id, :user_id, :discount, :is_paid, :is_ready, :payment, :shipping, :tracking)
+      params.require(:order).permit(:id, :user_id, :discount, :is_paid, :is_ready, :payment, :shipping, :tracking, :comment_shop)
     end
 
 

@@ -4,7 +4,7 @@
 <%= link_to image_tag(get_image('character4'), class:"characters"), get_value('character4') %>
 <div class="row" style="background-color: <%= get_value('row_color')%>;">
   <div class="text-center">
-    <h1>Bienvenue chez Le Loupbar</h1>
+    <h1>Bienvenue chez Leloupbar</h1>
     <h3><%= simple_format h(get_value('home_welcome')) %></h3>
     <br>
   </div>
@@ -24,7 +24,7 @@
                     <%= link_to image_tag("https://picsum.photos/300/2" + rand(10..99).to_s, class:"boutique-img"), boutique_produit_path + "?id=" + @products[0].id.to_s %>
                   <% end %>
                 </div>
-                <p class="card-text">PRIX : <%= @products[0].price %> CHF</p>
+                <p class="card-text">PRIX : <%= number_to_currency(@products[0].price, unit:"CHF", format: "%n %u", delimiter:"'") %></p>
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
                       <%= link_to image_tag("https://picsum.photos/300/2" + rand(10..99).to_s, class:"boutique-img"), boutique_produit_path + "?id=" + product.id.to_s %>
                     <% end %>
                   </div>
-                  <p class="card-text">PRIX : <%= product.price %> CHF</p>
+                  <p class="card-text">PRIX : <%= number_to_currency(product.price, unit:"CHF", format: "%n %u", delimiter:"'") %></p>
                 </div>
               </div>
             </div>

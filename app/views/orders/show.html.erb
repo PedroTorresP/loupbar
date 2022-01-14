@@ -3,12 +3,18 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><strong>Numéro de commande:</strong> <%= @order.id %></li>
     <li class="list-group-item"><strong>Client:</strong> <%= @order.user.first_name + " " + @order.user.last_name  %></li>
-    <li class="list-group-item"><strong>Prix total:</strong> <%= @totalOrder %></li>
-    <li class="list-group-item"><strong>Réduction:</strong> <%= @order.discount %></li>
+    <li class="list-group-item"><strong>Prix total:</strong> <%= number_to_currency(@totalOrder, unit:"CHF", format: "%n %u", delimiter:"'") %></li>
+    <li class="list-group-item"><strong>Réduction:</strong> <%= number_to_currency(@order.discount, unit:"CHF", format: "%n %u", delimiter:"'") %></li>
     <li class="list-group-item"><strong>Livraison:</strong> <%= @order.shipping %></li>
     <li class="list-group-item"><strong>Suivi:</strong> <%= @order.tracking %></li>
+    <li class="list-group-item"><strong>Commentaire Boutique:</strong> <%= @order.comment_shop %></li>
+    <li class="list-group-item"><strong>Adresse:</strong> <%= @order.user.address %></li>
+    <li class="list-group-item"><strong>Code postal:</strong> <%= @order.user.city.to_s + @order.user.postal_code.to_s %></li>
     <li class="list-group-item"><strong>Type de paiement:</strong> <%= @order.payment %></li>
-    <li class="list-group-item"><strong>Prix total après réduction:</strong> <%=  @totalOrderDiscount %></li>
+    <% if @order.shipping == 'poste' %>
+      <li class="list-group-item"><strong>Frais de livraison:</strong> 7.00 CHF</li>
+    <% end %>
+    <li class="list-group-item"><strong>Prix total après réduction:</strong> <%=  number_to_currency(@totalOrderDiscount, unit:"CHF", format: "%n %u", delimiter:"'") %></li>
     <li class="list-group-item"><strong>Etat paiement:</strong> <%= @order.is_paid %></li>
     <li class="list-group-item"><strong>Etat commande:</strong> <%= @order.is_ready %></li>
     <li class="list-group-item">
@@ -94,13 +100,36 @@
       </thead>
       <% @order.buys.each do |buy| %>
         <tr>
-          <td><%= buy.product.name %></td>
+          <td><%= link_to buy.product.name, boutique_produit_path + "/?id=" + buy.product.id.to_s %></td>
           <td><%= buy.quantity %></td>
-          <td><%= buy.price %></td>
-          <td><%= buy.price * buy.quantity %></td>
-          <td><%= button_to "-", buy_path(:id => buy.id, :quantity => -1), :method => :put , class:"btn btn-danger" %>
+          <td><%= number_to_currency(buy.price, unit:"CHF", format: "%n %u", delimiter:"'") %></td>
+          <td><%= number_to_currency(buy.price * buy.quantity, unit:"CHF", format: "%n %u", delimiter:"'")  %></td>
+          <td class="text-center">
+            <div class="status-commande">
+              <%= form_with(model: buy, :as => :put, :url => buy_path(:id => buy.id)) do |form| %>
+                <%= form.hidden_field :quantity, value: buy.quantity - 1 %>
+                <%= form.submit "-", class:"btn btn-danger"%>
+              <% end %>
+              <%= form_with(model: buy, :as => :put, :url => buy_path(:id => buy.id)) do |form| %>
+                <%= form.hidden_field :quantity, value: buy.quantity + 1 %>
+                <%= form.submit "+", class:"btn btn-success"%>
+              <% end %>
+            </div>
           </td>
-          <td><%= button_to "+", buy_path(:id => buy.id, :quantity => +1), :method => :put , class:"btn btn-success" %>
+          <td>
+            <p>
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=<%="#collapseWidthExample"+buy.id.to_s %> aria-expanded="false" aria-controls="collapseWidthExample">
+                Transférer
+              </button>
+            </p>
+            <div class="collapse collapse-horizontal" id=<%="collapseWidthExample"+buy.id.to_s %>>
+              <div class="" style="width: 200px;">
+                <%= form_with(model: buy, :as => :put, :url => buy_path(:id => buy.id)) do |form| %>
+                  ID: <%= form.text_field :order_id, size:4 %>
+                  <%= form.submit "OK", class:"btn btn-success"%>
+                <% end %>
+              </div>
+            </div>
           </td>
         </tr>
       <% end %>
@@ -109,5 +138,6 @@
       <%= link_to 'Ajouter produit à la commande ➕', new_buy_path + "?order=" + @order.id.to_s, class:"btn btn-success" %>
       <%= link_to 'Modifier la commande ✏️', edit_order_path(@order), class:"btn btn-dark" %>
       <%= link_to 'Retour ⬅️', orders_path, class:"btn btn-dark" %>
+      <%= link_to 'Imprimer 🖨️', orders_print_path + '?id=' + @order.id.to_s, target: :_blank, class:"btn btn-dark" %>
     </div>
   </div>

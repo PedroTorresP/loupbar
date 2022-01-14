@@ -25,8 +25,10 @@
       <div class="card-body">
         <%= @user.first_name + " " + @user.last_name%><br>
         <%= @user.address%><br>
+        <%= @user.city%><br>
         <%= @user.postal_code%><br>
         Suisse<br>
+        Téléphone : <%= @user.phone%><br>
       </div>
     </div>
     <div class="card">
@@ -38,9 +40,27 @@
         <% if @commande.shipping == 'poste' %>
           Poste<br>
           <strong>Numéro de suivi: </strong> <%= @commande.tracking %>
+          <% if @commande.is_paid == 'attente' %>
+            <%= form_with(model: @commande, :as => :patch, :url => compte_path(:id => @commande.id)) do |form| %>
+              <%= form.hidden_field :shipping, :value => 'magasin' %>
+              <%= form.hidden_field :id, :value => @commande.id %>
+              <%= form.submit "Récupérer à la boutique", class:"btn btn-warning" %>
+            <% end %>
+          <% end %>
         <% else %>
           Retrait au magasin
+          <% if @commande.is_paid == 'attente' %>
+          <%= form_with(model: @commande, :as => :patch, :url => compte_path(:id => @commande.id)) do |form| %>
+            <%= form.hidden_field :shipping, :value => 'poste' %>
+            <%= form.hidden_field :id, :value => @commande.id %>
+            <%= form.submit "Envoyer par la poste", class:"btn btn-warning" %>
+          <% end %>
+          <% end %>
         <% end %><br>
+        <% if @commande.comment_shop != nil %>
+        <strong>Commentaire de la boutique: </strong>
+        <%= @commande.comment_shop %><br>
+        <% end %>
         <div class="compte-paiement">
           <strong>Paiement: </strong><%= @commande.payment %><br>
           <% if @commande.is_paid == 'attente' %>
@@ -55,10 +75,13 @@
         <% if @commande.discount %>
           <strong>Réduction: </strong><%= @commande.discount %> CHF<br>
         <% end %>
-        <strong>Montant total de la commande: </strong><%= order_total(@commande).to_d  %> CHF<br>
+        <% if @commande.shipping == 'poste'%>
+        <strong>Frais de livraison: </strong>7.00 CHF<br>
+        <% end %>
+        <strong>Montant total de la commande: </strong><%= number_to_currency(order_total(@commande).to_d, unit:"CHF", format: "%n %u", delimiter:"'")  %><br>
       </div>
     </div>
-    <% if @preorder && @current %>
+        <% if @preorder && @current %>
     <div class="card text-white bg-danger text-center " style="max-width: 30rem;">
     Attention certains articles sont en précommande. Veuillez contacter la boutique si vous souhaiter séparer la commande.
     </div>
@@ -81,9 +104,9 @@
         <% @produits.each do |buy| %>
           <tr >
             <td><%= link_to buy.product.name, boutique_produit_path + "/?id=" + buy.product.id.to_s %></td>
-            <td><%= buy.price %></td>
+            <td><%= number_to_currency(buy.price, unit:"CHF", format: "%n %u", delimiter:"'") %></td>
             <td><%= buy.quantity %></td>
-            <td><%= buy.price * buy.quantity  %></td>
+            <td><%= number_to_currency(buy.price * buy.quantity, unit:"CHF", format: "%n %u", delimiter:"'")   %></td>
           </tr>
         <% end %>
       </tbody>

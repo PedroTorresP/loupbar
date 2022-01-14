@@ -7,4 +7,9 @@ Votre commande a été envoyée.
 <% if @order.tracking != nil %>
 Numéro de suivi :  <%= @order.tracking %>
 
+<% if @order.comment_shop != nil %>
+    Commentaire de la boutique:
+    <%= @order.comment_shop %><br>
+<% end %>
+
 <% end %>

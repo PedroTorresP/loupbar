@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_27_141914) do
+ActiveRecord::Schema.define(version: 2021_12_08_155157) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 2021_10_27_141914) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "tracking"
+    t.string "comment_shop"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -129,6 +130,8 @@ ActiveRecord::Schema.define(version: 2021_10_27_141914) do
     t.string "image"
     t.date "date"
     t.integer "subcategory_id"
+    t.string "time"
+    t.boolean "show", default: true
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["subcategory_id"], name: "index_products_on_subcategory_id"
   end
@@ -155,6 +158,8 @@ ActiveRecord::Schema.define(version: 2021_10_27_141914) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "phone"
+    t.string "city"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

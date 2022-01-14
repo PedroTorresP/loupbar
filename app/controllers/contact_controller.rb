@@ -4,7 +4,7 @@ class ContactController < ApplicationController
 
   def send_mail
     ContactMailer.with(sender: contact_params[:email], subject: contact_params[:subject], message: contact_params[:message]).contact.deliver_later
-    redirect_to root_path
+    redirect_to root_path, notice: "Le message a été envoyé." 
   end
 
 

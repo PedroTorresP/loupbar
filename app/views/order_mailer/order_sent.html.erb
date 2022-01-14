@@ -1,11 +1,15 @@
 <h1>Envoi de la commande <%= @order.id %></h1>
-
 <p>Bonjour <%= @order.user.first_name + ' ' + @order.user.last_name %> ,
-<br><br>
-Votre commande a été envoyée.
-<br>
-<% if @order.tracking != nil %>
-<br>
-Numéro de suivi :  <%= @order.tracking %>
-<br>
-<% end %>
+  <br>
+  <br>
+  Votre commande a été envoyée.
+  <br>
+  <% if @order.tracking != nil %>
+    <br>
+    Numéro de suivi :  <%= @order.tracking %>
+    <br>
+    <% if @order.comment_shop != nil %>
+      <strong>Commentaire de la boutique: </strong>
+      <%= @order.comment_shop %><br>
+    <% end %>
+  <% end %>

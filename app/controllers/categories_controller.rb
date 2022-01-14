@@ -6,7 +6,13 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
     @categories = Kaminari.paginate_array(@categories).page(params[:page]).per(20)
-
+    categoriesName = {}
+    Category.all.each do |category|
+      if category.available
+        categoriesName[category.name] = category.id
+      end
+    end
+    @categoriesList = categoriesName
   end
 
   # GET /categories/1 or /categories/1.json
@@ -53,19 +59,23 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1 or /categories/1.json
   def destroy
-    if @category.id != 1
-      @products = Product.select {|product| product.category_id == @category.id }
-      @products.each  do |product|
-        product.category_id = 1
-        product.save
-      end
-      @category.destroy
-    
-      respond_to do |format|
-        format.html { redirect_to categories_url, notice: "La catégorie a été supprimée." }
-        format.json { head :no_content }
-      end
+    if @category.id > 1
+    if @category.id == category_params[:id].to_i
+      newID = 1
+    else
+      newID = category_params[:id].to_i
     end
+    @products = Product.select {|product| product.category_id == @category.id }
+    @products.each  do |product|
+      product.category_id = newID
+      product.save
+    end
+    @category.destroy
+    respond_to do |format|
+      format.html { redirect_to categories_url, notice: "La catégorie a été supprimée." }
+      format.json { head :no_content }
+    end
+  end
   end
 
   private

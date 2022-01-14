@@ -8,6 +8,6 @@ class EventMailer < ApplicationMailer
   def event_inscription
     @participant = params[:participant]
 
-    mail to: @participant.user.email, subject: "Inscription à l'évènement : "+@participant.event.name.to_s
+    mail to: @participant.user.email, reply_to: 'renaudrey1989@outlook.fr', subject: "Inscription à l'évènement : "+@participant.event.name.to_s
   end
 end

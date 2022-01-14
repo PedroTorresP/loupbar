@@ -22,13 +22,13 @@
               <% if event.image.attached? %>
                 <%= image_tag event.image, class:"event-img" %>
               <% else %>
-                <%= image_tag "noimage.png", class:"event-img" %>
+                <%= image_tag "logocomplet.png", class:"event-img" %>
               <% end %>
             </div>
             <div class="col-6 text-start">
               <div class="card-text">Date : <%= event.date.strftime('%d/%m/%Y') %> </div>
               <div class="card-text">Heure : <%= event.time %> </div>
-              <div class="card-text">Prix : <%= event.price %> CHF</div>
+              <div class="card-text">Prix : <%= number_to_currency(event.price, unit:"CHF", format: "%n %u", delimiter:"'") %></div>
               <%= link_to 'Détails', evenements_evenement_path + "?id=" + event.id.to_s, class:"btn btn-primary" %>
             </div>
           </div>

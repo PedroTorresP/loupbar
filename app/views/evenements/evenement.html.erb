@@ -7,7 +7,7 @@
           <% if @event.image.attached? %>
             <%= image_tag @event.image, alt:"noimage", class:"boutique-img" %>
           <% else %>
-            <%= image_tag "noimage.png", class:"boutique-img" %>
+            <%= image_tag "logocomplet.png", class:"boutique-img" %>
           <% end %>
         </div>
       </div>
@@ -19,7 +19,7 @@
           </li>
           <li class="list-group-item"><strong>Places restantes:</strong> <%= @placeRestantes %><br>
           </li>
-          <li class="list-group-item"><strong>Prix (paiement au magasin):</strong> <%= @event.price %> CHF</li>
+          <li class="list-group-item"><strong>Prix (paiement au magasin):</strong> <%= number_to_currency(@event.price, unit:"CHF", format: "%n %u", delimiter:"'") %> </li>
           <li class="list-group-item"><strong>
               <div class="d-grid gap-2 col-6 mx-auto">
                 <% if Date.today > @event.date %>
@@ -53,7 +53,7 @@
       </div>
       <div class="card-body">
         <h3 class="card-title"> DESCRIPTION </h3>
-        <%= simple_format h(@event.description), class:'evenement-description' %>
+        <%= simple_format h(@event.description.html_safe), class:'evenement-description' %>
       </div>
     </div>
   </div>

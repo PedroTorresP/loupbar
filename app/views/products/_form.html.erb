@@ -24,6 +24,7 @@
       <li class="list-group-item"><strong>Quantité:</strong> <%= form.number_field :quantity, class:"form-control" , :required => true %></li>
       <li class="list-group-item"><strong>Stock minimum:</strong> <%= form.number_field :min_stock, class:"form-control" %></li>
       <li class="list-group-item"><strong>Disponible:</strong> <%= form.check_box :available, class:"form-check-input" %></li>
+      <li class="list-group-item"><strong>Affiché:</strong> <%= form.check_box :show, class:"form-check-input" %></li>
     </ul>
     <div class="card-body">
       <div class="actions">

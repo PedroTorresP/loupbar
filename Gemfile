@@ -39,6 +39,7 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   #sqlite3 DB for dev
   gem 'sqlite3', '~> 1.4'
+
 end
 
 group :production do
