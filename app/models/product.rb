@@ -10,7 +10,7 @@ class Product < ApplicationRecord
         CSV.generate(headers: true) do |csv|
             csv << attributes
             all.each do |product|
-                link = 'http://www.leloupbar.ch/boutique/produit?id=' + product.id.to_s
+                link = 'https://www.leloupbar.ch/boutique/produit?id=' + product.id.to_s
                 if product.quantity > 0
                     availability = 'in stock'
                 elsif product.quantity < 0 && product.available
