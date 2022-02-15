@@ -63,6 +63,12 @@ class ProductsController < ApplicationController
     end
 
     @products = Kaminari.paginate_array(@products).page(params[:page]).per(20)
+    @allProducts = Product.offset(1)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @allProducts.to_csv }
+    end
   end
 
   # GET /products/1 or /products/1.json

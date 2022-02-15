@@ -69,3 +69,4 @@
 <%= paginate @products %>
 <br>
 <%= link_to 'Crée produit', new_product_path, class:"btn btn-dark" %>
+<%= link_to 'Exporter tous les produits en CSV', products_path + '.csv', class:"btn btn-dark" %>
