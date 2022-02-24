@@ -6,7 +6,7 @@ class Product < ApplicationRecord
     
     def self.to_csv
         p "calling ---------------------------"
-        attributes = %w{id title price image_link description link availability condition brand}
+        attributes = %w{id title price image_link description link availability condition brand quantity_to_sell_on_facebook fb_product_category}
         CSV.generate(headers: true) do |csv|
             csv << attributes
             all.each do |product|
@@ -33,7 +33,7 @@ class Product < ApplicationRecord
                 end
 
                 if availability != 'out of stock'
-                csv << [product.id, product.name, product.price, image, description, link, availability, condition, product.category.name]
+                csv << [product.id, product.name, product.price, image, description, link, availability, condition, product.category.name, product.quantity, 'toys & games']
                 end
             end
         end
