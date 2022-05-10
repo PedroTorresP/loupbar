@@ -22,14 +22,14 @@
         <%= formB.hidden_field :id, :value => @order.id %>
         <%= image_submit_tag "store.png", class:"boutique-img" %>
       <% end %>
-    </div>
+    </div><!--
     <div class="col-12 col-md-4">
       <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
         <%= formB.hidden_field :payment, :value => 'paypal' %>
         <%= formB.hidden_field :id, :value => @order.id %>
         <%= image_submit_tag "paypalcard.png", class:"boutique-img" %>
       <% end %>
-    </div>
+    </div>-->
     <div class="col-12 col-md-4">
       <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
         <%= formB.hidden_field :payment, :value => 'virement' %>

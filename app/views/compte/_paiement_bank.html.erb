@@ -5,11 +5,14 @@
   Voici les informations pour effectuer le virement.
   <div class="card-text">
     <br>
-    <strong>Votre IBAN (format électronique)</strong><br>
-    CH5000767000S54963150<br>
+    <strong>Bénéficiaire</strong><br>
+    Leloupbar-Rey<br>
     <br>
-    <strong>Votre IBAN (format papier)</strong><br>
-    IBAN CH50 00767 000S 5496 3150<br>
+    <strong>IBAN (format électronique)</strong><br>
+    CH1700767000U55339651<br>
+    <br>
+    <strong>IBAN (format papier)</strong><br>
+    IBAN CH17 00767 000U 5533 9651<br>
     <br>
     <strong>Adresse bancaire</strong><br>
     Banque Cantonale Vaudoise<br>
@@ -42,13 +45,13 @@
           <%= formB.hidden_field :id, :value => @order.id %>
           <%= image_submit_tag "store.png", class:"boutique-img" %>
         <% end %>
-      </div>
+      </div><!--
       <div class="col-12 col-md-4">
         <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
           <%= formB.hidden_field :payment, :value => 'paypal' %>
           <%= formB.hidden_field :id, :value => @order.id %>
           <%= image_submit_tag "paypalcard.png", class:"boutique-img" %>
-        <% end %>
+        <% end %>-->
       </div>
       <div class="col-12 col-md-4">
         <%= form_with(model: @order, :as => :patch, :url => compte_path(:id => @order.id)) do |formB| %>
