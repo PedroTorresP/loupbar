@@ -44,6 +44,11 @@
               <%= link_to 'Connexion', new_user_session_path, class:"nav-link" %>
             </li>
           <% end %>
+          <% if user_signed_in? && User.all.find(current_user.id).is_admin %>
+            <li class="navbar-nav">
+              <%= link_to 'Aide', "https://docs.google.com/document/d/1kK9fQmgp7qLrEcCN_bRdEhRTwTR09ygMNTCXMFFPuW4/edit?usp=sharing", target: :_blank, class:"nav-link" %>
+            </li>
+          <% end %>
           <li class="navbar-nav">
             <%= link_to image_tag("discord.png", class:"imgnavbar"), "https://discord.gg/KMfBBRK4yV", target: :_blank, class:"nav-link" %>
           </li>
@@ -67,18 +72,18 @@
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <li class="navbar-nav" data-bs-toggle="collapse" data-bs-target=<%="#collapseWidthExample" %> aria-expanded="false" aria-controls="collapseWidthExample">
-          <a class="nav-link">Boutique ˅</a >
-        </li>
-        <div class="navbar-nav collapse collapse-horizontal" id=<%="collapseWidthExample" %>>
-          <div class="" style="width: 200px;">
-            <%= link_to 'Tous', boutique_path, class:"nav-link" %>
-            <% get_categories.each do |category| %>
-              <li><a href='<%= boutique_path + "?category=" + category.id.to_s %>'><%= category.name %></a>
-              </li>
-            <% end %>
-          </div>
+      <li class="navbar-nav" data-bs-toggle="collapse" data-bs-target=<%="#collapseWidthExample" %> aria-expanded="false" aria-controls="collapseWidthExample">
+        <a class="nav-link">Boutique ˅</a >
+      </li>
+      <div class="navbar-nav collapse collapse-horizontal" id=<%="collapseWidthExample" %>>
+        <div class="" style="width: 200px;">
+          <%= link_to 'Tous', boutique_path, class:"nav-link" %>
+          <% get_categories.each do |category| %>
+            <li><a href='<%= boutique_path + "?category=" + category.id.to_s %>'><%= category.name %></a>
+            </li>
+          <% end %>
         </div>
+      </div>
       <li class="navbar-nav">
         <%= link_to 'Évènements', evenements_path, class:"nav-link" %>
       </li>
@@ -104,6 +109,11 @@
         </li>
         <li class="navbar-nav">
           <%= link_to 'Connexion', new_user_session_path, class:"nav-link" %>
+        </li>
+      <% end %>
+      <% if user_signed_in? && User.all.find(current_user.id).is_admin %>
+        <li class="navbar-nav">
+          <%= link_to 'Aide', "https://docs.google.com/document/d/1kK9fQmgp7qLrEcCN_bRdEhRTwTR09ygMNTCXMFFPuW4/edit?usp=sharing", target: :_blank, class:"nav-link" %>
         </li>
       <% end %>
       <li class="navbar-nav">
