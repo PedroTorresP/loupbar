@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
     def update_ip
         if current_user != nil
-            current_user.ip = current_ip_address
+            current_user.ip = request.remote_ip
             current_user.save
         end
     end
@@ -22,8 +22,5 @@ class ApplicationController < ActionController::Base
         #head :unauthorized if current_ip_address == "XX.XX.XX.XX"
     end
   
-    def current_ip_address
-      request.env['HTTP_X_REAL_IP'] || request.env['REMOTE_ADDR']
-    end
 
 end
