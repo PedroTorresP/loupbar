@@ -23,6 +23,7 @@
       <th>Code postal</th>
       <th>Adresse</th>
       <th>Administrateur</th>
+      <th>IP</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -44,6 +45,7 @@
             Non
           <% end %>
         </td>
+        <td><%= user.ip %></td>
         <td><%= link_to '🛒', orders_path(:order => {:user_id => user.id}), method: :post, data: { confirm: 'Voulez vous créée une commande ?' } %></td>
         <td><%= link_to '🔎', user %></td>
         <td><%= link_to '✏️', edit_user_path(user) %></td>
