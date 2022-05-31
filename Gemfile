@@ -67,3 +67,4 @@ gem "aws-sdk-s3", require: false
 #Pagination
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 
+gem "recaptcha"

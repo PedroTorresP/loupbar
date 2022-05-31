@@ -40,6 +40,11 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"Confirmation mot de passe", :required => true %>
       </div>
       <br>
+      <div class="field">
+        <%= flash[:recaptcha_error] %>
+        <%= recaptcha_tags %>
+      </div>
+      <br>
       <div class="actions">
         <%= f.submit "S'inscrire", class:"btn btn-dark" %>
       </div>

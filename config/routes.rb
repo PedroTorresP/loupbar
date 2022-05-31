@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'contact#index'
   get 'evenements', to: 'evenements#index'
   get 'boutique', to: 'boutique#index'
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations" }
   resources :events
   resources :participants
   resources :users

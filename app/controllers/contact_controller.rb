@@ -1,4 +1,6 @@
 class ContactController < ApplicationController
+  prepend_before_action :check_captcha, except: [:index]
+
   def index
   end
 
@@ -10,5 +12,16 @@ class ContactController < ApplicationController
 
   def contact_params
     params.permit(:message, :subject, :email)
+  end
+
+  def check_captcha
+    unless verify_recaptcha
+      if params['g-recaptcha-response'] == 'true'
+        send_mail()
+      else
+        redirect_to contact_path, notice: "Erreur captcha."
+      end
+      
+    end
   end
 end
