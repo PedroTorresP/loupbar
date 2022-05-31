@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ip:</strong>
+  <%= @blacklist.ip %>
+</p>
+
+<%= link_to 'Edit', edit_blacklist_path(@blacklist) %> |
+<%= link_to 'Back', blacklists_path %>

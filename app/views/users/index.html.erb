@@ -24,7 +24,7 @@
       <th>Adresse</th>
       <th>Administrateur</th>
       <th>IP</th>
-      <th colspan="4"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
   <tbody>
@@ -45,11 +45,16 @@
             Non
           <% end %>
         </td>
-        <td><%= user.ip %></td>
+        <td><%= user.ip %>
+        <% if Blacklist.find_by_ip(request.remote_ip).present? %>
+        (🚫)
+        <% end %>
+        </td>
         <td><%= link_to '🛒', orders_path(:order => {:user_id => user.id}), method: :post, data: { confirm: 'Voulez vous créée une commande ?' } %></td>
         <td><%= link_to '🔎', user %></td>
         <td><%= link_to '✏️', edit_user_path(user) %></td>
-        <td><%= link_to '🗑️', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '🗑️', user, method: :delete, data: { confirm: 'Êtes-vous certain ? Suppression du client 🚫' } %></td>
+        <td><%= link_to '🚫BAN', blacklists_path(:blacklist => {:ip => user.ip}), method: :post, data: { confirm: '🚫🚫🚫ATTENTION🚫🚫🚫 LE USER VA DEFINITIVEMENT ETRE BANNI ET NE POURRA PLUS ACCEDER AU SITE!!! ETES VOUS CERTAINS ??? 🚫🚫🚫 (Vous pouvez manuellement retirer les IP bannies dans la liste noire' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -58,3 +63,4 @@
 
 <br>
 <%= link_to 'Crée utilisateur', new_user_path, class:"btn btn-dark"  %>
+<%= link_to 'Accéder à la liste noire', blacklists_path, class:"btn btn-dark"  %>

@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     end
     
     def block_ip_addresses
-        #head :unauthorized if current_ip_address == "XX.XX.XX.XX"
+        head :unauthorized if Blacklist.find_by_ip(request.remote_ip).present?
     end
   
 

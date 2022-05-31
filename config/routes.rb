@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :blacklists
   get 'orders/print'
   get 'compte/commandes_paiement_validation'
   get 'contact', to: 'contact#index'
