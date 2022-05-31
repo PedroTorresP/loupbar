@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     end
 
     def update_ip
-        if current_user != nil
+        if current_user != nil && current_user.ip != request.remote_ip
             current_user.ip = request.remote_ip
             current_user.save
         end
