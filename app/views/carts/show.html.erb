@@ -1,3 +1,9 @@
+    <% if get_value('away').length > 4 %>
+<div class="alert alert-danger" role="alert">
+  <%= simple_format h(get_value('away')) %>
+</div>
+
+    <% end %>
 <div class="card">
   <div class="card-body">
     <h2>Panier</h2>

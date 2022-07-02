@@ -5,6 +5,12 @@
 <div class="row" style="background-color: <%= get_value('row_color')%>;">
   <div class="text-center">
     <h1>Bienvenue chez Leloupbar</h1>
+    <% if get_value('away').length > 4 %>
+<div class="alert alert-danger" role="alert">
+  <%= simple_format h(get_value('away')) %>
+</div>
+
+    <% end %>
     <h3><%= simple_format h(get_value('home_welcome')) %></h3>
     <br>
   </div>

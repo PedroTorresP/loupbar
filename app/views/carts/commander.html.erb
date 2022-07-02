@@ -1,3 +1,9 @@
+    <% if get_value('away').length > 4 %>
+<div class="alert alert-danger" role="alert">
+  <%= simple_format h(get_value('away')) %>
+</div>
+
+    <% end %>
 <h1> Commander </h1>
 <div class="row">
   <div class="col-12 col-md-6 text-center">
@@ -86,6 +92,8 @@
           <div class="order-buttons">
             <% if sub_total(@cart) <= 0%>
               <%= link_to "Veuillez ajouter des produits", boutique_path, class:"btn btn-primary" %>
+              <%elsif get_value('away').length > 4%>
+              <%= form.submit "Confirmer",  data: {confirm: get_value('away') + " Voulez vous quand même effectuer la commande ?"} , class:"btn btn-primary" %>
             <%else%>
               <%= form.submit "Confirmer", class:"btn btn-primary" %>
             <% end %>
