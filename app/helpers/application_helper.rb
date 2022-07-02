@@ -1,8 +1,8 @@
 module ApplicationHelper
     def session_cart
-    clean_carts()
         Cart.find(session[:cart_id])
     rescue ActiveRecord::RecordNotFound
+        clean_carts()
         #créer un nouveau panier
         cart = Cart.create
         session[:cart_id] = cart.id
