@@ -21,7 +21,7 @@ module ApplicationHelper
                 end
 
                 #detruire les paniers vide après 1 jour
-                oldCarts = Cart.all.find_all {|cart| cart.created_at.before?(1.day.ago) }
+                oldCarts = Cart.all.find_all {|cart| cart.created_at.before?(1.hour.ago) }
                 if oldCarts.length > 1
                     emptyCartsIds = oldCarts.pluck(:id) - LineItem.pluck(:cart_id)
                     if emptyCartsIds.length > 100
